@@ -28,4 +28,4 @@ cd public && git add --all && git commit -m "Publishing to gh-pages (publish.sh)
 echo "Push to gitee"
 git push origin gh-pages
 
-mv ./v2ray科学上网.md ./content/post/v2ray科学上网.md
+cd .. && mv ./v2ray科学上网.md ./content/post/v2ray科学上网.md
