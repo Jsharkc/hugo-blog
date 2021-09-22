@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>cockroach on Jacobc&#39;s blog</title>
-    <link>hhttps://jsharkc.github.io/hugo-blog/tags/cockroach/</link>
+    <link>https://jsharkc.github.io/hugo-blog/tags/cockroach/</link>
     <description>Recent content in cockroach on Jacobc&#39;s blog</description>
     <image>
-      <url>hhttps://jsharkc.github.io/hugo-blog/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>hhttps://jsharkc.github.io/hugo-blog/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://jsharkc.github.io/hugo-blog/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://jsharkc.github.io/hugo-blog/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 17 Mar 2017 14:50:37 +0000</lastBuildDate><atom:link href="hhttps://jsharkc.github.io/hugo-blog/tags/cockroach/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 17 Mar 2017 14:50:37 +0000</lastBuildDate><atom:link href="https://jsharkc.github.io/hugo-blog/tags/cockroach/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>初探 Cockroachdb</title>
-      <link>hhttps://jsharkc.github.io/hugo-blog/post/cockroachdb/</link>
+      <link>https://jsharkc.github.io/hugo-blog/post/cockroachdb/</link>
       <pubDate>Fri, 17 Mar 2017 14:50:37 +0000</pubDate>
       
-      <guid>hhttps://jsharkc.github.io/hugo-blog/post/cockroachdb/</guid>
+      <guid>https://jsharkc.github.io/hugo-blog/post/cockroachdb/</guid>
       <description>初探 Cockroachdb 1.创建网桥 由于在单个主机上运行多个 Docker 容器，因此每个容器有一个 CockroachDB 节点，需要创建Docker所指的桥接网络。桥接网络将使容器能够作为单个群集进行通信，同时保持与外部网络的隔离。
 docker network create -d bridge roachnet我们在 roachnet 这里和随后的步骤中使用了网络名称，但是请随时给您的网络任何您喜欢的名字。
 2.启动第一个节点 docker run -d \ --name=roach1 \ --hostname=roach1 \ --net=roachnet \ -p 26257:26257 -p 8080:8080 \ -v &amp;#34;${PWD}/cockroach-data/roach1:/cockroach/cockroach-data&amp;#34; \ cockroachdb/cockroach:v1.0.4 start --insecure此命令创建一个容器并启动其中的第一个 CockroachDB 节点。我们来看看每个部分：

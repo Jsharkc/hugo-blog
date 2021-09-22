@@ -1,3 +1,3 @@
 User-agent: *
 Disallow:
-Sitemap: hhttps://jsharkc.github.io/hugo-blog/sitemap.xml
+Sitemap: https://jsharkc.github.io/hugo-blog/sitemap.xml
