@@ -118,7 +118,7 @@ params:
         hiddenInSingle: true # hide on single page
 
     editPost:
-        URL: "https://gitee.com/<path_to_repo>/content"
+        URL: "https://gitee.com/jsharkc/blog/content"
         Text: "Suggest Changes" # edit text
         appendFilePath: true # to append file path to Edit link
 
