@@ -46,7 +46,7 @@ params:
     tocopen: true
 
     assets:
-        # disableHLJS: true # to disable highlight.js
+        disableHLJS: true # to disable highlight.js
         # disableFingerprinting: true
         favicon: "<link / abs url>"
         favicon16x16: "<link / abs url>"
@@ -118,7 +118,7 @@ params:
         hiddenInSingle: true # hide on single page
 
     editPost:
-        URL: "https://github.com/<path_to_repo>/content"
+        URL: "https://gitee.com/<path_to_repo>/content"
         Text: "Suggest Changes" # edit text
         appendFilePath: true # to append file path to Edit link
 
@@ -151,7 +151,7 @@ menu:
           url: search
           weight: 30
 
-Read: https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#using-hugos-syntax-highlighter-chroma
+# Read: https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#using-hugos-syntax-highlighter-chroma
 pygmentsUseClasses: true
 markup:
     highlight:
@@ -159,5 +159,6 @@ markup:
         codeFences: true
         guessSyntax: true
         lineNos: true
+        # noClasses: false
         style: monokai
 
