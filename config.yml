@@ -1,4 +1,4 @@
-baseURL: "hhttps://jsharkc.github.io/hugo-blog/"
+baseURL: "https://jsharkc.github.io/hugo-blog/"
 title: Jacobc's blog
 paginate: 10
 theme: PaperMod
