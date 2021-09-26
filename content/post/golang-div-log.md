@@ -1,10 +1,9 @@
 ---
-title: "Golang按大小or时间切割日志"
-date: 2021-09-26T19:05:03+00:00
-tags: ["golang"]
+title: Golang按大小or时间切割日志
+date: 2021-09-23T19:05:03+00:00
+tags: ["Golang"]
 author: "Jsharkc"
 ---
-
 # Golang按大小or时间切割日志
 
 Log 用的 `go.uber.org/zap` 库。

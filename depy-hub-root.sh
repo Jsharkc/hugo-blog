@@ -7,9 +7,6 @@ then
     cd -
 fi
 
-echo "Removing existing files"
-rm -rf ../jsharkc.github.io/*
-
 echo "Generating site"
 hugo -b https://jsharkc.github.io/
 
