@@ -9,7 +9,25 @@
       <link>https://jsharkc.github.io/hugo-blog/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 13 Jul 2021 17:41:23 +0000</lastBuildDate><atom:link href="https://jsharkc.github.io/hugo-blog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 16 Oct 2021 14:37:03 +8000</lastBuildDate><atom:link href="https://jsharkc.github.io/hugo-blog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mac</title>
+      <link>https://jsharkc.github.io/hugo-blog/tags/mac/</link>
+      <pubDate>Sat, 16 Oct 2021 14:37:03 +8000</pubDate>
+      
+      <guid>https://jsharkc.github.io/hugo-blog/tags/mac/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Golang</title>
+      <link>https://jsharkc.github.io/hugo-blog/tags/golang/</link>
+      <pubDate>Sun, 26 Sep 2021 19:05:03 +0800</pubDate>
+      
+      <guid>https://jsharkc.github.io/hugo-blog/tags/golang/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>线程</title>
       <link>https://jsharkc.github.io/hugo-blog/tags/%E7%BA%BF%E7%A8%8B/</link>
@@ -43,15 +61,6 @@
       <pubDate>Sun, 17 Nov 2019 14:29:38 +0000</pubDate>
       
       <guid>https://jsharkc.github.io/hugo-blog/tags/oh-my-zsh/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Mac</title>
-      <link>https://jsharkc.github.io/hugo-blog/tags/mac/</link>
-      <pubDate>Sun, 17 Nov 2019 12:40:56 +0000</pubDate>
-      
-      <guid>https://jsharkc.github.io/hugo-blog/tags/mac/</guid>
       <description></description>
     </item>
     
@@ -124,15 +133,6 @@
       <pubDate>Tue, 29 Oct 2019 21:42:23 +0000</pubDate>
       
       <guid>https://jsharkc.github.io/hugo-blog/tags/flutter/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Golang</title>
-      <link>https://jsharkc.github.io/hugo-blog/tags/golang/</link>
-      <pubDate>Sat, 07 Apr 2018 21:42:23 +0000</pubDate>
-      
-      <guid>https://jsharkc.github.io/hugo-blog/tags/golang/</guid>
       <description></description>
     </item>
     
