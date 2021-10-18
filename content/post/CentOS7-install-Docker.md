@@ -1,6 +1,6 @@
 ---
 title: Centos7 安装 Docker-CE 社区版
-date: 2017-01-15T17:42:23+00:00
+date: 2017-01-15T17:42:23+80:00
 tags: ["Docker"]
 ---
 # Centos7 安装 Docker-CE 社区版

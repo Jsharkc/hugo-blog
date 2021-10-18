@@ -1,6 +1,6 @@
 ---
 title: "修复 dyld: Library not loaded"
-date: 2021-10-16T14:37:03+80:00
+date: 2021-10-16T14:37:03+08:00
 tags: ["Mac"]
 author: "Jsharkc"
 ---
