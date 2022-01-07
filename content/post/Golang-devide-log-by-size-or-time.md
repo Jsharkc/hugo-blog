@@ -11,7 +11,7 @@ Log 用的 `go.uber.org/zap` 库。
 
 按大小切割日志，用到 `github.com/natefinch/lumberjack` 库，代码如下：
 
-```go
+```golang
 package log
 
 import (
@@ -87,7 +87,7 @@ func LogInit(dev bool, logPath, logName string, maxSize, maxBackups, maxAge int)
 
 `zap.NewProductionEncoderConfig()` 产生的日志，事件格式为时间戳，人类不方便读，如果想自定义时间格式的话，只需要替换 `core := zapcore.NewCore` 即可，代码如下：
 
-```go
+```golang
 core := zapcore.NewCore(
   zapcore.NewConsoleEncoder(MyEncoderConfig()),
   w,

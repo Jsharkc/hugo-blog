@@ -1,6 +1,6 @@
 baseURL: "https://jsharkc.github.io/hugo-blog/"
 title: Jacobc's blog
-paginate: 10
+paginate: 7
 theme: PaperMod
 
 enableRobotsTXT: true
@@ -118,9 +118,9 @@ params:
         hiddenInSingle: true # hide on single page
 
     editPost:
-        URL: "https://gitee.com/jsharkc/blog/content"
+        URL: "https://gitee.com/jsharkc/blog"
         Text: "Suggest Changes" # edit text
-        appendFilePath: true # to append file path to Edit link
+        appendFilePath: false # to append file path to Edit link
 
     # for search
     # https://fusejs.io/api/options.html
@@ -148,13 +148,13 @@ menu:
           weight: 20
 
 # Read: https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#using-hugos-syntax-highlighter-chroma
-# pygmentsUseClasses: false
-markup:
-    highlight:
-        # anchorLineNos: true
-        codeFences: true
-        guessSyntax: true
-        lineNos: true
-        noClasses: false
-        style: monokai
+# pygmentsUseClasses: true
+# markup:
+#     highlight:
+#         # anchorLineNos: true
+#         codeFences: true
+#         guessSyntax: true
+#         lineNos: false
+#         # noClasses: false
+#         style: monokai
 
