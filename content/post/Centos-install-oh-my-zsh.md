@@ -63,6 +63,9 @@ sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools
 ```shell
 git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
+# 国内用户可通过以下命令: 
+git clone https://gitee.com/mirrors/oh-my-zsh.git ~/.oh-my-zsh
+cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc;
 ```
 
 ## 查看、修改主题
@@ -84,6 +87,8 @@ vim ~/.zshrc
 
 ```shell
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/Jsharkc/jacobin-zsh-theme/master/install.sh)" 
+国内用户: 
+sh -c "$(curl -fsSL https://gitee.com/jsharkc/jacobin-zsh-theme/raw/master/install.sh)"
 source ~/.zshrc
 ```
 
@@ -101,6 +106,8 @@ source ~/.zshrc
 
 ```shell
 git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
+国内用户:
+git clone  https://gitee.com/Coxhuang/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
 ```
 
 2. 编辑`.zshrc`文件
@@ -126,6 +133,8 @@ source ~/.zshrc
 
 ```shell
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
+国内用户:
+git clone https://gitee.com/Coxhuang/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
 ```
 
 2. 编辑`.zshrc`文件
