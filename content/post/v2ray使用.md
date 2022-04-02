@@ -1,10 +1,8 @@
 ---
-title: Mac 使用 V2ray 科学上网
+title: Mac 使用 V2ray 
 date: 2018-04-07T21:42:23+00:00
 tags: ["Golang"]
 ---
-# Mac 使用 V2ray 科学上网
-
 ## Install v2ray-core
 
 step 1: Add official tap
@@ -73,4 +71,4 @@ alias unproxy='unset https_proxy http_proxy socks5_proxy'
 
 ![](/img/src/switchOmega.png)
 
-OK，现在你可以科学上网了！
+OK，现在可以冲浪了！

@@ -1,158 +1,157 @@
 ---
-title: Centos7 安装 Docker-CE 社区版
-date: 2017-01-15T17:42:23+80:00
+title: Centos7 安装 Docker
+date: 2021-11-15T17:42:23+80:00
 tags: ["Docker"]
 ---
-# Centos7 安装 Docker-CE 社区版
 
-今天在自己的阿里云服务器上装了 docker-ce，记录一下，以后再装的话可以参考。
+### 一条命令安装
 
-## 安装相关依赖
+官方脚本：
+
+```shell
+curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
+```
+
+国内 daocloud 安装命令：
+
+```shell
+curl -sSL https://get.daocloud.io/docker | sh
+```
+
+### 手动安装指定版本
+
+#### 卸载旧版本
+
+```shell
+sudo yum remove docker \
+                  docker-client \
+                  docker-client-latest \
+                  docker-common \
+                  docker-latest \
+                  docker-latest-logrotate \
+                  docker-logrotate \
+                  docker-engine \
+                  container-selinux \
+                  docker-selinux
+```
+
+#### 安装相关依赖
 
 yum-utils 提供 yum-config-manager 工具, devicemapper存储驱动依赖 device-mapper-persistent-data 和 lvm2.
 
-```Sh
-> yum install -y yum-utils device-mapper-persistent-data lvm2
+```shell
+yum install -y yum-utils device-mapper-persistent-data lvm2
 ```
 
-## 配置版本镜像库
+#### 配置版本镜像库
 
-季度更新的稳定stable版和月度更新的edge版
+季度更新的稳定 stable 版和 test 版
 
 ```sh
-> yum-config-manager \
-     --add-repo \
+yum-config-manager --add-repo \
      https://download.docker.com/linux/centos/docker-ce.repo
-> yum-config-manager --enable docker-ce-edge
-
+yum-config-manager --enable docker-ce-test
 ```
 
-由于docker.com服务器下载很慢,所以改为国内镜像.
+由于 docker.com 服务器下载很慢,所以改为国内镜像.
 
 ```sh
-> yum-config-manager \
-    --add-repo \
+yum-config-manager --add-repo \
     https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
 ```
 
-如需禁止edge版本, 可以执行下面的命令
+如需禁止 test 版本, 可以执行下面的命令
 
 ```Sh
-> yum-config-manager --disable docker-ce-edge
+yum-config-manager --disable docker-ce-test
 ```
 
-##安装 Docker
+#### 安装 Docker
 
-```Sh
-> sudo yum makecache fast
+更新缓存
 
-> sudo yum install docker-ce
-Error: docker-ce conflicts with 2:docker-1.12.6-28.git1398f24.el7.centos.x86_64
-Error: docker-ce-selinux conflicts with 2:container-selinux-2.12-2.gite7096ce.el7.noarch
-
+```shell
+yum clean all
+yum makecache
 ```
 
-出现冲突, 原因是直接安装过docker.
+or 
 
-```Sh
-> yum list docker
-
-Installed Packages
-docker.x86_64                      2:1.12.6-28.git1398f24.el7.centos                      @extras
-> sudo yum erase docker.x86_64
-Removed:
-  docker.x86_64 2:1.12.6-28.git1398f24.el7.centos
-> sudo yum list container-selinux-2.12-2.gite7096ce.el7.noarch
-
-> sudo yum erase container-selinux.noarch
+```shell
+yum makecache fast
 ```
 
-删除老版本 docker
+安装
 
-```sh
-> yum list installed | grep docker
-docker-client.x86_64                   2:1.12.6-28.git1398f24.el7.centos
-docker-common.x86_64                   2:1.12.6-28.git1398f24.el7.centos
-> sudo yum erase -y docker-client.x86_64
-> sudo yum erase -y docker-common.x86_64
-
-> sudo yum remove docker \
-                  docker-common \
-                  container-selinux \
-                  docker-selinux \
-                  docker-engine
+```shell
+yum install docker-ce docker-ce-cli containerd.io
 ```
 
-再安装
+安装完后，查看安装的软件
 
-```sh
-[zhouhh@mainServer ~]$ sudo yum install docker-ce
-Loaded plugins: fastestmirror, langpacks
-Installing:
- docker-ce               x86_64       17.05.0.ce-1.el7.centos         docker-ce-edge        19 M
-Installing for dependencies:
- docker-ce-selinux       noarch       17.05.0.ce-1.el7.centos         docker-ce-edge        28 k
-
-Complete!
-
+```shell
+rpm -qa | grep docker
 ```
 
-如果生产系统需要稳定版本, 需要 `yum list` 进行查询. 但yum list只会显示二进制包, 加上.x86_64会显示包含源码包的全部的包. sort -r会按版本倒序排序.
+输出结果为：
 
-```Sh
-> yum list docker-ce.x86_64  --showduplicates |sort -r
- * updates: mirrors.tuna.tsinghua.edu.cn
-Loading mirror speeds from cached hostfile
-Loaded plugins: fastestmirror, langpacks
- * extras: mirror.bit.edu.cn
-docker-ce.x86_64            17.05.0.ce-1.el7.centos             docker-ce-edge
-docker-ce.x86_64            17.04.0.ce-1.el7.centos             docker-ce-edge
-docker-ce.x86_64            17.03.1.ce-1.el7.centos             docker-ce-stable
-docker-ce.x86_64            17.03.0.ce-1.el7.centos             docker-ce-stable
- * base: mirror.bit.edu.cn
+> docker-ce-19.03.9-3.el7.x86_64
+> docker-ce-cli-19.03.9-3.el7.x86_64
+
+#### 启动 Docker
+
+```shell
+systemctl enable docker
+systemctl start docker
 ```
 
-第二列是版本号. el7表示centos7. 第三列是库名.
+查看 Docker 版本：
 
-安装指定版本: sudo yum install docker-ce-
-
-安装稳定版本:
-
-```Sh
-> sudo yum install docker-ce-17.03.1.ce-1.el7.centos
-Installed:
-  docker-ce.x86_64 0:17.03.1.ce-1.el7.centos
-
-Dependency Installed:
-  docker-ce-selinux.noarch 0:17.05.0.ce-1.el7.centos
-
-Complete!
+```shell
+docker --version
 ```
 
-## 删除 docker-ce 版和镜像
+结果：(注：我这个)
 
-```sh
-> sudo yum remove docker-ce
-> sudo rm -rf /var/lib/docker
+> Docker version 20.10.9, build 9d988398e7
+
+因为没有指定版本，所以安装的是最新版本，如果想安装指定版本，先查看所有版本列表：
+
+```shell
+yum list docker-ce --showduplicates | sort -r
 ```
 
-## 启动测试 docker
+`sort -r` 会按版本倒序排序，第二列是版本号，el7 表示 centos7，第三列是库名。
 
-Hello world的镜像启动后会打印”Hello from Docker!”然后退出.
+> docker-ce.x86_64            3:20.10.9-3.el7                    docker-ce-stable
+> docker-ce.x86_64            3:20.10.8-3.el7                    docker-ce-stable
+> docker-ce.x86_64            3:20.10.7-3.el7                    docker-ce-stable
+> docker-ce.x86_64            3:20.10.6-3.el7                    docker-ce-stable
+> docker-ce.x86_64            3:20.10.5-3.el7                    docker-ce-stable
+> docker-ce.x86_64            3:20.10.4-3.el7                    docker-ce-stable
+> docker-ce.x86_64            3:20.10.3-3.el7                    docker-ce-stable
+> docker-ce.x86_64            3:20.10.2-3.el7                    docker-ce-stable
+> docker-ce.x86_64            3:20.10.1-3.el7                    docker-ce-stable
+> docker-ce.x86_64            3:20.10.12-3.el7                  docker-ce-stable
+> docker-ce.x86_64            3:20.10.11-3.el7                  docker-ce-stable
+> docker-ce.x86_64            3:20.10.10-3.el7                  docker-ce-stable
+> docker-ce.x86_64            3:20.10.0-3.el7                    docker-ce-stable
+> docker-ce.x86_64            3:19.03.9-3.el7                    docker-ce-stable
+> docker-ce.x86_64            3:19.03.8-3.el7                    docker-ce-stable
 
-```Sh
-> sudo systemctl start docker
-> docker run hello-world
-Unable to find image 'hello-world:latest' locally
-latest: Pulling from library/hello-world
-78445dd45222: Pull complete
-Digest: sha256:c5515758d4c5e1e838e9cd307f6c6a0d620b5e07e6f927b07d05f6d12a1ac8d7
-Status: Downloaded newer image for hello-world:latest
+例如安装 3:19.03.9-3.el7：
 
-Hello from Docker!
-This message shows that your installation appears to be working correctly.
-
+```shell
+yum install docker-ce-19.03.9-3.el7 docker-ce-cli-19.03.9-3.el7 containerd.io
 ```
+
+安装完成后，检查版本：
+
+```shell
+docker --version
+```
+
+> Docker version 19.03.9, build 9d988398e7
 
 ## 非root用户启动docker
 
@@ -168,20 +167,4 @@ $ sudo groupadd docker
 
 ```sh
 $ sudo usermod -aG docker $USER
-```
-
-## 设置自启动
-
-大部分最新的linux发行版(RHEL, CentOS, Fedora, Ubuntu 16.04 以上), 都用sytemd来管理启动.
-
-```Sh
-[zhouhh@mainServer ~]$ sudo systemctl enable docker
-Created symlink from /etc/systemd/system/multi-user.target.wants/docker.service to /usr/lib/systemd/system/docker.service.
-
-```
-
-## 禁止自启动
-
-```Sh
-[zhouhh@mainServer ~]$ sudo systemctl disable docker
 ```

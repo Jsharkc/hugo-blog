@@ -6,8 +6,6 @@ then
     exit 1;
 fi
 
-mv ./content/post/v2ray科学上网.md ./v2ray科学上网.md
-
 echo "Deleting old publication"
 rm -rf public
 mkdir public
@@ -27,5 +25,3 @@ cd public && git add --all && git commit -m "Publishing to gh-pages (publish.sh)
 
 echo "Push to gitee"
 git push origin gh-pages
-
-cd .. && mv ./v2ray科学上网.md ./content/post/v2ray科学上网.md
