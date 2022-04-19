@@ -1,6 +1,7 @@
 ---
 title: 文件描述符 fd
 date: 2019-11-15T18:13:00+00:00
+tags: ["linux"]
 author: Jsharkc
 ---
 

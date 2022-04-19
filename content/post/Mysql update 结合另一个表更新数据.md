@@ -1,7 +1,7 @@
 ---
 title: Mysql update 结合另一个表更新数据
 date: 2019-10-30T14:50:32+00:00
-tags: ["Mysql"]
+tags: ["mysql"]
 ---
 
 

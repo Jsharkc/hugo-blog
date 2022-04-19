@@ -1,6 +1,8 @@
 ---
 title: Jobrunner 源码解析
 Date: 2017-06-27T11:07:35+00:00
+tags: ["Golang"]
+categories: ["Golang"]
 Auther: jsharkc
 ---
 

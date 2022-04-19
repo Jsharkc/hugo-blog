@@ -2,6 +2,7 @@
 title: Golang 中不存在引用传参
 date:  2017-05-03T13:27:43+00:00
 tags:  ["Golang"]
+categories: ["Golang"]
 author: Jshakrc
 ---
 ## Golang 中不存在引用传参

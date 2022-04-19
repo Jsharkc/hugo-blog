@@ -2,6 +2,7 @@
 title: Golang I/O 包的妙用
 date: 2016-12-14T10:35:43+00:00
 tags: ["Golang"]
+categories: ["Golang"]
 ---
 
 # Golang I/O 包的妙用

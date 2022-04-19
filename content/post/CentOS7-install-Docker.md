@@ -1,7 +1,7 @@
 ---
 title: Centos7 安装 Docker
 date: 2021-11-15T17:42:23+80:00
-tags: ["Docker"]
+tags: ["Docker", "Centos"]
 ---
 
 ### 一条命令安装

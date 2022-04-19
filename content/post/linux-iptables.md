@@ -1,6 +1,7 @@
 ---
 title: Linux防火墙-iptables
 date: 2017-04-02T09:42:23+00:00
+tags: ["linux"]
 ---
 # Linux防火墙--iptables学习
 

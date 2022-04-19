@@ -1,7 +1,7 @@
 ---
 title: Centos 安装 oh-my-zsh
 date: 2019-11-17T14:29:38+00:00
-tags: ["centos", "oh-my-zsh"]
+tags: ["Centos", "oh-my-zsh"]
 ---
 
 ## 查看、安装 zsh

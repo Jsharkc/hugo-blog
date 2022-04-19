@@ -2,6 +2,7 @@
 title: Go 程序的性能优化及 pprof 的使用
 date: 2017-03-12T11:07:35+00:00
 tags: ["Golang"]
+categories: ["Golang"]
 ---
 # Go 程序的性能优化及 pprof 的使用
 

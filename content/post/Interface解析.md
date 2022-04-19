@@ -2,6 +2,7 @@
 title: Golang Interface 解析
 date: 2017-06-17T19:27:43+00:00
 tags: ["Golang"]
+categories: ["Golang"]
 ---
 
 # Interface 解析

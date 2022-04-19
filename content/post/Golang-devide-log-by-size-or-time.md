@@ -2,6 +2,7 @@
 title: Golang 按大小 or 时间切割日志
 date: 2021-09-26T19:05:03+08:00
 tags: ["Golang"]
+categories: ["Golang"]
 author: "Jsharkc"
 ---
 

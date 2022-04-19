@@ -1,7 +1,7 @@
 ---
 title: MongoDB 的正确打开方式 Part1
 date: 2016-11-21T16:52:24+00:00
-tags: ["MongoDB"]
+tags: ["mongo"]
 ---
 
 # MongoDB 的正确打开方式 Part1

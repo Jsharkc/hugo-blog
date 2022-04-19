@@ -1,7 +1,7 @@
 ---
-title: git 不常用命令
+title: git 远程分支命令
 date: 2022-02-24T11:42:23+80:00
-tags: ["k8s"]
+tags: ["git"]
 ---
 
 ### 一、Branch 分支

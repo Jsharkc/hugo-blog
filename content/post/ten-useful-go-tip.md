@@ -2,6 +2,7 @@
 title: 十条有用的 GO 技术
 date: 2017-05-26T09:42:23+00:00
 tags: ["Golang"]
+categories: ["Golang"]
 ---
 # 十条有用的 Go 技术
 

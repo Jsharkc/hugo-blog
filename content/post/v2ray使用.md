@@ -2,6 +2,7 @@
 title: Mac 使用 V2ray 
 date: 2018-04-07T21:42:23+00:00
 tags: ["Golang"]
+categories: ["Golang"]
 ---
 ## Install v2ray-core
 
