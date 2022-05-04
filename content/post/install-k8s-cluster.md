@@ -12,7 +12,7 @@ tags: ["k8s"]
 
 ##### 1.1.1 安装 Docker
 
-安装 Docker 参考 [Docker安装]()
+安装 Docker 参考 [Docker安装](/post/centos7-install-docker/)
 
 ##### 1.1.2 配置 cgroup driver
 
