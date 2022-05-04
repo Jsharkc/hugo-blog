@@ -1,6 +1,6 @@
 ---
 title: Git命令清单
-date: 2016-12-28T09:49:10+00:00
+date: 2017-12-28T09:49:10+00:00
 tags: ["git"]
 ---
 
@@ -64,5 +64,27 @@ $ git rm --cached [file]
 
 # 改名文件，并且将这个改名放入暂存区
 $ git mv [file-original] [file-renamed]
+```
+
+#### 四、Branch 分支
+
+1. 删除远端分支
+
+```git
+git push origin --delete [branch_name]
+```
+
+2. 推送本地分支到远端
+
+```git
+git push origin [本地分支名称]:[远端分支名称]
+```
+
+3. 查看分支
+
+```git
+查看本地分支 git branch
+查看远程分支 git branch -r
+查看本地和远程分支 git branch -a
 ```
 
