@@ -106,13 +106,10 @@ systemctl start docker
 ```
 
 查看 Docker 版本：
-
-```shell
+```sh
 docker --version
 ```
-
-结果：(注：我这个)
-
+输出：
 > Docker version 20.10.9, build 9d988398e7
 
 因为没有指定版本，所以安装的是最新版本，如果想安装指定版本，先查看所有版本列表：
