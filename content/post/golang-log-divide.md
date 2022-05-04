@@ -1,5 +1,6 @@
 ---
 title: Golang 按大小 or 时间切割日志
+description: 'zap 日志库，通过 lumberjack 按文件大小分割，通过 go-file-rotatelogs 按日期分割'
 date: 2021-09-26T19:05:03+08:00
 tags: ["Golang"]
 categories: ["Golang"]

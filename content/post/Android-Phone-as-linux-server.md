@@ -1,11 +1,12 @@
 ---
 title: Android手机作为linux服务器
+description: Android手机作为linux服务器简易教程
 date: 2019-11-16T12:59:00+00:00
 author: Jsharkc
 tags: [Termux, ssh, Android, linux, 服务器]
 ---
 
-有个闲置的「红米Note4」，回收也值不了几个钱，就想着是否能再利用一下，网上查了查，用 Termux 可以把 Android 手机当成 linux 服务器用，于是就有了接下来的部分了。
+有个闲置的「红米Note4」，想着是否能再利用一下，网上查了查，用 Termux 可以把 Android 手机当成 linux 服务器用，于是就有了接下来的部分了。
 
 ## 下载 Termux
 

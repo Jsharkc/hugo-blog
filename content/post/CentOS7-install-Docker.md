@@ -1,5 +1,6 @@
 ---
 title: Centos7 安装 Docker
+description: 一条命令安装，或者安装指定版本
 date: 2021-11-15T17:42:23+80:00
 tags: ["Docker", "Centos"]
 ---

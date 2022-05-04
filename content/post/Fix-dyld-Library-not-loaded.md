@@ -1,5 +1,6 @@
 ---
 title: "修复 dyld: Library not loaded"
+description: '通过 otool 修复 dyld: Library not loaded 问题'
 date: 2021-10-16T14:37:03+08:00
 tags: ["Mac"]
 author: "Jsharkc"

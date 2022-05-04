@@ -1,5 +1,6 @@
 ---
 title: 限制内存 mongo docker-compsoe 部署
+description: 1. 通过 Docker 限制内存 2. 通过 MongoDB 配置文件限制内存
 date: 2022-04-02T17:29:23+80:00
 tags: ["mongo"]
 ---
