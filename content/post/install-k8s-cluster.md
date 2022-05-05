@@ -177,33 +177,44 @@ kubeadm config print init-defaults > init.yaml
 ```shell
 localAPIEndpoint:
   advertiseAddress: 1.2.3.4
+nodeRegistration:
+  criSocket: /var/run/dockershim.sock
+  imagePullPolicy: IfNotPresent
+  name: node
 apiVersion: kubeadm.k8s.io/v1beta2
 imageRepository: k8s.gcr.io
 kind: ClusterConfiguration
 kubernetesVersion: v1.20.5
 networking:
+  dnsDomain: cluster.local
   serviceSubnet: 10.96.0.0/12
 ```
 
 从默认配置中，我们可以看到
 
 * advertiseAddress 改为 master ip 地址
+* name 改为 master hostname
 * imageRepository 使用的是 k8s.gcr.io，我们建议改成国内的镜像站
 * kubernetesVersion 使用的是 v1.20.5，我们可以改成自己想要的版本
-* networking 中只有 serviceSubnet，可能我们还关心 pod 的网络，pod 网络可以使用podSubnet 指定
+* networking 中只有 serviceSubnet，可能我们还关心 pod 的网络，pod 网络可以使用 podSubnet 指定
 
 使用如下配置：
 
 ```shell
 localAPIEndpoint:
   advertiseAddress: 192.168.10.16
+nodeRegistration:
+  criSocket: /var/run/dockershim.sock
+  imagePullPolicy: IfNotPresent
+  name: kubeadm1
 apiVersion: kubeadm.k8s.io/v1beta2
 imageRepository: registry.aliyuncs.com/google_containers
 kind: ClusterConfiguration
 kubernetesVersion: v1.20.5
 networking:
-  podSubnet: 192.128.0.0/24
+  dnsDomain: cluster.local
   serviceSubnet: 10.96.0.0/12
+  podSubnet: 10.244.0.0/16
 ```
 
 #### 2.2.2 命令参数方式
