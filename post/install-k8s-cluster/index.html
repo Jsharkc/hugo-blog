@@ -209,7 +209,6 @@
 
                 
                 <h3 id="1-环境初始化">1. 环境初始化</h3>
-<p>文章转自 <a href="https://blog.csdn.net/zxycyj1989/article/details/117172414">CSDN博主「初码诛仙」 </a>，按照步骤搭建成功，记录下来，备忘</p>
 <h4 id="11-安装并配置-docker">1.1 安装并配置 Docker</h4>
 <h5 id="111-安装-docker">1.1.1 安装 Docker</h5>
 <p>安装 Docker 参考 <a href="/post/centos7-install-docker/">Docker安装</a></p>
@@ -270,6 +269,60 @@
 </code></pre></div><p>不配置 hosts 可能会报以下错误：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#ff79c6">[</span>WARNING Hostname<span style="color:#ff79c6">]</span>: hostname <span style="color:#f1fa8c">&#34;xxxx&#34;</span> could not be reached
 <span style="color:#ff79c6">[</span>WARNING Hostname<span style="color:#ff79c6">]</span>: hostname <span style="color:#f1fa8c">&#34;xxxx&#34;</span>: lookup xxx on 114.114.114.114:53: no such host
+</code></pre></div><h4 id="13-设置防火墙关闭-selinux">1.3 设置防火墙、关闭 SELINUX</h4>
+<h5 id="131-设置防火墙为-iptables-并设置空规则">1.3.1 设置防火墙为 Iptables 并设置空规则</h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">systemctl stop firewalld <span style="color:#ff79c6">&amp;&amp;</span> systemctl disable firewalld
+yum install -y iptables-services <span style="color:#ff79c6">&amp;&amp;</span> systemctl start iptables <span style="color:#ff79c6">&amp;&amp;</span> systemctl <span style="color:#8be9fd;font-style:italic">enable</span> iptables <span style="color:#ff79c6">&amp;&amp;</span> iptables -F <span style="color:#ff79c6">&amp;&amp;</span> service iptables save
+</code></pre></div><p>通过以下命令观察是否成功：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">systemctl status firewalld
+// Active: inactive <span style="color:#ff79c6">(</span>dead<span style="color:#ff79c6">)</span>
+systemctl status iptables
+// Active: active <span style="color:#ff79c6">(</span>exited<span style="color:#ff79c6">)</span>
+iptables -L
+// 规则全空
+cat /etc/sysconfig/iptables
+// 内容空
+</code></pre></div><h5 id="132-关闭-swap关闭-selinux">1.3.2 关闭 swap、关闭 SeLinux</h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">swapoff -a <span style="color:#ff79c6">&amp;&amp;</span> sed -i <span style="color:#f1fa8c">&#39;/ swap / s/^\(.*\)$/#\1/g&#39;</span> /etc/fatab
+setenforce <span style="color:#bd93f9">0</span> <span style="color:#ff79c6">&amp;&amp;</span> sed -i <span style="color:#f1fa8c">&#39;s/^SELINUX=.*/SELINUX=disable/&#39;</span> /etc/selinux/config
+</code></pre></div><p>通过以下命令观察是否成功：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">free -m
+// Swap: 行后面都是 0，则成功
+cat /etc/selinux/config | grep <span style="color:#f1fa8c">&#39;^SELINUX=&#39;</span>
+// <span style="color:#8be9fd;font-style:italic">SELINUX</span><span style="color:#ff79c6">=</span>disable 则成功
+</code></pre></div><h4 id="14-调整内核参数对于-k8s">1.4 调整内核参数，对于 K8S</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">cat &gt; kubernetes.conf <span style="color:#f1fa8c">&lt;&lt;EOF
+</span><span style="color:#f1fa8c">net.bridge.bridge-nf-call-iptables=1
+</span><span style="color:#f1fa8c">net.bridge.bridge-nf-call-ip6tables=1
+</span><span style="color:#f1fa8c">net.ipv4.ip_forward=1
+</span><span style="color:#f1fa8c">net.ipv4.tcp_tw_recycle=0
+</span><span style="color:#f1fa8c">vm.swappiness=0 # 禁止使用 swap 空间，只有当系统 OOM 时才允许使用它
+</span><span style="color:#f1fa8c">vm.overcommit_memory=1 # 不检查物理内存是否够用
+</span><span style="color:#f1fa8c">vm.panic_on_oom=0 # 开启 OOM
+</span><span style="color:#f1fa8c">fs.inotify.max_user_instances=8192
+</span><span style="color:#f1fa8c">fs.inotify.max_user_watches=1048576
+</span><span style="color:#f1fa8c">fs.file-max=52706963
+</span><span style="color:#f1fa8c">fs.nr_open=52706963
+</span><span style="color:#f1fa8c">net.ipv6.conf.all.disable_ipv6=1
+</span><span style="color:#f1fa8c">net.netfilter.nf_conntrack_max=2310720
+</span><span style="color:#f1fa8c">EOF</span>
+cp kubernetes.conf /etc/sysctl.d/kubernetes.conf
+sysctl -p /etc/sysctl.d/kubernetes.conf
+</code></pre></div><h4 id="15-关闭不需要的服务">1.5 关闭不需要的服务</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">systemctl stop postfix <span style="color:#ff79c6">&amp;&amp;</span> systemctl disable postfix
+</code></pre></div><h4 id="16-kube-proxy-开启-ipvs-前置条件">1.6 kube-proxy 开启 ipvs 前置条件</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">modprobe br_netfilter
+
+cat &gt; /etc/sysconfig/modules/ipvs.modules <span style="color:#f1fa8c">&lt;&lt;EOF
+</span><span style="color:#f1fa8c">#!/bin/bash
+</span><span style="color:#f1fa8c">modprobe -- ip_vs
+</span><span style="color:#f1fa8c">modprobe -- ip_vs_rr
+</span><span style="color:#f1fa8c">modprobe -- ip_vs_wrr
+</span><span style="color:#f1fa8c">modprobe -- ip_vs_sh
+</span><span style="color:#f1fa8c">modprobe -- nf_conntrack_ipv4
+</span><span style="color:#f1fa8c">EOF</span>
+
+chmod <span style="color:#bd93f9">755</span> /etc/sysconfig/modules/ipvs.modules <span style="color:#ff79c6">&amp;&amp;</span> bash /etc/sysconfig/modules/ipvs.modules <span style="color:#ff79c6">&amp;&amp;</span> lsmod | grep -e ip_vs -e nf_conntrack_ipv4
 </code></pre></div><h3 id="2-安装配置-master-节点">2. 安装配置 master 节点</h3>
 <h4 id="21-安装-kubeadm">2.1 安装 kubeadm</h4>
 <h5 id="211-配置-yum-源">2.1.1 配置 yum 源</h5>
@@ -481,7 +534,6 @@ quay.io/coreos/flannel                                            v0.13.1-rc2   
 <p>初始化master节点的时候，从输出信息中，已经给出了初始化node节点的方式：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubeadm join 172.24.15.212:6443 --token yvhauq.sxcuhh300d5vpvhy <span style="color:#f1fa8c">\
 </span><span style="color:#f1fa8c"></span>    --discovery-token-ca-cert-hash sha256:439f9df853943ead685dc63d8af0d04c32e7b9b8dc4e148e0fb41dab33997c11
-
 </code></pre></div><h5 id="322-配置文件方式">3.2.2 配置文件方式</h5>
 <p>同样，我们可以通过 <code>kubeadm config print</code> 命令输出 <code>init node</code> 节点的默认配置：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubeadm config print join-defaults
@@ -519,6 +571,77 @@ kind: JoinConfiguration
 
 Run <span style="color:#f1fa8c">&#39;kubectl get nodes&#39;</span> on the control-plane to see this node join the cluster.
 </code></pre></div><p>此时 node 上的 kubelet 也将正常运行。可能这时候你在 master 上执行 [kubelet get nodes] 的时候，该 node 还处于 NotReady 的状态，别着急，一会就回刷新过来。</p>
+<h3 id="4-运行测试程序">4. 运行测试程序</h3>
+<h4 id="41-deployment-镜像">4.1 deployment 镜像</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl create deployment myapp --image<span style="color:#ff79c6">=</span>wangyanglinux/myapp:1
+</code></pre></div><p>查看运行的程序：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl get pod -o wide
+
+NAME                     READY   STATUS    RESTARTS   AGE     IP           NODE         NOMINATED NODE   READINESS GATES
+myapp-6b6c94dd79-g9vnn   1/1     Running   <span style="color:#bd93f9">0</span>          2m27s   10.244.1.2   k8s-node01   &lt;none&gt;           &lt;none&gt;
+
+</code></pre></div><h4 id="42-程序横向扩容">4.2 程序横向扩容</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl edit deployment myapp
+// 修改 replicas 字段
+replicas: <span style="color:#bd93f9">10</span>
+// :wq 保存退出
+</code></pre></div><p>查看运行的程序：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl get pod 
+
+NAME                     READY   STATUS    RESTARTS   AGE
+myapp-6b6c94dd79-6vbgx   1/1     Running   <span style="color:#bd93f9">0</span>          22s
+myapp-6b6c94dd79-7f2vf   1/1     Running   <span style="color:#bd93f9">0</span>          22s
+myapp-6b6c94dd79-8v242   1/1     Running   <span style="color:#bd93f9">0</span>          22s
+myapp-6b6c94dd79-dq22w   1/1     Running   <span style="color:#bd93f9">0</span>          22s
+myapp-6b6c94dd79-g2z5s   1/1     Running   <span style="color:#bd93f9">0</span>          22s
+myapp-6b6c94dd79-g9vnn   1/1     Running   <span style="color:#bd93f9">0</span>          4m50s
+myapp-6b6c94dd79-jbs7f   1/1     Running   <span style="color:#bd93f9">0</span>          22s
+myapp-6b6c94dd79-lcdvm   1/1     Running   <span style="color:#bd93f9">0</span>          22s
+myapp-6b6c94dd79-sz484   1/1     Running   <span style="color:#bd93f9">0</span>          22s
+myapp-6b6c94dd79-tlcwc   1/1     Running   <span style="color:#bd93f9">0</span>          <span style="color:#bd93f9">22</span>
+
+</code></pre></div><p>对其中一个服务，发起 curl 请求：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">curl 10.244.1.2
+// Wang Yang welcome you ! | Version <span style="color:#bd93f9">1</span> | Accessing &lt;hostname.html&gt; to get the current host name
+curl 10.244.1.2/hostname.html
+// myapp-6b6c94dd79-g9vnn
+</code></pre></div><h4 id="43-部署一个服务">4.3 部署一个服务</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl create svc clusterip myapp --tcp<span style="color:#ff79c6">=</span>8080:80
+</code></pre></div><p>查看运行的服务：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl get svc
+
+NAME         TYPE        CLUSTER-IP     EXTERNAL-IP   PORT<span style="color:#ff79c6">(</span>S<span style="color:#ff79c6">)</span>    AGE
+kubernetes   ClusterIP   10.96.0.1      &lt;none&gt;        443/TCP    30m
+myapp        ClusterIP   10.98.228.65   &lt;none&gt;        8080/TCP   7s
+
+</code></pre></div><p>请求该服务：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">curl 10.98.228.65:8080
+// Wang Yang welcome you ! | Version <span style="color:#bd93f9">1</span> | Accessing &lt;hostname.html&gt; to get the current host name
+curl 10.244.1.2/hostname.html
+// myapp-6b6c94dd79-tlcwc
+// 多次请求，返回不同容器名称，服务进行了负载均衡
+</code></pre></div><p>但现在这个服务，只能集群内部访问，外面是访问不到的，下面来解决这个问题</p>
+<h4 id="44-允许外部访问服务">4.4 允许外部访问服务</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl edit svc myapp
+// 修改 type: ClusterIP 字段为 type: NodePort
+type: NodePort
+// :wq 保存退出
+</code></pre></div><p>在看一下服务：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">kubectl get svc
+
+NAME         TYPE        CLUSTER-IP     EXTERNAL-IP   PORT<span style="color:#ff79c6">(</span>S<span style="color:#ff79c6">)</span>          AGE
+kubernetes   ClusterIP   10.96.0.1      &lt;none&gt;        443/TCP          37m
+myapp        NodePort    10.98.228.65   &lt;none&gt;        8080:32752/TCP   7m17s
+
+</code></pre></div><p>myapp 服务映射出了端口，32752，这时使用集群中任一一机器 IP + 该端口，都可以访问服务</p>
+<p>例如：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">curl 192.168.10.16:32752/hostname.html
+// myapp-6b6c94dd79-sz484
+// 多次请求，返回不同容器名称，服务进行了负载均衡
+// myapp-6b6c94dd79-8v242
+// myapp-6b6c94dd79-lcdvm
+</code></pre></div><p>参考 <a href="https://blog.csdn.net/zxycyj1989/article/details/117172414">CSDN博主「初码诛仙」 </a>
+按照步骤搭建成功，记录下来，备忘</p>
 
 
                 
