@@ -1,183 +1,216 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on Jacobc&#39;s blog</title>
-    <link>https://jsharkc.github.io/hugo-blog/tags/</link>
-    <description>Recent content in Tags on Jacobc&#39;s blog</description>
-    <image>
-      <url>https://jsharkc.github.io/hugo-blog/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>https://jsharkc.github.io/hugo-blog/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
-    </image>
+    <title>Tags on Jacobc&#39; Blog</title>
+    <link>https://jacobc.vercel.app/tags/</link>
+    <description>Recent content in Tags on Jacobc&#39; Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 16 Oct 2021 14:37:03 +0800</lastBuildDate><atom:link href="https://jsharkc.github.io/hugo-blog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 02 Apr 2022 17:29:23 +8000</lastBuildDate><atom:link href="https://jacobc.vercel.app/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Mac</title>
-      <link>https://jsharkc.github.io/hugo-blog/tags/mac/</link>
-      <pubDate>Sat, 16 Oct 2021 14:37:03 +0800</pubDate>
+      <title>mongo</title>
+      <link>https://jacobc.vercel.app/tags/mongo/</link>
+      <pubDate>Sat, 02 Apr 2022 17:29:23 +8000</pubDate>
       
-      <guid>https://jsharkc.github.io/hugo-blog/tags/mac/</guid>
+      <guid>https://jacobc.vercel.app/tags/mongo/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Golang</title>
-      <link>https://jsharkc.github.io/hugo-blog/tags/golang/</link>
-      <pubDate>Sun, 26 Sep 2021 19:05:03 +0800</pubDate>
+      <title>Centos</title>
+      <link>https://jacobc.vercel.app/tags/centos/</link>
+      <pubDate>Thu, 17 Mar 2022 14:29:38 +0000</pubDate>
       
-      <guid>https://jsharkc.github.io/hugo-blog/tags/golang/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>线程</title>
-      <link>https://jsharkc.github.io/hugo-blog/tags/%E7%BA%BF%E7%A8%8B/</link>
-      <pubDate>Tue, 13 Jul 2021 17:41:23 +0000</pubDate>
-      
-      <guid>https://jsharkc.github.io/hugo-blog/tags/%E7%BA%BF%E7%A8%8B/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>进程</title>
-      <link>https://jsharkc.github.io/hugo-blog/tags/%E8%BF%9B%E7%A8%8B/</link>
-      <pubDate>Tue, 13 Jul 2021 17:41:23 +0000</pubDate>
-      
-      <guid>https://jsharkc.github.io/hugo-blog/tags/%E8%BF%9B%E7%A8%8B/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>centos</title>
-      <link>https://jsharkc.github.io/hugo-blog/tags/centos/</link>
-      <pubDate>Sun, 17 Nov 2019 14:29:38 +0000</pubDate>
-      
-      <guid>https://jsharkc.github.io/hugo-blog/tags/centos/</guid>
+      <guid>https://jacobc.vercel.app/tags/centos/</guid>
       <description></description>
     </item>
     
     <item>
       <title>oh-my-zsh</title>
-      <link>https://jsharkc.github.io/hugo-blog/tags/oh-my-zsh/</link>
-      <pubDate>Sun, 17 Nov 2019 14:29:38 +0000</pubDate>
+      <link>https://jacobc.vercel.app/tags/oh-my-zsh/</link>
+      <pubDate>Thu, 17 Mar 2022 14:29:38 +0000</pubDate>
       
-      <guid>https://jsharkc.github.io/hugo-blog/tags/oh-my-zsh/</guid>
+      <guid>https://jacobc.vercel.app/tags/oh-my-zsh/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>charles</title>
+      <link>https://jacobc.vercel.app/tags/charles/</link>
+      <pubDate>Fri, 17 Dec 2021 12:40:56 +0000</pubDate>
+      
+      <guid>https://jacobc.vercel.app/tags/charles/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Mac</title>
+      <link>https://jacobc.vercel.app/tags/mac/</link>
+      <pubDate>Fri, 17 Dec 2021 12:40:56 +0000</pubDate>
+      
+      <guid>https://jacobc.vercel.app/tags/mac/</guid>
       <description></description>
     </item>
     
     <item>
       <title>软件</title>
-      <link>https://jsharkc.github.io/hugo-blog/tags/%E8%BD%AF%E4%BB%B6/</link>
-      <pubDate>Sun, 17 Nov 2019 12:40:56 +0000</pubDate>
+      <link>https://jacobc.vercel.app/tags/%E8%BD%AF%E4%BB%B6/</link>
+      <pubDate>Fri, 17 Dec 2021 12:40:56 +0000</pubDate>
       
-      <guid>https://jsharkc.github.io/hugo-blog/tags/%E8%BD%AF%E4%BB%B6/</guid>
+      <guid>https://jacobc.vercel.app/tags/%E8%BD%AF%E4%BB%B6/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Android</title>
-      <link>https://jsharkc.github.io/hugo-blog/tags/android/</link>
-      <pubDate>Sat, 16 Nov 2019 12:59:00 +0000</pubDate>
+      <title>k8s</title>
+      <link>https://jacobc.vercel.app/tags/k8s/</link>
+      <pubDate>Tue, 16 Nov 2021 11:42:23 +8000</pubDate>
       
-      <guid>https://jsharkc.github.io/hugo-blog/tags/android/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>linux</title>
-      <link>https://jsharkc.github.io/hugo-blog/tags/linux/</link>
-      <pubDate>Sat, 16 Nov 2019 12:59:00 +0000</pubDate>
-      
-      <guid>https://jsharkc.github.io/hugo-blog/tags/linux/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>ssh</title>
-      <link>https://jsharkc.github.io/hugo-blog/tags/ssh/</link>
-      <pubDate>Sat, 16 Nov 2019 12:59:00 +0000</pubDate>
-      
-      <guid>https://jsharkc.github.io/hugo-blog/tags/ssh/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Termux</title>
-      <link>https://jsharkc.github.io/hugo-blog/tags/termux/</link>
-      <pubDate>Sat, 16 Nov 2019 12:59:00 +0000</pubDate>
-      
-      <guid>https://jsharkc.github.io/hugo-blog/tags/termux/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>服务器</title>
-      <link>https://jsharkc.github.io/hugo-blog/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
-      <pubDate>Sat, 16 Nov 2019 12:59:00 +0000</pubDate>
-      
-      <guid>https://jsharkc.github.io/hugo-blog/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Mysql</title>
-      <link>https://jsharkc.github.io/hugo-blog/tags/mysql/</link>
-      <pubDate>Wed, 30 Oct 2019 14:50:32 +0000</pubDate>
-      
-      <guid>https://jsharkc.github.io/hugo-blog/tags/mysql/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Flutter</title>
-      <link>https://jsharkc.github.io/hugo-blog/tags/flutter/</link>
-      <pubDate>Tue, 29 Oct 2019 21:42:23 +0000</pubDate>
-      
-      <guid>https://jsharkc.github.io/hugo-blog/tags/flutter/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>React</title>
-      <link>https://jsharkc.github.io/hugo-blog/tags/react/</link>
-      <pubDate>Sat, 03 Feb 2018 17:42:23 +0800</pubDate>
-      
-      <guid>https://jsharkc.github.io/hugo-blog/tags/react/</guid>
+      <guid>https://jacobc.vercel.app/tags/k8s/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Docker</title>
-      <link>https://jsharkc.github.io/hugo-blog/tags/docker/</link>
-      <pubDate>Wed, 12 Apr 2017 16:52:24 +0000</pubDate>
+      <link>https://jacobc.vercel.app/tags/docker/</link>
+      <pubDate>Mon, 15 Nov 2021 17:42:23 +8000</pubDate>
       
-      <guid>https://jsharkc.github.io/hugo-blog/tags/docker/</guid>
+      <guid>https://jacobc.vercel.app/tags/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Golang</title>
+      <link>https://jacobc.vercel.app/tags/golang/</link>
+      <pubDate>Sun, 26 Sep 2021 19:05:03 +0800</pubDate>
+      
+      <guid>https://jacobc.vercel.app/tags/golang/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>linux</title>
+      <link>https://jacobc.vercel.app/tags/linux/</link>
+      <pubDate>Thu, 02 Sep 2021 19:42:23 +0000</pubDate>
+      
+      <guid>https://jacobc.vercel.app/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Android</title>
+      <link>https://jacobc.vercel.app/tags/android/</link>
+      <pubDate>Fri, 16 Jul 2021 12:59:00 +0000</pubDate>
+      
+      <guid>https://jacobc.vercel.app/tags/android/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ssh</title>
+      <link>https://jacobc.vercel.app/tags/ssh/</link>
+      <pubDate>Fri, 16 Jul 2021 12:59:00 +0000</pubDate>
+      
+      <guid>https://jacobc.vercel.app/tags/ssh/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Termux</title>
+      <link>https://jacobc.vercel.app/tags/termux/</link>
+      <pubDate>Fri, 16 Jul 2021 12:59:00 +0000</pubDate>
+      
+      <guid>https://jacobc.vercel.app/tags/termux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>服务器</title>
+      <link>https://jacobc.vercel.app/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
+      <pubDate>Fri, 16 Jul 2021 12:59:00 +0000</pubDate>
+      
+      <guid>https://jacobc.vercel.app/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>线程</title>
+      <link>https://jacobc.vercel.app/tags/%E7%BA%BF%E7%A8%8B/</link>
+      <pubDate>Tue, 13 Jul 2021 17:41:23 +0000</pubDate>
+      
+      <guid>https://jacobc.vercel.app/tags/%E7%BA%BF%E7%A8%8B/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>进程</title>
+      <link>https://jacobc.vercel.app/tags/%E8%BF%9B%E7%A8%8B/</link>
+      <pubDate>Tue, 13 Jul 2021 17:41:23 +0000</pubDate>
+      
+      <guid>https://jacobc.vercel.app/tags/%E8%BF%9B%E7%A8%8B/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mysql</title>
+      <link>https://jacobc.vercel.app/tags/mysql/</link>
+      <pubDate>Tue, 10 Nov 2020 14:50:32 +0000</pubDate>
+      
+      <guid>https://jacobc.vercel.app/tags/mysql/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Flutter</title>
+      <link>https://jacobc.vercel.app/tags/flutter/</link>
+      <pubDate>Thu, 29 Oct 2020 21:42:23 +0000</pubDate>
+      
+      <guid>https://jacobc.vercel.app/tags/flutter/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>后端</title>
+      <link>https://jacobc.vercel.app/tags/%E5%90%8E%E7%AB%AF/</link>
+      <pubDate>Thu, 24 Sep 2020 19:42:23 +0000</pubDate>
+      
+      <guid>https://jacobc.vercel.app/tags/%E5%90%8E%E7%AB%AF/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>cobra</title>
+      <link>https://jacobc.vercel.app/tags/cobra/</link>
+      <pubDate>Sun, 17 May 2020 15:07:14 +0000</pubDate>
+      
+      <guid>https://jacobc.vercel.app/tags/cobra/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>git</title>
+      <link>https://jacobc.vercel.app/tags/git/</link>
+      <pubDate>Wed, 28 Aug 2019 22:49:10 +0000</pubDate>
+      
+      <guid>https://jacobc.vercel.app/tags/git/</guid>
       <description></description>
     </item>
     
     <item>
       <title>cockroach</title>
-      <link>https://jsharkc.github.io/hugo-blog/tags/cockroach/</link>
-      <pubDate>Fri, 17 Mar 2017 14:50:37 +0000</pubDate>
+      <link>https://jacobc.vercel.app/tags/cockroach/</link>
+      <pubDate>Sat, 17 Aug 2019 14:50:37 +0000</pubDate>
       
-      <guid>https://jsharkc.github.io/hugo-blog/tags/cockroach/</guid>
+      <guid>https://jacobc.vercel.app/tags/cockroach/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Git</title>
-      <link>https://jsharkc.github.io/hugo-blog/tags/git/</link>
-      <pubDate>Wed, 28 Dec 2016 09:49:10 +0000</pubDate>
+      <title>React</title>
+      <link>https://jacobc.vercel.app/tags/react/</link>
+      <pubDate>Sun, 03 Feb 2019 17:42:23 +0800</pubDate>
       
-      <guid>https://jsharkc.github.io/hugo-blog/tags/git/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>MongoDB</title>
-      <link>https://jsharkc.github.io/hugo-blog/tags/mongodb/</link>
-      <pubDate>Mon, 21 Nov 2016 16:52:24 +0000</pubDate>
-      
-      <guid>https://jsharkc.github.io/hugo-blog/tags/mongodb/</guid>
+      <guid>https://jacobc.vercel.app/tags/react/</guid>
       <description></description>
     </item>
     

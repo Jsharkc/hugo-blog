@@ -2,157 +2,197 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://jsharkc.github.io/hugo-blog/</loc>
+    <loc>https://jacobc.vercel.app/</loc>
+    <lastmod>2022-04-02T17:29:23+80:00</lastmod>
+  </url><url>
+    <loc>https://jacobc.vercel.app/tags/mongo/</loc>
+    <lastmod>2022-04-02T17:29:23+80:00</lastmod>
+  </url><url>
+    <loc>https://jacobc.vercel.app/post/</loc>
+    <lastmod>2022-04-02T17:29:23+80:00</lastmod>
+  </url><url>
+    <loc>https://jacobc.vercel.app/tags/</loc>
+    <lastmod>2022-04-02T17:29:23+80:00</lastmod>
+  </url><url>
+    <loc>https://jacobc.vercel.app/post/mongo-docker-deploy/</loc>
+    <lastmod>2022-04-02T17:29:23+80:00</lastmod>
+  </url><url>
+    <loc>https://jacobc.vercel.app/tags/centos/</loc>
+    <lastmod>2022-03-17T14:29:38+00:00</lastmod>
+  </url><url>
+    <loc>https://jacobc.vercel.app/post/centos-install-oh-my-zsh/</loc>
+    <lastmod>2022-03-17T14:29:38+00:00</lastmod>
+  </url><url>
+    <loc>https://jacobc.vercel.app/tags/oh-my-zsh/</loc>
+    <lastmod>2022-03-17T14:29:38+00:00</lastmod>
+  </url><url>
+    <loc>https://jacobc.vercel.app/tags/charles/</loc>
+    <lastmod>2021-12-17T12:40:56+00:00</lastmod>
+  </url><url>
+    <loc>https://jacobc.vercel.app/tags/mac/</loc>
+    <lastmod>2021-12-17T12:40:56+00:00</lastmod>
+  </url><url>
+    <loc>https://jacobc.vercel.app/post/mac-install-charles/</loc>
+    <lastmod>2021-12-17T12:40:56+00:00</lastmod>
+  </url><url>
+    <loc>https://jacobc.vercel.app/tags/%E8%BD%AF%E4%BB%B6/</loc>
+    <lastmod>2021-12-17T12:40:56+00:00</lastmod>
+  </url><url>
+    <loc>https://jacobc.vercel.app/tags/k8s/</loc>
+    <lastmod>2021-11-16T11:42:23+80:00</lastmod>
+  </url><url>
+    <loc>https://jacobc.vercel.app/post/install-k8s-cluster/</loc>
+    <lastmod>2021-11-16T11:42:23+80:00</lastmod>
+  </url><url>
+    <loc>https://jacobc.vercel.app/post/docker-install-centos7/</loc>
+    <lastmod>2021-11-15T17:42:23+80:00</lastmod>
+  </url><url>
+    <loc>https://jacobc.vercel.app/tags/docker/</loc>
+    <lastmod>2021-11-15T17:42:23+80:00</lastmod>
+  </url><url>
+    <loc>https://jacobc.vercel.app/post/fix-dyld-library-not-loaded/</loc>
     <lastmod>2021-10-16T14:37:03+08:00</lastmod>
   </url><url>
-    <loc>https://jsharkc.github.io/hugo-blog/tags/mac/</loc>
-    <lastmod>2021-10-16T14:37:03+08:00</lastmod>
-  </url><url>
-    <loc>https://jsharkc.github.io/hugo-blog/post/</loc>
-    <lastmod>2021-10-16T14:37:03+08:00</lastmod>
-  </url><url>
-    <loc>https://jsharkc.github.io/hugo-blog/tags/</loc>
-    <lastmod>2021-10-16T14:37:03+08:00</lastmod>
-  </url><url>
-    <loc>https://jsharkc.github.io/hugo-blog/post/fix-dyld-library-not-loaded/</loc>
-    <lastmod>2021-10-16T14:37:03+08:00</lastmod>
-  </url><url>
-    <loc>https://jsharkc.github.io/hugo-blog/tags/golang/</loc>
+    <loc>https://jacobc.vercel.app/categories/</loc>
     <lastmod>2021-09-26T19:05:03+08:00</lastmod>
   </url><url>
-    <loc>https://jsharkc.github.io/hugo-blog/post/golang-devide-log-by-size-or-time/</loc>
+    <loc>https://jacobc.vercel.app/tags/golang/</loc>
     <lastmod>2021-09-26T19:05:03+08:00</lastmod>
   </url><url>
-    <loc>https://jsharkc.github.io/hugo-blog/post/%E6%9C%89%E8%BF%9B%E7%A8%8B%E4%B8%BA%E4%BB%80%E4%B9%88%E8%BF%98%E8%A6%81%E7%BA%BF%E7%A8%8B/</loc>
+    <loc>https://jacobc.vercel.app/categories/golang/</loc>
+    <lastmod>2021-09-26T19:05:03+08:00</lastmod>
+  </url><url>
+    <loc>https://jacobc.vercel.app/post/golang-log-divide/</loc>
+    <lastmod>2021-09-26T19:05:03+08:00</lastmod>
+  </url><url>
+    <loc>https://jacobc.vercel.app/tags/linux/</loc>
+    <lastmod>2021-09-02T19:42:23+00:00</lastmod>
+  </url><url>
+    <loc>https://jacobc.vercel.app/post/linux-iptables/</loc>
+    <lastmod>2021-09-02T19:42:23+00:00</lastmod>
+  </url><url>
+    <loc>https://jacobc.vercel.app/tags/android/</loc>
+    <lastmod>2021-07-16T12:59:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jacobc.vercel.app/post/android-phone-as-linux-server/</loc>
+    <lastmod>2021-07-16T12:59:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jacobc.vercel.app/tags/ssh/</loc>
+    <lastmod>2021-07-16T12:59:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jacobc.vercel.app/tags/termux/</loc>
+    <lastmod>2021-07-16T12:59:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jacobc.vercel.app/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/</loc>
+    <lastmod>2021-07-16T12:59:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jacobc.vercel.app/post/process-and-thread/</loc>
     <lastmod>2021-07-13T17:41:23+00:00</lastmod>
   </url><url>
-    <loc>https://jsharkc.github.io/hugo-blog/tags/%E7%BA%BF%E7%A8%8B/</loc>
+    <loc>https://jacobc.vercel.app/tags/%E7%BA%BF%E7%A8%8B/</loc>
     <lastmod>2021-07-13T17:41:23+00:00</lastmod>
   </url><url>
-    <loc>https://jsharkc.github.io/hugo-blog/tags/%E8%BF%9B%E7%A8%8B/</loc>
+    <loc>https://jacobc.vercel.app/tags/%E8%BF%9B%E7%A8%8B/</loc>
     <lastmod>2021-07-13T17:41:23+00:00</lastmod>
   </url><url>
-    <loc>https://jsharkc.github.io/hugo-blog/tags/centos/</loc>
-    <lastmod>2019-11-17T14:29:38+00:00</lastmod>
+    <loc>https://jacobc.vercel.app/post/go-pprof/</loc>
+    <lastmod>2021-05-08T11:17:35+00:00</lastmod>
   </url><url>
-    <loc>https://jsharkc.github.io/hugo-blog/post/centos-install-oh-my-zsh/</loc>
-    <lastmod>2019-11-17T14:29:38+00:00</lastmod>
+    <loc>https://jacobc.vercel.app/post/linux-file-descriptor/</loc>
+    <lastmod>2021-03-15T18:13:00+00:00</lastmod>
   </url><url>
-    <loc>https://jsharkc.github.io/hugo-blog/tags/oh-my-zsh/</loc>
-    <lastmod>2019-11-17T14:29:38+00:00</lastmod>
+    <loc>https://jacobc.vercel.app/post/mongo-use-1/</loc>
+    <lastmod>2020-12-05T16:52:24+00:00</lastmod>
   </url><url>
-    <loc>https://jsharkc.github.io/hugo-blog/post/mac-install-charles/</loc>
-    <lastmod>2019-11-17T12:40:56+00:00</lastmod>
+    <loc>https://jacobc.vercel.app/tags/mysql/</loc>
+    <lastmod>2020-11-10T14:50:32+00:00</lastmod>
   </url><url>
-    <loc>https://jsharkc.github.io/hugo-blog/tags/%E8%BD%AF%E4%BB%B6/</loc>
-    <lastmod>2019-11-17T12:40:56+00:00</lastmod>
+    <loc>https://jacobc.vercel.app/post/mysql-update-%E7%BB%93%E5%90%88%E5%8F%A6%E4%B8%80%E4%B8%AA%E8%A1%A8%E6%9B%B4%E6%96%B0%E6%95%B0%E6%8D%AE/</loc>
+    <lastmod>2020-11-10T14:50:32+00:00</lastmod>
   </url><url>
-    <loc>https://jsharkc.github.io/hugo-blog/tags/android/</loc>
-    <lastmod>2019-11-16T12:59:00+00:00</lastmod>
+    <loc>https://jacobc.vercel.app/tags/flutter/</loc>
+    <lastmod>2020-10-29T21:42:23+00:00</lastmod>
   </url><url>
-    <loc>https://jsharkc.github.io/hugo-blog/post/android-phone-as-linux-server/</loc>
-    <lastmod>2019-11-16T12:59:00+00:00</lastmod>
+    <loc>https://jacobc.vercel.app/post/flutter-%E8%BF%94%E5%9B%9E%E6%A1%8C%E9%9D%A2/</loc>
+    <lastmod>2020-10-29T21:42:23+00:00</lastmod>
   </url><url>
-    <loc>https://jsharkc.github.io/hugo-blog/tags/linux/</loc>
-    <lastmod>2019-11-16T12:59:00+00:00</lastmod>
+    <loc>https://jacobc.vercel.app/tags/%E5%90%8E%E7%AB%AF/</loc>
+    <lastmod>2020-09-24T19:42:23+00:00</lastmod>
   </url><url>
-    <loc>https://jsharkc.github.io/hugo-blog/tags/ssh/</loc>
-    <lastmod>2019-11-16T12:59:00+00:00</lastmod>
+    <loc>https://jacobc.vercel.app/post/api-idempotent/</loc>
+    <lastmod>2020-09-24T19:42:23+00:00</lastmod>
   </url><url>
-    <loc>https://jsharkc.github.io/hugo-blog/tags/termux/</loc>
-    <lastmod>2019-11-16T12:59:00+00:00</lastmod>
+    <loc>https://jacobc.vercel.app/post/mysql-isolation/</loc>
+    <lastmod>2020-08-19T21:32:46+08:00</lastmod>
   </url><url>
-    <loc>https://jsharkc.github.io/hugo-blog/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/</loc>
-    <lastmod>2019-11-16T12:59:00+00:00</lastmod>
+    <loc>https://jacobc.vercel.app/tags/cobra/</loc>
+    <lastmod>2020-05-17T15:07:14+00:00</lastmod>
   </url><url>
-    <loc>https://jsharkc.github.io/hugo-blog/post/%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6/</loc>
-    <lastmod>2019-11-15T18:13:00+00:00</lastmod>
+    <loc>https://jacobc.vercel.app/post/go-cobra/</loc>
+    <lastmod>2020-05-17T15:07:14+00:00</lastmod>
   </url><url>
-    <loc>https://jsharkc.github.io/hugo-blog/tags/mysql/</loc>
-    <lastmod>2019-10-30T14:50:32+00:00</lastmod>
+    <loc>https://jacobc.vercel.app/post/go-interface/</loc>
+    <lastmod>2020-04-06T20:27:43+00:00</lastmod>
   </url><url>
-    <loc>https://jsharkc.github.io/hugo-blog/post/mysql-update-%E7%BB%93%E5%90%88%E5%8F%A6%E4%B8%80%E4%B8%AA%E8%A1%A8%E6%9B%B4%E6%96%B0%E6%95%B0%E6%8D%AE/</loc>
-    <lastmod>2019-10-30T14:50:32+00:00</lastmod>
+    <loc>https://jacobc.vercel.app/post/go-slice/</loc>
+    <lastmod>2020-03-10T19:27:43+00:00</lastmod>
   </url><url>
-    <loc>https://jsharkc.github.io/hugo-blog/tags/flutter/</loc>
-    <lastmod>2019-10-29T21:42:23+00:00</lastmod>
+    <loc>https://jacobc.vercel.app/post/jobrunner/</loc>
+    <lastmod>2020-01-27T11:07:35+00:00</lastmod>
   </url><url>
-    <loc>https://jsharkc.github.io/hugo-blog/post/flutter-%E8%BF%94%E5%9B%9E%E6%A1%8C%E9%9D%A2/</loc>
-    <lastmod>2019-10-29T21:42:23+00:00</lastmod>
+    <loc>https://jacobc.vercel.app/post/go-io/</loc>
+    <lastmod>2019-12-14T10:35:43+00:00</lastmod>
   </url><url>
-    <loc>https://jsharkc.github.io/hugo-blog/post/v2ray%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/</loc>
-    <lastmod>2018-04-07T21:42:23+00:00</lastmod>
+    <loc>https://jacobc.vercel.app/post/cors/</loc>
+    <lastmod>2019-11-30T15:07:00+00:00</lastmod>
   </url><url>
-    <loc>https://jsharkc.github.io/hugo-blog/post/create-react-app-add-less-and-antd-%E6%8C%89%E9%9C%80%E5%8A%A0%E8%BD%BD/</loc>
-    <lastmod>2018-02-03T17:42:23+08:00</lastmod>
+    <loc>https://jacobc.vercel.app/post/go-note/</loc>
+    <lastmod>2019-11-15T21:34:10+00:00</lastmod>
   </url><url>
-    <loc>https://jsharkc.github.io/hugo-blog/tags/react/</loc>
-    <lastmod>2018-02-03T17:42:23+08:00</lastmod>
+    <loc>https://jacobc.vercel.app/post/docker-note/</loc>
+    <lastmod>2019-10-12T16:52:24+00:00</lastmod>
   </url><url>
-    <loc>https://jsharkc.github.io/hugo-blog/post/cobra%E5%85%A5%E9%97%A8%E5%B0%8F%E6%95%99%E7%A8%8B/</loc>
-    <lastmod>2017-07-17T15:07:14+00:00</lastmod>
+    <loc>https://jacobc.vercel.app/post/go-no-ref-param/</loc>
+    <lastmod>2019-09-13T13:27:43+00:00</lastmod>
   </url><url>
-    <loc>https://jsharkc.github.io/hugo-blog/post/slice%E6%9C%BA%E5%88%B6/</loc>
-    <lastmod>2017-07-10T19:27:43+00:00</lastmod>
+    <loc>https://jacobc.vercel.app/tags/git/</loc>
+    <lastmod>2019-08-28T22:49:10+00:00</lastmod>
   </url><url>
-    <loc>https://jsharkc.github.io/hugo-blog/post/jobrunner/</loc>
-    <lastmod>2017-06-27T11:07:35+00:00</lastmod>
+    <loc>https://jacobc.vercel.app/post/git-command/</loc>
+    <lastmod>2019-08-28T22:49:10+00:00</lastmod>
   </url><url>
-    <loc>https://jsharkc.github.io/hugo-blog/post/interface%E8%A7%A3%E6%9E%90/</loc>
-    <lastmod>2017-06-17T19:27:43+00:00</lastmod>
+    <loc>https://jacobc.vercel.app/tags/cockroach/</loc>
+    <lastmod>2019-08-17T14:50:37+00:00</lastmod>
   </url><url>
-    <loc>https://jsharkc.github.io/hugo-blog/post/%E5%8D%81%E6%9D%A1%E6%9C%89%E7%94%A8%E7%9A%84-go-%E6%8A%80%E6%9C%AF/</loc>
-    <lastmod>2017-05-26T09:42:23+00:00</lastmod>
+    <loc>https://jacobc.vercel.app/post/cockroachdb/</loc>
+    <lastmod>2019-08-17T14:50:37+00:00</lastmod>
   </url><url>
-    <loc>https://jsharkc.github.io/hugo-blog/post/golang%E4%B8%8D%E5%AD%98%E5%9C%A8%E5%BC%95%E7%94%A8%E4%BC%A0%E5%80%BC/</loc>
-    <lastmod>2017-05-03T13:27:43+00:00</lastmod>
+    <loc>https://jacobc.vercel.app/post/go-tips-ten-useful/</loc>
+    <lastmod>2019-07-29T21:42:23+00:00</lastmod>
   </url><url>
-    <loc>https://jsharkc.github.io/hugo-blog/tags/docker/</loc>
-    <lastmod>2017-04-12T16:52:24+00:00</lastmod>
+    <loc>https://jacobc.vercel.app/post/v2ray%E4%BD%BF%E7%94%A8/</loc>
+    <lastmod>2019-04-07T21:42:23+00:00</lastmod>
   </url><url>
-    <loc>https://jsharkc.github.io/hugo-blog/post/docker-note/</loc>
-    <lastmod>2017-04-12T16:52:24+00:00</lastmod>
+    <loc>https://jacobc.vercel.app/post/react-less-and-antd/</loc>
+    <lastmod>2019-02-03T17:42:23+08:00</lastmod>
   </url><url>
-    <loc>https://jsharkc.github.io/hugo-blog/post/linux%E9%98%B2%E7%81%AB%E5%A2%99-iptables/</loc>
-    <lastmod>2017-04-02T09:42:23+00:00</lastmod>
+    <loc>https://jacobc.vercel.app/tags/react/</loc>
+    <lastmod>2019-02-03T17:42:23+08:00</lastmod>
   </url><url>
-    <loc>https://jsharkc.github.io/hugo-blog/tags/cockroach/</loc>
-    <lastmod>2017-03-17T14:50:37+00:00</lastmod>
+    <loc>https://jacobc.vercel.app/top/books/</loc>
   </url><url>
-    <loc>https://jsharkc.github.io/hugo-blog/post/cockroachdb/</loc>
-    <lastmod>2017-03-17T14:50:37+00:00</lastmod>
+    <loc>https://jacobc.vercel.app/top/about/</loc>
   </url><url>
-    <loc>https://jsharkc.github.io/hugo-blog/post/go%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96pprof/</loc>
-    <lastmod>2017-03-12T11:07:35+00:00</lastmod>
+    <loc>https://jacobc.vercel.app/archives/</loc>
   </url><url>
-    <loc>https://jsharkc.github.io/hugo-blog/post/cors/</loc>
-    <lastmod>2017-01-30T15:07:00+00:00</lastmod>
+    <loc>https://jacobc.vercel.app/top/archives/</loc>
   </url><url>
-    <loc>https://jsharkc.github.io/hugo-blog/post/centos7-install-docker/</loc>
-    <lastmod>2017-01-15T17:42:23+80:00</lastmod>
+    <loc>https://jacobc.vercel.app/search/</loc>
   </url><url>
-    <loc>https://jsharkc.github.io/hugo-blog/tags/git/</loc>
-    <lastmod>2016-12-28T09:49:10+00:00</lastmod>
+    <loc>https://jacobc.vercel.app/search/placeholder/</loc>
   </url><url>
-    <loc>https://jsharkc.github.io/hugo-blog/post/git%E5%91%BD%E4%BB%A4%E6%B8%85%E5%8D%95/</loc>
-    <lastmod>2016-12-28T09:49:10+00:00</lastmod>
+    <loc>https://jacobc.vercel.app/search/</loc>
   </url><url>
-    <loc>https://jsharkc.github.io/hugo-blog/post/golang_io%E5%8C%85_%E5%A6%99%E7%94%A8/</loc>
-    <lastmod>2016-12-14T10:35:43+00:00</lastmod>
-  </url><url>
-    <loc>https://jsharkc.github.io/hugo-blog/tags/mongodb/</loc>
-    <lastmod>2016-11-21T16:52:24+00:00</lastmod>
-  </url><url>
-    <loc>https://jsharkc.github.io/hugo-blog/post/mongodb%E6%AD%A3%E7%A1%AE%E6%89%93%E5%BC%80%E6%96%B9%E5%BC%8F/</loc>
-    <lastmod>2016-11-21T16:52:24+00:00</lastmod>
-  </url><url>
-    <loc>https://jsharkc.github.io/hugo-blog/post/gonote/</loc>
-    <lastmod>2016-11-15T21:34:10+00:00</lastmod>
-  </url><url>
-    <loc>https://jsharkc.github.io/hugo-blog/archives/</loc>
-  </url><url>
-    <loc>https://jsharkc.github.io/hugo-blog/categories/</loc>
-  </url><url>
-    <loc>https://jsharkc.github.io/hugo-blog/search/</loc>
+    <loc>https://jacobc.vercel.app/top/</loc>
   </url>
 </urlset>
