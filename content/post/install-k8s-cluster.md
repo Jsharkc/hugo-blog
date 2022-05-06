@@ -7,8 +7,6 @@ tags: ["k8s"]
 
 ### 1. 环境初始化
 
-文章转自 [CSDN博主「初码诛仙」 ](https://blog.csdn.net/zxycyj1989/article/details/117172414)，按照步骤搭建成功，记录下来，备忘
-
 #### 1.1 安装并配置 Docker
 
 ##### 1.1.1 安装 Docker
@@ -95,6 +93,89 @@ hostnamectl set-hostname kubeadm1
 ```shell
 [WARNING Hostname]: hostname "xxxx" could not be reached
 [WARNING Hostname]: hostname "xxxx": lookup xxx on 114.114.114.114:53: no such host
+```
+
+#### 1.3 设置防火墙、关闭 SELINUX
+
+##### 1.3.1 设置防火墙为 Iptables 并设置空规则
+
+```sh
+systemctl stop firewalld && systemctl disable firewalld
+yum install -y iptables-services && systemctl start iptables && systemctl enable iptables && iptables -F && service iptables save
+```
+
+通过以下命令观察是否成功：
+
+```sh
+systemctl status firewalld
+// Active: inactive (dead)
+systemctl status iptables
+// Active: active (exited)
+iptables -L
+// 规则全空
+cat /etc/sysconfig/iptables
+// 内容空
+```
+
+##### 1.3.2 关闭 swap、关闭 SeLinux
+
+```sh
+swapoff -a && sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fatab
+setenforce 0 && sed -i 's/^SELINUX=.*/SELINUX=disable/' /etc/selinux/config
+```
+
+通过以下命令观察是否成功：
+
+```sh
+free -m
+// Swap: 行后面都是 0，则成功
+cat /etc/selinux/config | grep '^SELINUX='
+// SELINUX=disable 则成功
+```
+
+#### 1.4 调整内核参数，对于 K8S
+
+```sh
+cat > kubernetes.conf <<EOF
+net.bridge.bridge-nf-call-iptables=1
+net.bridge.bridge-nf-call-ip6tables=1
+net.ipv4.ip_forward=1
+net.ipv4.tcp_tw_recycle=0
+vm.swappiness=0 # 禁止使用 swap 空间，只有当系统 OOM 时才允许使用它
+vm.overcommit_memory=1 # 不检查物理内存是否够用
+vm.panic_on_oom=0 # 开启 OOM
+fs.inotify.max_user_instances=8192
+fs.inotify.max_user_watches=1048576
+fs.file-max=52706963
+fs.nr_open=52706963
+net.ipv6.conf.all.disable_ipv6=1
+net.netfilter.nf_conntrack_max=2310720
+EOF
+cp kubernetes.conf /etc/sysctl.d/kubernetes.conf
+sysctl -p /etc/sysctl.d/kubernetes.conf
+```
+
+#### 1.5 关闭不需要的服务
+
+```sh
+systemctl stop postfix && systemctl disable postfix
+```
+
+#### 1.6 kube-proxy 开启 ipvs 前置条件
+
+```sh
+modprobe br_netfilter
+
+cat > /etc/sysconfig/modules/ipvs.modules <<EOF
+#!/bin/bash
+modprobe -- ip_vs
+modprobe -- ip_vs_rr
+modprobe -- ip_vs_wrr
+modprobe -- ip_vs_sh
+modprobe -- nf_conntrack_ipv4
+EOF
+
+chmod 755 /etc/sysconfig/modules/ipvs.modules && bash /etc/sysconfig/modules/ipvs.modules && lsmod | grep -e ip_vs -e nf_conntrack_ipv4
 ```
 
 ### 2. 安装配置 master 节点
@@ -471,3 +552,113 @@ Run 'kubectl get nodes' on the control-plane to see this node join the cluster.
 ```
 
 此时 node 上的 kubelet 也将正常运行。可能这时候你在 master 上执行 [kubelet get nodes] 的时候，该 node 还处于 NotReady 的状态，别着急，一会就回刷新过来。
+
+
+
+### 4. 运行测试程序
+
+#### 4.1 deployment 镜像
+
+```sh
+kubectl create deployment myapp --image=wangyanglinux/myapp:1
+```
+
+查看运行的程序：
+
+> kubectl get pod -o wide
+>
+> NAME                     READY   STATUS    RESTARTS   AGE     IP           NODE         NOMINATED NODE   READINESS GATES
+> myapp-6b6c94dd79-g9vnn   1/1     Running   0          2m27s   10.244.1.2   k8s-node01   <none>           <none>
+
+#### 4.2 程序横向扩容
+
+```sh
+kubectl edit deployment myapp
+// 修改 replicas 字段
+replicas: 10
+// :wq 保存退出
+```
+
+查看运行的程序：
+
+> kubectl get pod 
+>
+> NAME                     READY   STATUS    RESTARTS   AGE
+> myapp-6b6c94dd79-6vbgx   1/1     Running   0          22s
+> myapp-6b6c94dd79-7f2vf   1/1     Running   0          22s
+> myapp-6b6c94dd79-8v242   1/1     Running   0          22s
+> myapp-6b6c94dd79-dq22w   1/1     Running   0          22s
+> myapp-6b6c94dd79-g2z5s   1/1     Running   0          22s
+> myapp-6b6c94dd79-g9vnn   1/1     Running   0          4m50s
+> myapp-6b6c94dd79-jbs7f   1/1     Running   0          22s
+> myapp-6b6c94dd79-lcdvm   1/1     Running   0          22s
+> myapp-6b6c94dd79-sz484   1/1     Running   0          22s
+> myapp-6b6c94dd79-tlcwc   1/1     Running   0          22
+
+对其中一个服务，发起 curl 请求：
+
+```sh
+curl 10.244.1.2
+// Wang Yang welcome you ! | Version 1 | Accessing <hostname.html> to get the current host name
+curl 10.244.1.2/hostname.html
+// myapp-6b6c94dd79-g9vnn
+```
+
+#### 4.3 部署一个服务
+
+```sh
+kubectl create svc clusterip myapp --tcp=8080:80
+```
+
+查看运行的服务：
+
+> kubectl get svc
+>
+> NAME         TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)    AGE
+> kubernetes   ClusterIP   10.96.0.1      <none>        443/TCP    30m
+> myapp        ClusterIP   10.98.228.65   <none>        8080/TCP   7s
+
+请求该服务：
+
+```sh
+curl 10.98.228.65:8080
+// Wang Yang welcome you ! | Version 1 | Accessing <hostname.html> to get the current host name
+curl 10.244.1.2/hostname.html
+// myapp-6b6c94dd79-tlcwc
+// 多次请求，返回不同容器名称，服务进行了负载均衡
+```
+
+但现在这个服务，只能集群内部访问，外面是访问不到的，下面来解决这个问题
+
+#### 4.4 允许外部访问服务
+
+```sh
+kubectl edit svc myapp
+// 修改 type: ClusterIP 字段为 type: NodePort
+type: NodePort
+// :wq 保存退出
+```
+
+在看一下服务：
+
+
+> kubectl get svc
+>
+> NAME         TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)          AGE
+> kubernetes   ClusterIP   10.96.0.1      <none>        443/TCP          37m
+> myapp        NodePort    10.98.228.65   <none>        8080:32752/TCP   7m17s
+
+myapp 服务映射出了端口，32752，这时使用集群中任一一机器 IP + 该端口，都可以访问服务
+
+例如：
+
+```sh
+curl 192.168.10.16:32752/hostname.html
+// myapp-6b6c94dd79-sz484
+// 多次请求，返回不同容器名称，服务进行了负载均衡
+// myapp-6b6c94dd79-8v242
+// myapp-6b6c94dd79-lcdvm
+```
+
+参考 [CSDN博主「初码诛仙」 ](https://blog.csdn.net/zxycyj1989/article/details/117172414)
+按照步骤搭建成功，记录下来，备忘
