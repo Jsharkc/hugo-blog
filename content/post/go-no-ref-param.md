@@ -1,15 +1,14 @@
 ---
 title: Golang 中不存在引用传参
-date:  2017-05-03T13:27:43+00:00
+date:  2019-09-13T13:27:43+00:00
 tags:  ["Golang"]
 categories: ["Golang"]
-author: Jshakrc
+author: Jacobc
 ---
 ## Golang 中不存在引用传参
 
-​															[原文链接](https://dave.cheney.net/2017/04/29/there-is-no-pass-by-reference-in-go)
-
-​															翻译：Jsharkc
+​[原文链接](https://dave.cheney.net/2017/04/29/there-is-no-pass-by-reference-in-go)
+翻译：Jsharkc
 
 ### 什么是引用变量 ?
 

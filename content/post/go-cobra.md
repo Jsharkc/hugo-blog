@@ -1,6 +1,7 @@
 ---
 title: Cobra - 一个 Golang 命令行项目生成工具
-date: 2017-07-17T15:07:14+00:00
+description: 'Cobra 简要教程'
+date: 2020-05-17T15:07:14+00:00
 tags: ["Golang", "cobra"]
 categories: ["Golang"]
 ---

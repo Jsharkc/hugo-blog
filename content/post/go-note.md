@@ -1,9 +1,9 @@
 ---
 title: Go注意点总结
-date: 2016-11-15T21:34:10+00:00
+date: 2019-11-15T21:34:10+00:00
 tags: ["Golang"]
 categories: ["Golang"]
-author: Jsharkc
+author: Jacobc
 ---
 
 # Go >注意点< 总结

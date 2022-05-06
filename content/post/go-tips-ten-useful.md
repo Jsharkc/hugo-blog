@@ -1,10 +1,11 @@
 ---
-title: 十条有用的 GO 技术
-date: 2017-05-26T09:42:23+00:00
+title: 十条有用的 GO 小技巧
+description: '十个 golang 小技巧'
+date: 2019-07-29T21:42:23+00:00
 tags: ["Golang"]
 categories: ["Golang"]
 ---
-# 十条有用的 Go 技术
+# 十条有用的 Go 技巧
 
 转自 [mikespook.com](https://mikespook.com/2014/07/%E5%8D%81%E6%9D%A1%E6%9C%89%E7%94%A8%E7%9A%84-go-%E6%8A%80%E6%9C%AF/)
 

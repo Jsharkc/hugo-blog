@@ -1,7 +1,7 @@
 ---
-title: MySQL 四种隔离级别
-description: '事务特征，以及隔离级别'
-date: 2020-03-12T21:32:46+08:00
+title: MySQL 四种隔离级别 & 间隙锁
+description: '事务特征、隔离级别以及间隙锁'
+date: 2020-08-19T21:32:46+08:00
 tags: ["mysql"]
 ---
 

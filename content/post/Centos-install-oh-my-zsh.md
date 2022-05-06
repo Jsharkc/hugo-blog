@@ -1,6 +1,6 @@
 ---
 title: Centos 安装 oh-my-zsh
-date: 2019-11-17T14:29:38+00:00
+date: 2022-03-17T14:29:38+00:00
 tags: ["Centos", "oh-my-zsh"]
 ---
 

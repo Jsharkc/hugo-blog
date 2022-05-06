@@ -1,6 +1,8 @@
 ---
 title: 初探 Cockroachdb
-date: 2017-03-17T14:50:37+00:00
+description: 'Docker 搭建 Cockroachdb 集群环境'
+date: 2019-08-17T14:50:37+00:00
+author: Jacobc
 tags: ["cockroach"]
 ---
 # 初探 Cockroachdb

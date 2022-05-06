@@ -1,8 +1,8 @@
 ---
 title: 文件描述符 fd
-date: 2019-11-15T18:13:00+00:00
+date: 2021-03-15T18:13:00+00:00
 tags: ["linux"]
-author: Jsharkc
+author: Jacobc
 ---
 
 文件描述符（File descriptor）是计算机科学中的一个术语，是一个用于表述指向文件的引用的抽象化概念。

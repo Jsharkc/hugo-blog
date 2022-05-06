@@ -1,6 +1,6 @@
 ---
 title: 跨域资源共享 CORS 详解
-date: 2017-01-30T15:07:00+00:00
+date: 2019-11-30T15:07:00+00:00
 author: yusank
 tags: ["Golang"]
 categories: ["Golang"]

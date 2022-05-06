@@ -4,7 +4,7 @@ description: 'zap 日志库，通过 lumberjack 按文件大小分割，通过 g
 date: 2021-09-26T19:05:03+08:00
 tags: ["Golang"]
 categories: ["Golang"]
-author: "Jsharkc"
+author: "Jacobc"
 ---
 
 Log 用的 `go.uber.org/zap` 库。

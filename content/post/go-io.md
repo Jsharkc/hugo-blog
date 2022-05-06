@@ -1,14 +1,11 @@
 ---
 title: Golang I/O 包的妙用
-date: 2016-12-14T10:35:43+00:00
+date: 2019-12-14T10:35:43+00:00
 tags: ["Golang"]
 categories: ["Golang"]
 ---
 
 # Golang I/O 包的妙用
-
-作者：icexin [转自简书](http://www.jianshu.com/p/8c33f7c84509)
-
 golang标准库对io的抽象非常精巧，各个组件可以随意组合，可以作为接口设计的典范。这篇文章结合一个实际的例子来和大家分享一下。
 
 ## 背景
@@ -223,3 +220,5 @@ EncodePacket(bufconn, []byte("hello"))
 ## 结尾
 
 我一直认为一个好的语言一定有一个设计良好的标准库，golang的标准库是作者们多年系统编程的沉淀，值得我们细细品味
+
+作者：icexin [转自简书](http://www.jianshu.com/p/8c33f7c84509)

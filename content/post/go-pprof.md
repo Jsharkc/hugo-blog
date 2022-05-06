@@ -1,6 +1,7 @@
 ---
 title: Go 程序的性能优化及 pprof 的使用
-date: 2017-03-12T11:07:35+00:00
+description: 'Go pprof 简单使用'
+date: 2021-05-08T11:17:35+00:00
 tags: ["Golang"]
 categories: ["Golang"]
 ---

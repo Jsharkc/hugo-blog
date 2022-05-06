@@ -3,7 +3,7 @@ title: "修复 dyld: Library not loaded"
 description: '通过 otool 修复 dyld: Library not loaded 问题'
 date: 2021-10-16T14:37:03+08:00
 tags: ["Mac"]
-author: "Jsharkc"
+author: "Jacobc"
 ---
 
 `flutter` 最新版 `2.5.3` 安装 `CocoaPods` 需要 `ruby 2.6` 以上，而我 MAC 上 `ruby` 只有 `2.5` 所以需要更新 `ruby`，`brew install ruby` 后，就碰到了这个问题。

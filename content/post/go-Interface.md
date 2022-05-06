@@ -1,13 +1,13 @@
 ---
 title: Golang Interface 解析
-date: 2017-06-17T19:27:43+00:00
+date: 2020-04-06T20:27:43+00:00
 tags: ["Golang"]
 categories: ["Golang"]
 ---
 
 # Interface 解析
 
-转自 https://zhuanlan.zhihu.com/p/27652856
+[原文链接](https://zhuanlan.zhihu.com/p/27652856)
 
 先看一段代码：
 

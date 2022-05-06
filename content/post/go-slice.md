@@ -1,6 +1,7 @@
 ---
 title: Golang slice 切片原理
-date: 2017-07-10T19:27:43+00:00
+description: 'Golang slice 切片原理解析'
+date: 2020-03-10T19:27:43+00:00
 tags: ["Golang"]
 categories: ["Golang"]
 ---

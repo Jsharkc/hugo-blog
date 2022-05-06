@@ -1,7 +1,7 @@
 ---
 title: kubeadm 安装 k8s
 description: '安装 k8s，记录下来，备忘'
-date: 2021-06-24T11:42:23+80:00
+date: 2021-11-16T11:42:23+80:00
 tags: ["k8s"]
 ---
 

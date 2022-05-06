@@ -1,11 +1,12 @@
 ---
 title: Jobrunner 源码解析
-Date: 2017-06-27T11:07:35+00:00
+description: 'Jobrunner 定时任务库源码解析'
+Date: 2020-01-27T11:07:35+00:00
 tags: ["Golang"]
 categories: ["Golang"]
-Auther: jsharkc
+Auther: Jacobc
 ---
-
+s
 ## 安装
 
 ```go

@@ -1,12 +1,10 @@
 ---
 title: Linux防火墙-iptables
-date: 2017-04-02T09:42:23+00:00
+date: 2021-09-02T19:42:23+00:00
+description: 'iptables 学习使用'
 tags: ["linux"]
 ---
 # Linux防火墙--iptables学习
-
-转自[简书](http://www.jianshu.com/p/5f38e7253fc8?utm_campaign=hugo&utm_medium=reader_share&utm_content=note)
-
 iptables是Linux系统提供的一个强大的防火墙工具，可以实现包过滤、包重定向、NAT转换等功能。iptables是免费的，iptables是一个工具，实际的功能是通过netfilter模块来实现的，在内核2.4版本后默认集成到了Linux内核中。
 
 # 一、 iptables的构成
@@ -47,9 +45,9 @@ filter表有3条链：INPUT、FORWARD、OUTPUT
 
 当数据包到达网卡时，首先会进入PREROUTING链（注意，raw表处理完后就不会再进入nat表了），完成PREROUTING链中规则的匹配和执行后（比如DNAT），iptables根据数据包的目的IP是否为本机地址，判断是否需要将该数据包转发出去。
 
-1.  如果数据包的目的IP为本机地址，它就会进入INPUT链。可以在filter表的INPUT链中添加包过滤规则，限制哪些数据包可以访问本机；经过INPUT链中的规则处理后，剩下的数据包在本机上任何进程都可以收到，并根据需要对它们进行处理；当进程处理完后，需要发送出去的数据包会经过OUTPUT链的处理，然后到达POSTROUTING链，经过处理（比如SNAT）后输出。
+1. 如果数据包的目的IP为本机地址，它就会进入INPUT链。可以在filter表的INPUT链中添加包过滤规则，限制哪些数据包可以访问本机；经过INPUT链中的规则处理后，剩下的数据包在本机上任何进程都可以收到，并根据需要对它们进行处理；当进程处理完后，需要发送出去的数据包会经过OUTPUT链的处理，然后到达POSTROUTING链，经过处理（比如SNAT）后输出。
 
-\2. 如果数据包的目的IP不是本机地址（比如做了DNAT、或者只是作为默认网关时走过来的包），并且系统内核开启了转发功能（ip_forward参数为1），则数据包会进入FORWARD链；此时可以在filter表的FORWARD链中设置相应的规则进行处理；经过FORWARD链的数据包再走到POSTROUTING链中处理（比如执行SNAT），最后输出。
+2. 如果数据包的目的IP不是本机地址（比如做了DNAT、或者只是作为默认网关时走过来的包），并且系统内核开启了转发功能（ip_forward参数为1），则数据包会进入FORWARD链；此时可以在filter表的FORWARD链中设置相应的规则进行处理；经过FORWARD链的数据包再走到POSTROUTING链中处理（比如执行SNAT），最后输出。
 
 综上，数据包在iptables中的传输链路有两种情况：
 
@@ -85,23 +83,23 @@ iptables -A INPUT -s 192.168.1.10 -j ACCEPT
 
 iptables规则的匹配条件中常用的参数有：
 
--s匹配源地址
+-s 匹配源地址
 
--d匹配目的地址
+-d 匹配目的地址
 
---sport匹配源端口
+--sport 匹配源端口
 
---dport匹配目的端口
+--dport 匹配目的端口
 
--p匹配协议
+-p 匹配协议
 
--i匹配输入的网卡
+-i 匹配输入的网卡
 
--o匹配输出的网卡
+-o 匹配输出的网卡
 
 ！取反
 
--j规则的执行动作
+-j 规则的执行动作
 
 示例：配置NAT转发实现内网节点访问公网
 
@@ -115,69 +113,33 @@ Wan口：50.75.153.98/24 eth1
 
 内网节点：192.168.1.92
 
-\1. 在内网节点上配置默认网关为路由节点的Lan口，确保内网节点的包都能走到路由节点。
+1. 在内网节点上配置默认网关为路由节点的Lan口，确保内网节点的包都能走到路由节点。
 
 route add default gw 192.168.1.10
 
-\2. 在路由节点上打开linux的路由转发功能。
+2. 在路由节点上打开linux的路由转发功能。
 
 sysctl -w net.ipv4.ip_forward=1
 
-\3. 将FORWARD链的默认策略设置为DROP
+3. 将FORWARD链的默认策略设置为DROP
 
 iptables -P FORWARD DROP
 
 这样确保对内网的控制，只把允许访问公网的IP添加到规则中。
 
-\4. 允许任意地址之间的确认包和关联包通过。
+4. 允许任意地址之间的确认包和关联包通过。
 
 iptables -A FORWARD -m state --state ESTABLISHED,RELATED -j ACCEPT
 
 这条规则很关键，否则即使后面添加了允许IP访问的规则也没用。
 
-\5. 允许指定IP地址访问公网
+5. 允许指定IP地址访问公网
 
 iptables -A FORWARD -s 192.168.1.92/24 -j ACCEPT
 
-\6. 配置一条SNAT规则，将内网节点的源IP转换为公网IP后，再将消息发出。
+6. 配置一条SNAT规则，将内网节点的源IP转换为公网IP后，再将消息发出。
 
 iptables -t nat -A POSTROUTING -s 192.168.1.92 -j SNAT --to 50.75.153.98
-
-示例：配置NAT转发实现公网用户访问内网节点
-
-环境假设：
-
-路由节点：
-
-Lan口：192.168.1.10/24 eth0
-
-Wan口：50.75.153.98/24 eth1
-
-内网节点：192.168.1.92
-
-1.  在路由节点上打开linux的路由转发功能。
-
-sysctl -w net.ipv4.ip_forward=1
-
-\2. 将FORWARD链的默认策略设置为DROP
-
-iptables -P FORWARD DROP
-
-这样确保对内网的控制，只把允许访问的IP添加到规则中。
-
-\3. 允许任意地址之间的确认包和关联包通过。
-
-iptables -A FORWARD -m state --state ESTABLISHED,RELATED -j ACCEPT
-
-这条规则很关键，否则即使后面添加了允许IP访问的规则也没用。
-
-\4. 允许访问指定的IP地址
-
-iptables -A FORWARD -d 192.168.1.92 -j ACCEPT
-
-\5. 配置一条DNAT规则，将访问路由节点的公网地址转换为访问内网节点的私网地址。
-
-iptables -t nat -A POSTROUTING -d 50.75.153.98 -j DNAT --to 192.168.1.92
 
 **PS：用iptables的raw表解决ip_conntrack:table full, dropping packet的问题**
 
@@ -196,3 +158,5 @@ iptables -A FORWARD -m state --state UNTRACKED -j ACCEPT
 另外，再附上鸟哥的iptables流程图，可以看到各个链也是根据不同的表区分优先级的。
 
 ![img](http://upload-images.jianshu.io/upload_images/3329890-df0602ca5ba7ff35.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+转自[简书](http://www.jianshu.com/p/5f38e7253fc8?utm_campaign=hugo&utm_medium=reader_share&utm_content=note)

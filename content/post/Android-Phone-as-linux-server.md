@@ -1,8 +1,8 @@
 ---
 title: Android手机作为linux服务器
 description: Android手机作为linux服务器简易教程
-date: 2019-11-16T12:59:00+00:00
-author: Jsharkc
+date: 2021-07-16T12:59:00+00:00
+author: Jacobc
 tags: [Termux, ssh, Android, linux, 服务器]
 ---
 
