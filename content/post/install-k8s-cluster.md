@@ -491,7 +491,6 @@ yum -y install kubelet-1.20.5 kubeadm-1.20.5 kubectl-1.20.5
 ```sh
 kubeadm join 172.24.15.212:6443 --token yvhauq.sxcuhh300d5vpvhy \
     --discovery-token-ca-cert-hash sha256:439f9df853943ead685dc63d8af0d04c32e7b9b8dc4e148e0fb41dab33997c11
-
 ```
 
 ##### 3.2.2 配置文件方式
@@ -553,8 +552,6 @@ Run 'kubectl get nodes' on the control-plane to see this node join the cluster.
 
 此时 node 上的 kubelet 也将正常运行。可能这时候你在 master 上执行 [kubelet get nodes] 的时候，该 node 还处于 NotReady 的状态，别着急，一会就回刷新过来。
 
-
-
 ### 4. 运行测试程序
 
 #### 4.1 deployment 镜像
@@ -565,10 +562,13 @@ kubectl create deployment myapp --image=wangyanglinux/myapp:1
 
 查看运行的程序：
 
-> kubectl get pod -o wide
->
-> NAME                     READY   STATUS    RESTARTS   AGE     IP           NODE         NOMINATED NODE   READINESS GATES
-> myapp-6b6c94dd79-g9vnn   1/1     Running   0          2m27s   10.244.1.2   k8s-node01   <none>           <none>
+```sh
+kubectl get pod -o wide
+
+NAME                     READY   STATUS    RESTARTS   AGE     IP           NODE         NOMINATED NODE   READINESS GATES
+myapp-6b6c94dd79-g9vnn   1/1     Running   0          2m27s   10.244.1.2   k8s-node01   <none>           <none>
+
+```
 
 #### 4.2 程序横向扩容
 
@@ -581,19 +581,22 @@ replicas: 10
 
 查看运行的程序：
 
-> kubectl get pod 
->
-> NAME                     READY   STATUS    RESTARTS   AGE
-> myapp-6b6c94dd79-6vbgx   1/1     Running   0          22s
-> myapp-6b6c94dd79-7f2vf   1/1     Running   0          22s
-> myapp-6b6c94dd79-8v242   1/1     Running   0          22s
-> myapp-6b6c94dd79-dq22w   1/1     Running   0          22s
-> myapp-6b6c94dd79-g2z5s   1/1     Running   0          22s
-> myapp-6b6c94dd79-g9vnn   1/1     Running   0          4m50s
-> myapp-6b6c94dd79-jbs7f   1/1     Running   0          22s
-> myapp-6b6c94dd79-lcdvm   1/1     Running   0          22s
-> myapp-6b6c94dd79-sz484   1/1     Running   0          22s
-> myapp-6b6c94dd79-tlcwc   1/1     Running   0          22
+```sh
+kubectl get pod 
+
+NAME                     READY   STATUS    RESTARTS   AGE
+myapp-6b6c94dd79-6vbgx   1/1     Running   0          22s
+myapp-6b6c94dd79-7f2vf   1/1     Running   0          22s
+myapp-6b6c94dd79-8v242   1/1     Running   0          22s
+myapp-6b6c94dd79-dq22w   1/1     Running   0          22s
+myapp-6b6c94dd79-g2z5s   1/1     Running   0          22s
+myapp-6b6c94dd79-g9vnn   1/1     Running   0          4m50s
+myapp-6b6c94dd79-jbs7f   1/1     Running   0          22s
+myapp-6b6c94dd79-lcdvm   1/1     Running   0          22s
+myapp-6b6c94dd79-sz484   1/1     Running   0          22s
+myapp-6b6c94dd79-tlcwc   1/1     Running   0          22
+
+```
 
 对其中一个服务，发起 curl 请求：
 
@@ -612,11 +615,14 @@ kubectl create svc clusterip myapp --tcp=8080:80
 
 查看运行的服务：
 
-> kubectl get svc
->
-> NAME         TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)    AGE
-> kubernetes   ClusterIP   10.96.0.1      <none>        443/TCP    30m
-> myapp        ClusterIP   10.98.228.65   <none>        8080/TCP   7s
+```sh
+kubectl get svc
+
+NAME         TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)    AGE
+kubernetes   ClusterIP   10.96.0.1      <none>        443/TCP    30m
+myapp        ClusterIP   10.98.228.65   <none>        8080/TCP   7s
+
+```
 
 请求该服务：
 
@@ -641,12 +647,14 @@ type: NodePort
 
 在看一下服务：
 
+```sh
+kubectl get svc
 
-> kubectl get svc
->
-> NAME         TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)          AGE
-> kubernetes   ClusterIP   10.96.0.1      <none>        443/TCP          37m
-> myapp        NodePort    10.98.228.65   <none>        8080:32752/TCP   7m17s
+NAME         TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)          AGE
+kubernetes   ClusterIP   10.96.0.1      <none>        443/TCP          37m
+myapp        NodePort    10.98.228.65   <none>        8080:32752/TCP   7m17s
+
+```
 
 myapp 服务映射出了端口，32752，这时使用集群中任一一机器 IP + 该端口，都可以访问服务
 
