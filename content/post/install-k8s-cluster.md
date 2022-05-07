@@ -298,15 +298,17 @@ networking:
   podSubnet: 10.244.0.0/16
 ```
 
-#### 2.2.2 命令参数方式
+##### 2.2.2 命令参数方式
 
 对应到 config 方式，有如下几个参数与之对应：
 
-> --kubernetes-version：指定Kubernetes版本
-> --image-repository：由于kubeadm默认是从官网 k8s.grc.io 下载所需镜像，国内无法访问，所以这里通过 --image-repository 指定为 163 镜像站
-> --pod-network-cidr：指定pod网络段
-> --service-cidr：指定service网络段
-> --ignore-preflight-errors=Swap 将报错信息设置为Swap。当然，如果你环境配置得当，不需要它
+```sh
+--kubernetes-version：指定Kubernetes版本
+--image-repository：由于kubeadm默认是从官网 k8s.grc.io 下载所需镜像，国内无法访问，所以这里通过 --image-repository 指定为 163 镜像站
+--pod-network-cidr：指定pod网络段
+--service-cidr：指定service网络段
+--ignore-preflight-errors=Swap 将报错信息设置为Swap。当然，如果你环境配置得当，不需要它
+```
 
 命令行参数的方式，需要在下一步kubeadm init的时候一起执行
 
@@ -318,13 +320,15 @@ kubeadm config images pull --config=init.yaml
 
 结果如下：
 
-> [config/images] Pulled registry.aliyuncs.com/google_containers/kube-apiserver:v1.20.5
-> [config/images] Pulled registry.aliyuncs.com/google_containers/kube-controller-manager:v1.20.5
-> [config/images] Pulled registry.aliyuncs.com/google_containers/kube-scheduler:v1.20.5
-> [config/images] Pulled registry.aliyuncs.com/google_containers/kube-proxy:v1.20.5
-> [config/images] Pulled registry.aliyuncs.com/google_containers/pause:3.2
-> [config/images] Pulled registry.aliyuncs.com/google_containers/etcd:3.4.13-0
-> [config/images] Pulled registry.aliyuncs.com/google_containers/coredns:1.7.0
+```sh
+[config/images] Pulled registry.aliyuncs.com/google_containers/kube-apiserver:v1.20.5
+[config/images] Pulled registry.aliyuncs.com/google_containers/kube-controller-manager:v1.20.5
+[config/images] Pulled registry.aliyuncs.com/google_containers/kube-scheduler:v1.20.5
+[config/images] Pulled registry.aliyuncs.com/google_containers/kube-proxy:v1.20.5
+[config/images] Pulled registry.aliyuncs.com/google_containers/pause:3.2
+[config/images] Pulled registry.aliyuncs.com/google_containers/etcd:3.4.13-0
+[config/images] Pulled registry.aliyuncs.com/google_containers/coredns:1.7.0
+```
 
 #### 2.4 初始化 master
 
@@ -346,30 +350,33 @@ kubeadm init --kubernetes-version=v1.20.5 \
 
 结果如下：
 
-> init] Using Kubernetes version: v1.20.5
-> [preflight] Running pre-flight checks
-> [preflight] Pulling images required for setting up a Kubernetes cluster[certs]
-> ......
-> Your Kubernetes control-plane has initialized successfully!
->
-> To start using your cluster, you need to run the following as a regular user:
->
->   mkdir -p $HOME/.kube
->   sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
->   sudo chown $(id -u):$(id -g) $HOME/.kube/config
->
-> Alternatively, if you are the root user, you can run:
->
->   export KUBECONFIG=/etc/kubernetes/admin.conf
->
-> You should now deploy a pod network to the cluster.
-> Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
->   https://kubernetes.io/docs/concepts/cluster-administration/addons/
->
-> Then you can join any number of worker nodes by running the following on each as root:
->
-> kubeadm join 172.24.14.91:6443 --token yvhauq.sxcuhh300d5vpvhy \
->     --discovery-token-ca-cert-hash sha256:439f9df853943ead685dc63d8af0d04c32e7b9b8dc4e148e0fb41dab33997c11
+```sh
+init] Using Kubernetes version: v1.20.5
+[preflight] Running pre-flight checks
+[preflight] Pulling images required for setting up a Kubernetes cluster[certs]
+......
+Your Kubernetes control-plane has initialized successfully!
+
+To start using your cluster, you need to run the following as a regular user:
+
+mkdir -p HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf HOME/.kube/config
+sudo chown (id -u):(id -g) $HOME/.kube/config
+
+Alternatively, if you are the root user, you can run:
+
+export KUBECONFIG=/etc/kubernetes/admin.conf
+
+You should now deploy a pod network to the cluster.
+Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
+https://kubernetes.io/docs/concepts/cluster-administration/addons/
+
+Then you can join any number of worker nodes by running the following on each as root:
+
+kubeadm join 172.24.14.91:6443 --token yvhauq.sxcuhh300d5vpvhy \
+ --discovery-token-ca-cert-hash sha256:439f9df853943ead685dc63d8af0d04c32e7b9b8dc4e148e0fb41dab33997c11
+
+```
 
 出现上述信息，表示初始化完成，从上述提示中我们可以获得一下信息：
 
@@ -668,5 +675,5 @@ curl 192.168.10.16:32752/hostname.html
 // myapp-6b6c94dd79-lcdvm
 ```
 
-参考 [CSDN博主「初码诛仙」 ](https://blog.csdn.net/zxycyj1989/article/details/117172414)
+部分参考 [CSDN博主「初码诛仙」 ](https://blog.csdn.net/zxycyj1989/article/details/117172414)
 按照步骤搭建成功，记录下来，备忘
