@@ -17,7 +17,7 @@ home = ["HTML", "RSS", "Algolia"]
   SEOTitle = "刘佳昌的博客 | LiuJiaChang' Blog"
   description = "刘佳昌，程序员, 开源爱好者，生活探险家 | 这里是 刘佳昌 的博客，与你一起发现更好玩的世界。"
   keyword = "刘佳昌, liujiachang, LiuJiaChang, 刘佳昌的网络日志, 刘佳昌的博客, LiuJiaChang Blog, 博客, 个人网站, 互联网, Web, 云原生, PaaS, Istio, Kubernetes, 微服务, Microservice"
-  slogan = "如果你知道去哪，全世界都会为你让路"
+  slogan = "纵有疾风起，人生不言弃"
 
   image_404 = "img/404-bg.jpg"
   title_404 = "你来到了无风的寂静海 :("
