@@ -2,16 +2,28 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://jacobc.vercel.app/</loc>
-    <lastmod>2022-04-02T17:29:23+80:00</lastmod>
+    <loc>https://jacobc.vercel.app/post/centos-install-gitea/</loc>
+    <lastmod>2022-11-07T10:34:00+00:00</lastmod>
   </url><url>
-    <loc>https://jacobc.vercel.app/tags/mongo/</loc>
-    <lastmod>2022-04-02T17:29:23+80:00</lastmod>
+    <loc>https://jacobc.vercel.app/tags/gitea/</loc>
+    <lastmod>2022-11-07T10:34:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jacobc.vercel.app/</loc>
+    <lastmod>2022-11-07T10:34:00+00:00</lastmod>
   </url><url>
     <loc>https://jacobc.vercel.app/post/</loc>
-    <lastmod>2022-04-02T17:29:23+80:00</lastmod>
+    <lastmod>2022-11-07T10:34:00+00:00</lastmod>
   </url><url>
     <loc>https://jacobc.vercel.app/tags/</loc>
+    <lastmod>2022-11-07T10:34:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jacobc.vercel.app/post/centos-install-jenkins/</loc>
+    <lastmod>2022-11-02T16:33:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jacobc.vercel.app/tags/jenkins/</loc>
+    <lastmod>2022-11-02T16:33:00+00:00</lastmod>
+  </url><url>
+    <loc>https://jacobc.vercel.app/tags/mongo/</loc>
     <lastmod>2022-04-02T17:29:23+80:00</lastmod>
   </url><url>
     <loc>https://jacobc.vercel.app/post/mongo-docker-deploy/</loc>
@@ -41,7 +53,7 @@
     <loc>https://jacobc.vercel.app/tags/k8s/</loc>
     <lastmod>2021-11-16T11:42:23+80:00</lastmod>
   </url><url>
-    <loc>https://jacobc.vercel.app/post/install-k8s-cluster/</loc>
+    <loc>https://jacobc.vercel.app/post/k8s-install-cluster/</loc>
     <lastmod>2021-11-16T11:42:23+80:00</lastmod>
   </url><url>
     <loc>https://jacobc.vercel.app/post/docker-install-centos7/</loc>
