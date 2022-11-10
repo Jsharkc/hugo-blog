@@ -118,3 +118,48 @@ http://225.240.67.40:8080
 填完这个表单，保存并完成，就安装成功了。
 
 <img src="https://tva1.sinaimg.cn/large/008vxvgGgy1h7rw946jp1j30io0cht8u.jpg" title="" alt="" width="552">
+
+## 三、安装 gcc 环境
+
+后面使用的过程中，可能会遇到一个问题，就是 jenkins 环境里没有 gcc，所以需要安装一下，直接进入镜像中安装不了，报没有权限，所以有两种方式：
+
+一种是启动容器时，给 `privileged` 权限，或者说模式，这样会是容器拥有真正的 root 权限，但是容器就不安全了。
+
+另一种是以原有镜像作为基础镜像，通过 Dockerfile 安装 gcc 及相关工具，打包新的镜像。
+
+这里主要说镜像方案，Dockerfile 文件内容如下：
+
+```dockerfile
+FROM jenkins/jenkins:lts
+USER root
+RUN cp /etc/apt/sources.list /etc/apt/sources.list.bak && sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
+RUN apt-get update && apt-get install -y build-essential
+USER jenkins
+```
+
+写好之后，使用如下命令打包镜像：
+
+```shell
+docker build -t jenkins-gcc:lts .
+```
+
+当然，起什么镜像名称和版本号可以自己觉得，这里只是举个例子。
+
+最后，只需要把上面用到的 docker-compose.yaml 文件进行简单的修改即可：
+
+```yaml
+version: '3'
+services:
+  jenkins:
+    container_name: jenkins
+-   image: jenkins/jenkins:lts
++   image: jenkins-gcc:lts
+    ports:
+      - 8080:8080
+    volumes:
+      - /data/jenkins:/var/jenkins_home
+```
+
+最后的最后，使用 `docker-compose up -d -f docker-compose.yaml` 启动 jenkins。
+
+Finish
