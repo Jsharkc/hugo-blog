@@ -97,7 +97,7 @@ http://225.240.67.40:8080
 
 第一次进入会展示这个界面：
 
-<img title="" src="https://tva1.sinaimg.cn/large/008vxvgGgy1h7rq1bgcv9j30ra0khdgu.jpg" alt="" width="508">
+![](https://tva1.sinaimg.cn/large/008vxvgGgy1h7rq1bgcv9j30ra0khdgu.jpg)
 
 按照提示，找到 Docker 映射挂着的目录 `/data/jenkins/secrets/initialAdminPassword`，查看内容，复制，并粘贴到这里。
 
@@ -105,7 +105,7 @@ http://225.240.67.40:8080
 
 之后是安装插件，如下：
 
-<img title="" src="https://tva1.sinaimg.cn/large/008vxvgGgy1h7rrhobrlxj30jt0g1758.jpg" alt="" width="543">
+![](https://tva1.sinaimg.cn/large/008vxvgGgy1h7rrhobrlxj30jt0g1758.jpg)
 
 新手建议选择前面这个，之后会跳转到如下页面，安装过程可能会有半个小时。
 
@@ -113,11 +113,11 @@ http://225.240.67.40:8080
 
 创建的第一个用户，具有最大权限。
 
-<img title="" src="https://tva1.sinaimg.cn/large/008vxvgGgy1h7rw6evpufj30rc0kjt9n.jpg" alt="" width="542">
+![](https://tva1.sinaimg.cn/large/008vxvgGgy1h7rw6evpufj30rc0kjt9n.jpg)
 
 填完这个表单，保存并完成，就安装成功了。
 
-<img src="https://tva1.sinaimg.cn/large/008vxvgGgy1h7rw946jp1j30io0cht8u.jpg" title="" alt="" width="552">
+![](https://tva1.sinaimg.cn/large/008vxvgGgy1h7rw946jp1j30io0cht8u.jpg)
 
 ## 三、安装 gcc 环境
 
