@@ -1,5 +1,5 @@
 ---
-title: kubeadm 安装 k8s
+title: kubeadm 安装 k8s 测试
 description: '安装 k8s，记录下来，备忘'
 date: 2021-11-16T11:42:23+80:00
 tags: ["k8s"]
