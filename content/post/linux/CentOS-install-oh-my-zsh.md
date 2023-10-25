@@ -167,3 +167,16 @@ source ~/.zshrc
 
 想了解更多 `oh-my-zsh` 内容请前往 [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
 
+Bzw，vim 环境配色配置
+
+```shell
+vim ~/.vimrc
+```
+
+里面加入以下主题
+
+```vim
+colorscheme elflord
+```
+
+更多主题参考 [centos7 vim环境配色配置](https://blog.csdn.net/L19002S/article/details/103568911)
