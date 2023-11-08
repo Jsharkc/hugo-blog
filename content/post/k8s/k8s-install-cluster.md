@@ -11,7 +11,7 @@ tags: ["k8s"]
 
 ##### 1.1.1 安装 Docker
 
-安装 Docker 参考 [Docker安装](/post/docker-install-centOS7/)
+安装 Docker 参考 [Docker安装](/post/docker/docker-install-centOS7/)
 
 ##### 1.1.2 配置 cgroup driver
 
