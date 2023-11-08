@@ -1,7 +1,7 @@
 ---
 title: kubeadm 安装 k8s
 description: '安装 k8s，记录下来，备忘'
-date: 2021-11-16T11:42:23+80:00
+date: 2021-11-16T11:42:23+08:00
 tags: ["k8s"]
 ---
 
@@ -11,7 +11,7 @@ tags: ["k8s"]
 
 ##### 1.1.1 安装 Docker
 
-安装 Docker 参考 [Docker安装](/post/docker/docker-install-centOS7/)
+安装 Docker 参考 [Docker安装](/post/docker/docker-install-centos7/)
 
 ##### 1.1.2 配置 cgroup driver
 

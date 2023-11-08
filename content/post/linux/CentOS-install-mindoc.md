@@ -1,7 +1,7 @@
 ---
 title: CentOS7-install-MinDoc
 description: '记录 CentOS 7 部署 MinDoc 的过程'
-date: 2023-11-08T19:21:24+00:00
+date: 2023-11-08T19:21:24+08:00
 tags: ["CentOS7", "MinDoc"]
 author: "Jacobc"
 ---
