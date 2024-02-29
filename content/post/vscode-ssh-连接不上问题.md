@@ -1,4 +1,9 @@
-# VSCode ssh-remote 连接不上问题
+---
+title: VSCode ssh-remote 连接不上问题 
+date: 2024-02-28T21:42:23+00:00
+tags: ["CentOS7"]
+categories: ["CentOS7"]
+---
 
 ### 背景
 
