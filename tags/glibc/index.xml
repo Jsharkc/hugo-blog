@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>glibc on Jacobc&#39; Blog</title>
+    <link>https://jacobc.vercel.app/tags/glibc/</link>
+    <description>Recent content in glibc on Jacobc&#39; Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 25 Oct 2023 14:37:03 +0800</lastBuildDate><atom:link href="https://jacobc.vercel.app/tags/glibc/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CentOS7 glibc 2.17 升级到 2.29</title>
+      <link>https://jacobc.vercel.app/post/linux/centos7-glibc2.17-upgrade-to-2.29/</link>
+      <pubDate>Wed, 25 Oct 2023 14:37:03 +0800</pubDate>
+      
+      <guid>https://jacobc.vercel.app/post/linux/centos7-glibc2.17-upgrade-to-2.29/</guid>
+      <description>原因： 遇到以下问题 ❯ node node: /lib64/libm.so.6: version `GLIBC_2.27&amp;#39; not found (required by node) node: /lib64/libc.so.6: version `GLIBC_2.25&amp;#39; not found (required by node) node: /lib64/libc.so.6: version `GLIBC_2.28&amp;#39; not found (required by node) node: /lib64/libstdc++.so.6: version `CXXABI_1.3.9&amp;#39; not found (required by node) node: /lib64/libstdc++.so.6: version `GLIBCXX_3.4.20&amp;#39; not found (required by node) node: /lib64/libstdc++.so.6: version `GLIBCXX_3.4.21&amp;#39; not found (required by node) 需要升级 glibc</description>
+    </item>
+    
+  </channel>
+</rss>

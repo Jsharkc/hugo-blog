@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>CentOS7 on Jacobc&#39; Blog</title>
+    <link>https://jacobc.vercel.app/categories/centos7/</link>
+    <description>Recent content in CentOS7 on Jacobc&#39; Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 28 Feb 2024 21:42:23 +0000</lastBuildDate><atom:link href="https://jacobc.vercel.app/categories/centos7/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>VSCode ssh-remote 连接不上问题</title>
+      <link>https://jacobc.vercel.app/post/vscode-ssh-%E8%BF%9E%E6%8E%A5%E4%B8%8D%E4%B8%8A%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Wed, 28 Feb 2024 21:42:23 +0000</pubDate>
+      
+      <guid>https://jacobc.vercel.app/post/vscode-ssh-%E8%BF%9E%E6%8E%A5%E4%B8%8D%E4%B8%8A%E9%97%AE%E9%A2%98/</guid>
+      <description>背景 官方问题 传送门，发现是远程机器有一些需求，下面先列一下: kernel &amp;gt;= 4.18, glibc &amp;gt;=2.28, libstdc++ &amp;gt;= 3.4.25, Python 2.6 or 2.7, tar 然后是通过下面的命令，可以检查上面这些需求的版本 Run ldd &amp;ndash;version</description>
+    </item>
+    
+  </channel>
+</rss>

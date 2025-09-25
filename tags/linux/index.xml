@@ -9,10 +9,10 @@
     <lastBuildDate>Thu, 02 Sep 2021 19:42:23 +0000</lastBuildDate><atom:link href="https://jacobc.vercel.app/tags/linux/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Linux防火墙-iptables</title>
-      <link>https://jacobc.vercel.app/post/linux-iptables/</link>
+      <link>https://jacobc.vercel.app/post/linux/linux-iptables/</link>
       <pubDate>Thu, 02 Sep 2021 19:42:23 +0000</pubDate>
       
-      <guid>https://jacobc.vercel.app/post/linux-iptables/</guid>
+      <guid>https://jacobc.vercel.app/post/linux/linux-iptables/</guid>
       <description>Linux防火墙&amp;ndash;iptables学习 iptables是Linux系统提供的一个强大的防火墙工具，可以实现包过滤、包重定向、NA</description>
     </item>
     
@@ -27,10 +27,10 @@
     
     <item>
       <title>文件描述符 fd</title>
-      <link>https://jacobc.vercel.app/post/linux-file-descriptor/</link>
+      <link>https://jacobc.vercel.app/post/linux/linux-file-descriptor/</link>
       <pubDate>Mon, 15 Mar 2021 18:13:00 +0000</pubDate>
       
-      <guid>https://jacobc.vercel.app/post/linux-file-descriptor/</guid>
+      <guid>https://jacobc.vercel.app/post/linux/linux-file-descriptor/</guid>
       <description>文件描述符（File descriptor）是计算机科学中的一个术语，是一个用于表述指向文件的引用的抽象化概念。 文件描述符在形式上是一个非负整</description>
     </item>
     

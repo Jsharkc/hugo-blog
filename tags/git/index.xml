@@ -6,11 +6,11 @@
     <description>Recent content in git on Jacobc&#39; Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 28 Aug 2019 22:49:10 +0000</lastBuildDate><atom:link href="https://jacobc.vercel.app/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 28 Aug 2016 22:49:10 +0000</lastBuildDate><atom:link href="https://jacobc.vercel.app/tags/git/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Git命令清单</title>
       <link>https://jacobc.vercel.app/post/git-command/</link>
-      <pubDate>Wed, 28 Aug 2019 22:49:10 +0000</pubDate>
+      <pubDate>Sun, 28 Aug 2016 22:49:10 +0000</pubDate>
       
       <guid>https://jacobc.vercel.app/post/git-command/</guid>
       <description>Git专有名词解释： Workspace：工作区 Index / Stage：暂存区 Repository：仓库区（或本地仓库） Remote：远程仓库 一、新建</description>

@@ -9,10 +9,10 @@
     <lastBuildDate>Thu, 17 Mar 2022 14:29:38 +0000</lastBuildDate><atom:link href="https://jacobc.vercel.app/tags/oh-my-zsh/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Centos 安装 oh-my-zsh</title>
-      <link>https://jacobc.vercel.app/post/centos-install-oh-my-zsh/</link>
+      <link>https://jacobc.vercel.app/post/linux/centos-install-oh-my-zsh/</link>
       <pubDate>Thu, 17 Mar 2022 14:29:38 +0000</pubDate>
       
-      <guid>https://jacobc.vercel.app/post/centos-install-oh-my-zsh/</guid>
+      <guid>https://jacobc.vercel.app/post/linux/centos-install-oh-my-zsh/</guid>
       <description>查看、安装 zsh 查看是否安装了 zsh # 方法一： chsh -l # 方法二： cat /etc/shells # 可能结果： /bin/sh /bin/bash /sbin/nologin /usr/bin/sh /usr/bin/bash /usr/sbin/nologin /bin/zsh # 如果有 /bin/zsh 代表已经安装，反之则没有 安装 zsh yum install -y zsh 切换 shell 为 zsh</description>
     </item>
     

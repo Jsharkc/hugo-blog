@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="Jacobc&#39; Blog">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="https://jacobc.vercel.app//img/home-bg-swide.jpg">
+    <meta property="twitter:image" content="https://jacobc.vercel.app//img/home-bg-swide.jpg" />
+    
+
+    
+    <meta name="title" content="CentOS7 glibc 2.17 升级到 2.29" />
+    <meta property="og:title" content="CentOS7 glibc 2.17 升级到 2.29" />
+    <meta property="twitter:title" content="CentOS7 glibc 2.17 升级到 2.29" />
+    
+
+    
+    <meta name="description" content="nodejs 依赖高版本 glibc，遇到并解决该问题">
+    <meta property="og:description" content="nodejs 依赖高版本 glibc，遇到并解决该问题" />
+    <meta property="twitter:description" content="nodejs 依赖高版本 glibc，遇到并解决该问题" />
+    
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="刘佳昌, liujiachang, LiuJiaChang, 刘佳昌的网络日志, 刘佳昌的博客, LiuJiaChang Blog, 博客, 个人网站, 互联网, Web, 云原生, PaaS, Istio, Kubernetes, 微服务, Microservice">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>CentOS7 glibc 2.17 升级到 2.29-刘佳昌的博客 | LiuJiaChang&#39; Blog</title>
+
+    <link rel="canonical" href="/post/linux/centos7-glibc2.17-upgrade-to-2.29/">
+
+    
+    
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hugo-theme-cleanwhite.min.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+
+    
+    <link href="https://cdn.jsdelivr.net/gh/FortAwesome/Font-Awesome@5.15.1/css/all.css" rel="stylesheet" type="text/css">
+
+    
+    
+
+    
+    <script src="/js/jquery.min.js"></script>
+
+    
+    <script src="/js/bootstrap.min.js"></script>
+
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    
+
+</head>
+
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Jacobc&#39; Blog</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">All Posts</a>
+                    </li>
+                    
+                        
+                        <li>
+                            <a href="/categories/centos7">centos7</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/golang">golang</a>
+                        </li>
+                        
+                    
+                    
+		    
+                        <li><a href="/top/archives/">ARCHIVE</a></li>
+                    
+                        <li><a href="/top/books/">BOOKS</a></li>
+                    
+                        <li><a href="/top/about/">ABOUT</a></li>
+                    
+
+                    
+		    <li>
+                        <a href="/search"><i class="fa fa-search"></i></a>
+		    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/home-bg-swide.jpg')
+    }
+</style>
+
+<header class="intro-header" >
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/glibc" title="glibc">
+                            glibc
+                        </a>
+                        
+                        <a class="tag" href="/tags/centos" title="centos">
+                            centos
+                        </a>
+                        
+                        <a class="tag" href="/tags/%E7%8E%AF%E5%A2%83" title="环境">
+                            环境
+                        </a>
+                        
+                    </div>
+                    <h1>CentOS7 glibc 2.17 升级到 2.29</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        
+                            Posted by 
+                            
+                                Jacobc
+                             
+                            on 
+                            Wednesday, October 25, 2023
+                            
+                            
+                            
+                            
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <p>原因：</p>
+<p>遇到以下问题</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>❯ node                                                 
+</span></span><span style="display:flex;"><span>node: /lib64/libm.so.6: version <span style="color:#f1fa8c">`</span>GLIBC_2.27<span style="color:#f1fa8c">&#39; not found (required by node)
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c">node: /lib64/libc.so.6: version `GLIBC_2.25&#39;</span> not found <span style="color:#ff79c6">(</span>required by node<span style="color:#ff79c6">)</span>
+</span></span><span style="display:flex;"><span>node: /lib64/libc.so.6: version <span style="color:#f1fa8c">`</span>GLIBC_2.28<span style="color:#f1fa8c">&#39; not found (required by node)
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c">node: /lib64/libstdc++.so.6: version `CXXABI_1.3.9&#39;</span> not found <span style="color:#ff79c6">(</span>required by node<span style="color:#ff79c6">)</span>
+</span></span><span style="display:flex;"><span>node: /lib64/libstdc++.so.6: version <span style="color:#f1fa8c">`</span>GLIBCXX_3.4.20<span style="color:#f1fa8c">&#39; not found (required by node)
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c">node: /lib64/libstdc++.so.6: version `GLIBCXX_3.4.21&#39;</span> not found <span style="color:#ff79c6">(</span>required by node<span style="color:#ff79c6">)</span>
+</span></span></code></pre></div><p>需要升级 glibc 版本。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#6272a4"># 下载 glibc 2.29 版本包，比需要的 GLIBC_2.28 高就行</span>
+</span></span><span style="display:flex;"><span>wget https://mirrors.aliyun.com/gnu/glibc/glibc-2.29.tar.gz
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 解压</span>
+</span></span><span style="display:flex;"><span>tar xzf glibc-2.29.tar.gz
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">cd</span> glibc-2.29
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 创建用于 build 的目录</span>
+</span></span><span style="display:flex;"><span>mkdir build
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">cd</span> build
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>../configure  --prefix<span style="color:#ff79c6">=</span>/usr --disable-profile --enable-add-ons --with-headers<span style="color:#ff79c6">=</span>/usr/include --with-binutils<span style="color:#ff79c6">=</span>/usr/bin 
+</span></span></code></pre></div><p>到这里会遇到一个问题：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>checking <span style="color:#ff79c6">for</span> python3... no
+</span></span><span style="display:flex;"><span>checking <span style="color:#ff79c6">for</span> python... python
+</span></span><span style="display:flex;"><span>checking version of python... 2.7.5, bad
+</span></span><span style="display:flex;"><span>configure: error:
+</span></span><span style="display:flex;"><span>*** These critical programs are missing or too old: make compiler python
+</span></span><span style="display:flex;"><span>*** Check the INSTALL file <span style="color:#ff79c6">for</span> required versions.
+</span></span></code></pre></div><p>Python 等级太低，直接源码编译挺麻烦的，可以考虑 <code>yum install python3</code> ，或者安装 MiniConda，用 MiniConda 安装 python3</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#6272a4"># 下载 Miniconda 安装脚本</span>
+</span></span><span style="display:flex;"><span>wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+</span></span><span style="display:flex;"><span>sh Miniconda3-latest-Linux-x86_64.sh
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 一路回车或者仔细看看，修改安装路径</span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">source</span> ~/.bashrc
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 创建 python 环境</span>
+</span></span><span style="display:flex;"><span>conda create -n installenv <span style="color:#8be9fd;font-style:italic">python</span><span style="color:#ff79c6">=</span>3.8
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 激活环境</span>
+</span></span><span style="display:flex;"><span>conda activate installenv
+</span></span></code></pre></div><p>这样 python3 环境就有了，继续上面的 <code>../configure ..</code> 还会遇见问题，make 版本低的问题，所以升级一下 make 版本，太高了也不行，所以升级 4.2.1</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#6272a4"># 下载</span>
+</span></span><span style="display:flex;"><span>wget http://ftp.gnu.org/gnu/make/make-4.2.1.tar.gz
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 解压</span>
+</span></span><span style="display:flex;"><span>tar -xvf make-4.2.1.tar.gz
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 编译、安装</span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">cd</span> make-4.2.1
+</span></span><span style="display:flex;"><span>mkdir build
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">cd</span> build
+</span></span><span style="display:flex;"><span>../configure
+</span></span><span style="display:flex;"><span>make
+</span></span><span style="display:flex;"><span>make install
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 链接</span>
+</span></span><span style="display:flex;"><span>ln -s -f /usr/local/bin/make /usr/bin/make
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 查看版本</span>
+</span></span><span style="display:flex;"><span>make -v
+</span></span></code></pre></div><p>升级完 make 版本后，继续上面的 <code>../configure ..</code> 还会遇见问题</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>checking <span style="color:#ff79c6">for</span> python3... python3
+</span></span><span style="display:flex;"><span>checking version of python3... 3.8.18, ok
+</span></span><span style="display:flex;"><span>configure: error:
+</span></span><span style="display:flex;"><span>*** These critical programs are missing or too old: compiler
+</span></span><span style="display:flex;"><span>*** Check the INSTALL file <span style="color:#ff79c6">for</span> required versions.
+</span></span></code></pre></div><p>意思是 gcc 版本低，所以升级一下 gcc</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>wget https://mirrors.aliyun.com/gnu/gcc/gcc-9.3.0/gcc-9.3.0.tar.gz
+</span></span><span style="display:flex;"><span>tar xzf gcc-9.3.0.tar.gz
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">cd</span> gcc-9.3.0
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 下载依赖的四个包</span>
+</span></span><span style="display:flex;"><span>./contrib/download_prerequisites
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 看一下几核</span>
+</span></span><span style="display:flex;"><span>cat /proc/cpuinfo| grep <span style="color:#f1fa8c">&#34;processor&#34;</span>| wc -l
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>mkdir build <span style="color:#ff79c6">&amp;&amp;</span> <span style="color:#8be9fd;font-style:italic">cd</span> build
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>../configure --enable-checking<span style="color:#ff79c6">=</span>release --enable-language<span style="color:#ff79c6">=</span>c,c++ --disable-multilib --prefix<span style="color:#ff79c6">=</span>/usr
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># --enable-languages表示你要让你的gcc支持那些语言，--disable-multilib不生成编译为其他平台可执行代码的交叉编译器。</span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># --disable-checking 生成的编译器在编译过程中不做额外检查，也可以使用*–enable-checking=xxx*来增加一些检查</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>make -j4
+</span></span><span style="display:flex;"><span>make install
+</span></span></code></pre></div><p>还可以采用另一种方法，安装一个高版本 gcc 环境</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#6272a4"># 最好在 bash 解释器使用</span>
+</span></span><span style="display:flex;"><span>yum install -y centos-release-scl
+</span></span><span style="display:flex;"><span>yum install -y devtoolset-7-gcc*
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 启动上面安装的 gcc 7 </span>
+</span></span><span style="display:flex;"><span>scl <span style="color:#8be9fd;font-style:italic">enable</span> devtoolset-7 bash
+</span></span></code></pre></div><p>效果如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#ff79c6">[</span>root@xxx ~<span style="color:#ff79c6">]</span><span style="color:#6272a4"># gcc --version</span>
+</span></span><span style="display:flex;"><span>gcc <span style="color:#ff79c6">(</span>GCC<span style="color:#ff79c6">)</span> 4.8.5 <span style="color:#bd93f9">20150623</span> <span style="color:#ff79c6">(</span>Red Hat 4.8.5-36<span style="color:#ff79c6">)</span>
+</span></span><span style="display:flex;"><span>Copyright <span style="color:#ff79c6">(</span>C<span style="color:#ff79c6">)</span> <span style="color:#bd93f9">2015</span> Free Software Foundation, Inc.
+</span></span><span style="display:flex;"><span>This is free software; see the <span style="color:#8be9fd;font-style:italic">source</span> <span style="color:#ff79c6">for</span> copying conditions.  There is NO
+</span></span><span style="display:flex;"><span>warranty; not even <span style="color:#ff79c6">for</span> MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">[</span>root@xxx ~<span style="color:#ff79c6">]</span><span style="color:#6272a4"># scl enable devtoolset-7 bash</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">[</span>root@xxx ~<span style="color:#ff79c6">]</span><span style="color:#6272a4"># gcc --version</span>
+</span></span><span style="display:flex;"><span>gcc <span style="color:#ff79c6">(</span>GCC<span style="color:#ff79c6">)</span> 7.3.1 <span style="color:#bd93f9">20180303</span> <span style="color:#ff79c6">(</span>Red Hat 7.3.1-5<span style="color:#ff79c6">)</span>
+</span></span><span style="display:flex;"><span>Copyright <span style="color:#ff79c6">(</span>C<span style="color:#ff79c6">)</span> <span style="color:#bd93f9">2017</span> Free Software Foundation, Inc.
+</span></span><span style="display:flex;"><span>This is free software; see the <span style="color:#8be9fd;font-style:italic">source</span> <span style="color:#ff79c6">for</span> copying conditions.  There is NO
+</span></span><span style="display:flex;"><span>warranty; not even <span style="color:#ff79c6">for</span> MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+</span></span></code></pre></div><p>回到最开始 <code>glibc-2.29/build</code> 目录中，继续后续步骤升级</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>make -j4
+</span></span><span style="display:flex;"><span>make install
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 这个 localedata 记得也要安装一下，否则会一直报一个问题</span>
+</span></span><span style="display:flex;"><span>make localedata/install-locales
+</span></span></code></pre></div><p><code>make install</code> 完成后会报一些错误，如下，但是不知道具体有什么影响，暂时可以忽略</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">test</span> ! -x /root/glibc-2.29/build/elf/ldconfig <span style="color:#ff79c6">||</span> <span style="color:#8be9fd;font-style:italic">LC_ALL</span><span style="color:#ff79c6">=</span>C <span style="color:#f1fa8c">\
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c"></span>  /root/glibc-2.29/build/elf/ldconfig  <span style="color:#f1fa8c">\
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c"></span>			/lib64 /usr/lib64
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">LD_SO</span><span style="color:#ff79c6">=</span>ld-linux-x86-64.so.2 <span style="color:#8be9fd;font-style:italic">CC</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;gcc -B/usr/bin/&#34;</span> /usr/bin/perl scripts/test-installation.pl /root/glibc-2.29/build/
+</span></span><span style="display:flex;"><span>/usr/bin/ld: cannot find -lnss_test2
+</span></span><span style="display:flex;"><span>collect2: error: ld returned <span style="color:#bd93f9">1</span> <span style="color:#8be9fd;font-style:italic">exit</span> status
+</span></span><span style="display:flex;"><span>Execution of gcc -B/usr/bin/ failed!
+</span></span><span style="display:flex;"><span>The script has found some problems with your installation!
+</span></span><span style="display:flex;"><span>Please <span style="color:#8be9fd;font-style:italic">read</span> the FAQ and the README file and check the following:
+</span></span><span style="display:flex;"><span>- Did you change the gcc specs file <span style="color:#ff79c6">(</span>necessary after upgrading from
+</span></span><span style="display:flex;"><span>  Linux libc5<span style="color:#ff79c6">)</span>?
+</span></span><span style="display:flex;"><span>- Are there any symbolic links of the form libXXX.so to old libraries?
+</span></span><span style="display:flex;"><span>  Links like libm.so -&gt; libm.so.5 <span style="color:#ff79c6">(</span>where libm.so.5 is an old library<span style="color:#ff79c6">)</span> are wrong,
+</span></span><span style="display:flex;"><span>  libm.so should point to the newly installed glibc file - and there should be
+</span></span><span style="display:flex;"><span>  only one such link <span style="color:#ff79c6">(</span>check e.g. /lib and /usr/lib<span style="color:#ff79c6">)</span>
+</span></span><span style="display:flex;"><span>You should restart this script from your build directory after you<span style="color:#f1fa8c">&#39;ve
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c">fixed all problems!
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c">Btw. the script doesn&#39;</span>t work <span style="color:#ff79c6">if</span> you<span style="color:#f1fa8c">&#39;re installing GNU libc not as your
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c">primary library!
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c">make[1]: *** [Makefile:111: install] Error 1
+</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c">make[1]: Leaving directory &#39;</span>/root/glibc-2.29&#39;
+</span></span><span style="display:flex;"><span>make: *** <span style="color:#ff79c6">[</span>Makefile:12: install<span style="color:#ff79c6">]</span> Error <span style="color:#bd93f9">2</span>
+</span></span></code></pre></div><p>如果不执行 <code>make localedata/install-locales</code> ，会遇到以下问题：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>/bin/sh: warning: setlocale: LC_ALL: cannot change locale <span style="color:#ff79c6">(</span>en_US.UTF-8<span style="color:#ff79c6">)</span>
+</span></span></code></pre></div><p>网上查了很久，没有提到 glibc 的，后来想到是安装 glibc 出现的问题，就又找了几篇 glibc 升级的文档，发现有的多个 <code>make localedata/install-locales</code>，于是也安装了下，问题解决。说明做事情还是要做完整，不完整会有问题，网络上的文档无法分辨是否完整，就多看几篇，最好看官方文档，一般比较完善。</p>
+<p>最后整体列一下 glibc 安装命令：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>wget https://mirrors.aliyun.com/gnu/glibc/glibc-2.29.tar.gz
+</span></span><span style="display:flex;"><span>tar xzf glibc-2.29.tar.gz
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">cd</span> glibc-2.29
+</span></span><span style="display:flex;"><span>mkdir build <span style="color:#ff79c6">&amp;&amp;</span> <span style="color:#8be9fd;font-style:italic">cd</span> build
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>../configure  --prefix<span style="color:#ff79c6">=</span>/usr --disable-profile --enable-add-ons --with-headers<span style="color:#ff79c6">=</span>/usr/include --with-binutils<span style="color:#ff79c6">=</span>/usr/bin 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>make -j4
+</span></span><span style="display:flex;"><span>make install
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 这个 localedata 记得也要安装一下，否则会一直报一个问题</span>
+</span></span><span style="display:flex;"><span>make localedata/install-locales
+</span></span></code></pre></div>
+
+                
+                
+<div class="entry-shang text-center">
+    
+	    <p> 「如果这篇文章对你有用,请随意打赏」</p>
+	
+	<button class="zs show-zs btn btn-bred">赞赏支持</button>
+</div>
+<div class="zs-modal-bg"></div>
+<div class="zs-modal-box">
+	<div class="zs-modal-head">
+		<button type="button" class="close">×</button>
+		<span class="author"><a href="https://jacobc.vercel.app/"><img src="/img/favicon.png" />Jacobc&#39; Blog</a></span>
+        
+	        <p class="tip"><i></i><span>如果这篇文章对你有用,请随意打赏</span></p>
+		
+ 
+	</div>
+	<div class="zs-modal-body">
+		<div class="zs-modal-btns">
+			<button class="btn btn-blink" data-num="2">2元</button>
+			<button class="btn btn-blink" data-num="5">5元</button>
+			<button class="btn btn-blink" data-num="10">10元</button>
+			<button class="btn btn-blink" data-num="50">50元</button>
+			<button class="btn btn-blink" data-num="100">100元</button>
+			<button class="btn btn-blink" data-num="1">任意金额</button>
+		</div>
+		<div class="zs-modal-pay">
+			<button class="btn btn-bred" id="pay-text">2元</button>
+			<p>使用<span id="pay-type">微信</span>扫描二维码完成支付</p>
+			<img src="/img/reward/wechat-2.png"  id="pay-image"/>
+		</div>
+	</div>
+	<div class="zs-modal-footer">
+		<label><input type="radio" name="zs-type" value="wechat" class="zs-type" checked="checked"><span ><span class="zs-wechat"><img src="/img/reward/wechat-btn.png"/></span></label>
+		<label><input type="radio" name="zs-type" value="alipay" class="zs-type" class="zs-alipay"><img src="/img/reward/alipay-btn.png"/></span></label>
+	</div>
+</div>
+<script type="text/javascript" src="/js/reward.js"></script>
+
+                
+
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/post/linux/centos-install-gitea/" data-toggle="tooltip" data-placement="top" title="CentOS 以 Docker 方式部署 Gitea">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/post/docker/docker-deploy-mindoc/" data-toggle="tooltip" data-placement="top" title="Docker-deploy-MinDoc">Next
+                            Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+                
+            </div>
+
+            
+            
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+            
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        <a href="/tags/android" title="android">
+                            android
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/biz" title="biz">
+                            biz
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/centos" title="centos">
+                            centos
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/centos7" title="centos7">
+                            centos7
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/charles" title="charles">
+                            charles
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/cobra" title="cobra">
+                            cobra
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/cockroach" title="cockroach">
+                            cockroach
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/docker" title="docker">
+                            docker
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/flutter" title="flutter">
+                            flutter
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/git" title="git">
+                            git
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/gitea" title="gitea">
+                            gitea
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/glibc" title="glibc">
+                            glibc
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/golang" title="golang">
+                            golang
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/jenkins" title="jenkins">
+                            jenkins
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/k8s" title="k8s">
+                            k8s
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/linux" title="linux">
+                            linux
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/mac" title="mac">
+                            mac
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/mindoc" title="mindoc">
+                            mindoc
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/mongo" title="mongo">
+                            mongo
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/mysql" title="mysql">
+                            mysql
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/oh-my-zsh" title="oh-my-zsh">
+                            oh-my-zsh
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/react" title="react">
+                            react
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/ssh" title="ssh">
+                            ssh
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/termux" title="termux">
+                            termux
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/%E5%90%8E%E7%AB%AF" title="后端">
+                            后端
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8" title="服务器">
+                            服务器
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/%E7%8E%AF%E5%A2%83" title="环境">
+                            环境
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/%E7%BA%BF%E7%A8%8B" title="线程">
+                            线程
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/%E8%BD%AF%E4%BB%B6" title="软件">
+                            软件
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/%E8%BF%9B%E7%A8%8B" title="进程">
+                            进程
+                        </a>
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+                <section>
+                    <hr>
+                    <h5>FRIENDS</h5>
+                    <ul class="list-inline">
+                        
+                        <li><a target="_blank" href="https://hugo-pages.vercel.app">cengchengjie的博客</a></li>
+                        
+                    </ul>
+                </section>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">                  
+                    
+                    <li>
+                        <a href="mailto:liu666888@111.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		           
+                    
+                    
+                    
+                    
+
+		            
+                    
+                    <li>
+                        <a target="_blank" href="/liu1773867204">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-weixin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		            
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/Jsharkc">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		            
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+            
+            
+            
+           
+                   <li>
+                       <a href='' rel="alternate" type="application/rss+xml" title="Jacobc&#39; Blog" >
+                           <span class="fa-stack fa-lg">
+                               <i class="fas fa-circle fa-stack-2x"></i>
+                               <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+                           </span>
+                       </a>
+                   </li>
+            
+             </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; Jacobc&#39; Blog 2025
+                    <br>
+                    <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=zhaohuabing&repo=hugo-theme-cleanwhite&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function loadAsync(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        loadAsync("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    loadAsync("https://cdn.jsdelivr.net/npm/fastclick@1.0.6/lib/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+    function generateCatalog(selector) {
+
+        
+        
+        
+        
+            _containerSelector = 'div.post-container'
+        
+
+        
+        var P = $(_containerSelector), a, n, t, l, i, c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+
+        
+        $(selector).html('')
+
+        
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#" + $(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="' + i + '" rel="nofollow">' + t + '</a>');
+            l = $('<li class="' + n + '_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;
+    }
+
+    generateCatalog(".catalog-body");
+
+    
+    $(".catalog-toggle").click((function (e) {
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    
+
+
+    loadAsync("\/js\/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
+
+
+</body>
+</html>

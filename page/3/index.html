@@ -98,6 +98,10 @@
                     
                         
                         <li>
+                            <a href="/categories/centos7">centos7</a>
+                        </li>
+                        
+                        <li>
                             <a href="/categories/golang">golang</a>
                         </li>
                         
@@ -185,7 +189,145 @@
             
 
 <div class="post-preview">
-    <a href="https://jacobc.vercel.app/post/mongo-use-1/">
+    <a href="https://jacobc.vercel.app/post/go/golang-log-divide/">
+        <h2 class="post-title">
+            Golang 按大小 or 时间切割日志
+        </h2>
+	
+        <div class="post-content-preview">
+	
+            zap 日志库，通过 lumberjack 按文件大小分割，通过 go-file-rotatelogs 按日期分割
+        
+        </div>
+    </a>
+    <p class="post-meta">
+    
+        Posted by Jacobc on Sunday, September 26, 2021
+        
+        
+    
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="https://jacobc.vercel.app/post/linux/linux-iptables/">
+        <h2 class="post-title">
+            Linux防火墙-iptables
+        </h2>
+	
+        <div class="post-content-preview">
+	
+            iptables 学习使用
+        
+        </div>
+    </a>
+    <p class="post-meta">
+    
+        Posted by Jacobc&#39; Blog on Thursday, September 2, 2021
+        
+        
+    
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="https://jacobc.vercel.app/post/android-phone-as-linux-server/">
+        <h2 class="post-title">
+            Android手机作为linux服务器
+        </h2>
+	
+        <div class="post-content-preview">
+	
+            Android手机作为linux服务器简易教程
+        
+        </div>
+    </a>
+    <p class="post-meta">
+    
+        Posted by Jacobc on Friday, July 16, 2021
+        
+        
+    
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="https://jacobc.vercel.app/post/process-and-thread/">
+        <h2 class="post-title">
+            有进程为什么还创造线程
+        </h2>
+	
+        <div class="post-content-preview">
+	
+            有进程为什么还创造线程 原因： 进程属于在CPU和系统资源等方面提供的抽象，能够有效提高CPU的利用率。 线程是在进程这个层次上提供的一层并发的抽
+       
+        </div>
+    </a>
+    <p class="post-meta">
+    
+        Posted by Jacobc&#39; Blog on Tuesday, July 13, 2021
+        
+        
+    
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="https://jacobc.vercel.app/post/go/go-pprof/">
+        <h2 class="post-title">
+            Go 程序的性能优化及 pprof 的使用
+        </h2>
+	
+        <div class="post-content-preview">
+	
+            Go pprof 简单使用
+        
+        </div>
+    </a>
+    <p class="post-meta">
+    
+        Posted by Jacobc&#39; Blog on Saturday, May 8, 2021
+        
+        
+    
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="https://jacobc.vercel.app/post/linux/linux-file-descriptor/">
+        <h2 class="post-title">
+            文件描述符 fd
+        </h2>
+	
+        <div class="post-content-preview">
+	
+            文件描述符（File descriptor）是计算机科学中的一个术语，是一个用于表述指向文件的引用的抽象化概念。 文件描述符在形式上是一个非负整
+       
+        </div>
+    </a>
+    <p class="post-meta">
+    
+        Posted by Jacobc on Monday, March 15, 2021
+        
+        
+    
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="https://jacobc.vercel.app/post/db/mongo-use-1/">
         <h2 class="post-title">
             MongoDB 的正确打开方式 Part1
         </h2>
@@ -199,144 +341,6 @@
     <p class="post-meta">
     
         Posted by Jacobc&#39; Blog on Saturday, December 5, 2020
-        
-        
-    
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="https://jacobc.vercel.app/post/mysql-update-%E7%BB%93%E5%90%88%E5%8F%A6%E4%B8%80%E4%B8%AA%E8%A1%A8%E6%9B%B4%E6%96%B0%E6%95%B0%E6%8D%AE/">
-        <h2 class="post-title">
-            Mysql update 结合另一个表更新数据
-        </h2>
-	
-        <div class="post-content-preview">
-	
-            有时 update 更新语句会需要根据另一个表进行更新，举例如下： -- 方式一： update tableA a, tableB b set a.Name=b.Name, a.Age=b.Age where a.IDCard=b.IDCard; -- 方式二: update tableA a inner join tableB b on a.IDCard=b.IDCard set a.Name=b.Name, a.Age=b.Age;
-       
-        </div>
-    </a>
-    <p class="post-meta">
-    
-        Posted by Jacobc&#39; Blog on Tuesday, November 10, 2020
-        
-        
-    
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="https://jacobc.vercel.app/post/flutter-%E8%BF%94%E5%9B%9E%E6%A1%8C%E9%9D%A2/">
-        <h2 class="post-title">
-            Flutter 返回按钮返回桌面
-        </h2>
-	
-        <div class="post-content-preview">
-	
-            Flutter 返回按钮返回桌面 想实现点击返回按钮，直接返回桌面，本想 flutter 有方法的话，直接用，然而好像没有，所以采用调用本地方法返回桌面 Android 端 MainActivity 代码如下 package com.dreamreal.example; import
-       
-        </div>
-    </a>
-    <p class="post-meta">
-    
-        Posted by Jacobc&#39; Blog on Thursday, October 29, 2020
-        
-        
-    
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="https://jacobc.vercel.app/post/api-idempotent/">
-        <h2 class="post-title">
-            接口幂等性设计
-        </h2>
-	
-        <div class="post-content-preview">
-	
-            接口幂等性设计的 N 种方式
-        
-        </div>
-    </a>
-    <p class="post-meta">
-    
-        Posted by Jacobc&#39; Blog on Thursday, September 24, 2020
-        
-        
-    
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="https://jacobc.vercel.app/post/mysql-isolation/">
-        <h2 class="post-title">
-            MySQL 四种隔离级别 &amp; 间隙锁
-        </h2>
-	
-        <div class="post-content-preview">
-	
-            事务特征、隔离级别以及间隙锁
-        
-        </div>
-    </a>
-    <p class="post-meta">
-    
-        Posted by Jacobc&#39; Blog on Wednesday, August 19, 2020
-        
-        
-    
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="https://jacobc.vercel.app/post/go-cobra/">
-        <h2 class="post-title">
-            Cobra - 一个 Golang 命令行项目生成工具
-        </h2>
-	
-        <div class="post-content-preview">
-	
-            Cobra 简要教程
-        
-        </div>
-    </a>
-    <p class="post-meta">
-    
-        Posted by Jacobc&#39; Blog on Sunday, May 17, 2020
-        
-        
-    
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="https://jacobc.vercel.app/post/go-interface/">
-        <h2 class="post-title">
-            Golang Interface 解析
-        </h2>
-	
-        <div class="post-content-preview">
-	
-            Interface 解析 原文链接 先看一段代码： func Foo(x interface{}) { if x == nil { fmt.Println(&#34;empty interface&#34;) return } fmt.Println(&#34;non-empty interface&#34;) } func main() { var x *int = nil Foo(x) } 上面的例子的输出结果如下 $ go run test_interface.go non-empty interface 可能你会感觉奇怪，为什么
-       
-        </div>
-    </a>
-    <p class="post-meta">
-    
-        Posted by Jacobc&#39; Blog on Monday, April 6, 2020
         
         
     
@@ -464,8 +468,20 @@
                
             
                
+                    <a href="/tags/biz" title="biz">
+                        biz
+                    </a>
+               
+            
+               
                     <a href="/tags/centos" title="centos">
                         centos
+                    </a>
+               
+            
+               
+                    <a href="/tags/centos7" title="centos7">
+                        centos7
                     </a>
                
             
@@ -512,6 +528,12 @@
                
             
                
+                    <a href="/tags/glibc" title="glibc">
+                        glibc
+                    </a>
+               
+            
+               
                     <a href="/tags/golang" title="golang">
                         golang
                     </a>
@@ -538,6 +560,12 @@
                
                     <a href="/tags/mac" title="mac">
                         mac
+                    </a>
+               
+            
+               
+                    <a href="/tags/mindoc" title="mindoc">
+                        mindoc
                     </a>
                
             
@@ -586,6 +614,12 @@
                
                     <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8" title="服务器">
                         服务器
+                    </a>
+               
+            
+               
+                    <a href="/tags/%E7%8E%AF%E5%A2%83" title="环境">
+                        环境
                     </a>
                
             
@@ -697,7 +731,7 @@
             
              </ul>
 		<p class="copyright text-muted">
-                    Copyright &copy; Jacobc&#39; Blog 2022
+                    Copyright &copy; Jacobc&#39; Blog 2025
                     <br>
                     <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
                     <iframe

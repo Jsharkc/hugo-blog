@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="Jacobc&#39; Blog">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="https://jacobc.vercel.app//img/home-bg-swide.jpg">
+    <meta property="twitter:image" content="https://jacobc.vercel.app//img/home-bg-swide.jpg" />
+    
+
+    
+    <meta name="title" content="Docker-deploy-MinDoc" />
+    <meta property="og:title" content="Docker-deploy-MinDoc" />
+    <meta property="twitter:title" content="Docker-deploy-MinDoc" />
+    
+
+    
+    <meta name="description" content="记录使用 docker-compose 部署 MinDoc 的过程">
+    <meta property="og:description" content="记录使用 docker-compose 部署 MinDoc 的过程" />
+    <meta property="twitter:description" content="记录使用 docker-compose 部署 MinDoc 的过程" />
+    
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="刘佳昌, liujiachang, LiuJiaChang, 刘佳昌的网络日志, 刘佳昌的博客, LiuJiaChang Blog, 博客, 个人网站, 互联网, Web, 云原生, PaaS, Istio, Kubernetes, 微服务, Microservice">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>Docker-deploy-MinDoc-刘佳昌的博客 | LiuJiaChang&#39; Blog</title>
+
+    <link rel="canonical" href="/post/docker/docker-deploy-mindoc/">
+
+    
+    
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hugo-theme-cleanwhite.min.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+
+    
+    <link href="https://cdn.jsdelivr.net/gh/FortAwesome/Font-Awesome@5.15.1/css/all.css" rel="stylesheet" type="text/css">
+
+    
+    
+
+    
+    <script src="/js/jquery.min.js"></script>
+
+    
+    <script src="/js/bootstrap.min.js"></script>
+
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    
+
+</head>
+
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Jacobc&#39; Blog</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">All Posts</a>
+                    </li>
+                    
+                        
+                        <li>
+                            <a href="/categories/centos7">centos7</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/golang">golang</a>
+                        </li>
+                        
+                    
+                    
+		    
+                        <li><a href="/top/archives/">ARCHIVE</a></li>
+                    
+                        <li><a href="/top/books/">BOOKS</a></li>
+                    
+                        <li><a href="/top/about/">ABOUT</a></li>
+                    
+
+                    
+		    <li>
+                        <a href="/search"><i class="fa fa-search"></i></a>
+		    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/home-bg-swide.jpg')
+    }
+</style>
+
+<header class="intro-header" >
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/centos7" title="CentOS7">
+                            CentOS7
+                        </a>
+                        
+                        <a class="tag" href="/tags/mindoc" title="MinDoc">
+                            MinDoc
+                        </a>
+                        
+                    </div>
+                    <h1>Docker-deploy-MinDoc</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        
+                            Posted by 
+                            
+                                Jacobc
+                             
+                            on 
+                            Wednesday, November 8, 2023
+                            
+                            
+                            
+                            
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <p><a href="https://github.com/mindoc-org/mindoc/issues?q=export_func_disable">MinDoc 地址</a></p>
+<h2 id="一使用-docker-compose-部署-mindoc">一、使用 docker-compose 部署 MinDoc</h2>
+<h3 id="1-使用-sqlite3-数据库">1. 使用 sqlite3 数据库</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff79c6">version</span>: <span style="color:#f1fa8c">&#39;3&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">services</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">mindoc</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">container_name</span>: mindoc
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">image</span>: registry.cn-hangzhou.aliyuncs.com/mindoc-org/mindoc:v2.1
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">restart</span>: always
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">ports</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#bd93f9">8181</span>:<span style="color:#bd93f9">8181</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">environment</span>:
+</span></span><span style="display:flex;"><span>      - MINDOC_RUN_MODE=prod
+</span></span><span style="display:flex;"><span>      - MINDOC_DB_ADAPTER=sqlite3
+</span></span><span style="display:flex;"><span>      - MINDOC_DB_DATABASE=./database/mindoc.db
+</span></span><span style="display:flex;"><span>      - MINDOC_CACHE=true
+</span></span><span style="display:flex;"><span>      - MINDOC_CACHE_PROVIDER=file
+</span></span><span style="display:flex;"><span>      - MINDOC_ENABLE_EXPORT=true
+</span></span><span style="display:flex;"><span>      - MINDOC_BASE_URL=
+</span></span><span style="display:flex;"><span>      - MINDOC_CDN_IMG_URL=
+</span></span><span style="display:flex;"><span>      - MINDOC_CDN_CSS_URL=
+</span></span><span style="display:flex;"><span>      - MINDOC_CDN_JS_URL=
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">volumes</span>:
+</span></span><span style="display:flex;"><span>      - ./conf:/mindoc/conf
+</span></span><span style="display:flex;"><span>      - ./static:/mindoc/static
+</span></span><span style="display:flex;"><span>      - ./views:/mindoc/views
+</span></span><span style="display:flex;"><span>      - ./uploads:/mindoc/uploads
+</span></span><span style="display:flex;"><span>      - ./runtime:/mindoc/runtime
+</span></span><span style="display:flex;"><span>      - ./database:/mindoc/database
+</span></span></code></pre></div><p><code>docker-compose up -d</code> 启动就可以了，登录账号是 admin，密码是 123456，进去后记得修改密码</p>
+<p>但是会碰到导出 <code>PDF</code> 格式文档时一直让等待，其实是出问题了。</p>
+<p>还要注意，<code>docker-compose.yaml</code> 中 <code>- MINDOC_ENABLE_EXPORT=true</code> 这里为 <code>true</code> 时，才能导出，从其他地方找的 <code>docker-compose.yaml</code> 中默认这里是 <code>false</code>。</p>
+<h3 id="2-使用-mysql-数据库部署">2. 使用 mysql 数据库部署</h3>
+<p>mysql 版本可以自己定，比如 5.6、5.7、8.0 等等。但是要注意的一点是，比如用 5.7 版本的数据库启动了，后续迁移到新机器想换 msyql 版本，直接换是不行的，只能导出数据，再导入到新的数据库中，否则会起不来。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff79c6">version</span>: <span style="color:#f1fa8c">&#39;3&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">services</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">mindoc</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">container_name</span>: mindoc
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">image</span>: registry.cn-hangzhou.aliyuncs.com/mindoc-org/mindoc:v2.1
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">restart</span>: always
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">depends_on</span>:
+</span></span><span style="display:flex;"><span>      - mindoc_mysql
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">ports</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#bd93f9">8181</span>:<span style="color:#bd93f9">8181</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">environment</span>:
+</span></span><span style="display:flex;"><span>      - MINDOC_RUN_MODE=prod
+</span></span><span style="display:flex;"><span>      - MINDOC_DB_ADAPTER=mysql
+</span></span><span style="display:flex;"><span>      - MINDOC_DB_HOST=mindoc_mysql
+</span></span><span style="display:flex;"><span>      - MINDOC_DB_DATABASE=mindoc
+</span></span><span style="display:flex;"><span>      - MINDOC_DB_USERNAME=mindoc
+</span></span><span style="display:flex;"><span>      - MINDOC_DB_PASSWORD=passwd_mindoc
+</span></span><span style="display:flex;"><span>      - MINDOC_CACHE=true
+</span></span><span style="display:flex;"><span>      - MINDOC_CACHE_PROVIDER=file
+</span></span><span style="display:flex;"><span>      - MINDOC_ENABLE_EXPORT=true
+</span></span><span style="display:flex;"><span>      - MINDOC_BASE_URL=
+</span></span><span style="display:flex;"><span>      - MINDOC_CDN_IMG_URL=
+</span></span><span style="display:flex;"><span>      - MINDOC_CDN_CSS_URL=
+</span></span><span style="display:flex;"><span>      - MINDOC_CDN_JS_URL=
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">volumes</span>:
+</span></span><span style="display:flex;"><span>      - ./conf:/mindoc/conf
+</span></span><span style="display:flex;"><span>      - ./static:/mindoc/static
+</span></span><span style="display:flex;"><span>      - ./views:/mindoc/views
+</span></span><span style="display:flex;"><span>      - ./uploads:/mindoc/uploads
+</span></span><span style="display:flex;"><span>      - ./runtime:/mindoc/runtime
+</span></span><span style="display:flex;"><span>      - ./database:/mindoc/database
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">mindoc_mysql</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">container_name</span>: mindoc_mysql
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">image</span>: mysql:5.7
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">restart</span>: always
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">ports</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#bd93f9">3307</span>:<span style="color:#bd93f9">3306</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">environment</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#ff79c6">MYSQL_ROOT_PASSWORD</span>: mindoc
+</span></span><span style="display:flex;"><span>      <span style="color:#ff79c6">MYSQL_DATABASE</span>: mindoc
+</span></span><span style="display:flex;"><span>      <span style="color:#ff79c6">MYSQL_USER</span>: mindoc
+</span></span><span style="display:flex;"><span>      <span style="color:#ff79c6">MYSQL_PASSWORD</span>: passwd_mindoc
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">volumes</span>:
+</span></span><span style="display:flex;"><span>      - ./mysql:/var/lib/mysql
+</span></span><span style="display:flex;"><span>      - /etc/localtime:/etc/localtime:ro
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">command</span>:
+</span></span><span style="display:flex;"><span>      [
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#39;mysqld&#39;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#39;--character-set-server=utf8mb4&#39;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#39;--collation-server=utf8mb4_unicode_ci&#39;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f1fa8c">&#39;--max_allowed_packet=200M&#39;</span>
+</span></span><span style="display:flex;"><span>      ]
+</span></span></code></pre></div><p><code>docker-compose up -d</code> 启动就可以了。</p>
+<h2 id="二解决导出问题">二、解决导出问题</h2>
+<p><a href="https://github.com/mindoc-org/mindoc/issues/807">查到这里</a></p>
+<p>据说是不兼容 calibre 新版本的问题，Dockerfile 构建镜像时会一直使用最新版本的 calibre，但是目前不兼容最新版 6，可回滚到 5 版本，首先切换到部署 <code>docker-compose.yaml</code> 的目录</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">cd</span> /path/to/mindoc
+</span></span><span style="display:flex;"><span>wget https://download.calibre-ebook.com/5.44.0/calibre-5.44.0-x86_64.txz
+</span></span><span style="display:flex;"><span>mkdir calibre
+</span></span><span style="display:flex;"><span>tar xJof calibre-5.44.0-x86_64.txz -C ./calibre
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 停止启动的 mindoc</span>
+</span></span><span style="display:flex;"><span>docker-compose down
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 修改 docker-compose.yaml，在 volumes 最后面加上一行 - ./calibre:/opt/calibre，如下：</span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># volumes:</span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">#   - ./conf:/mindoc/conf</span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">#   - ./static:/mindoc/static</span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">#   - ./views:/mindoc/views</span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">#   - ./uploads:/mindoc/uploads</span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">#   - ./runtime:/mindoc/runtime</span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">#   - ./database:/mindoc/database</span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">#   - ./calibre:/opt/calibre</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># 启动 mindoc</span>
+</span></span><span style="display:flex;"><span>docker-compose up -d
+</span></span></code></pre></div>
+
+                
+                
+<div class="entry-shang text-center">
+    
+	    <p> 「如果这篇文章对你有用,请随意打赏」</p>
+	
+	<button class="zs show-zs btn btn-bred">赞赏支持</button>
+</div>
+<div class="zs-modal-bg"></div>
+<div class="zs-modal-box">
+	<div class="zs-modal-head">
+		<button type="button" class="close">×</button>
+		<span class="author"><a href="https://jacobc.vercel.app/"><img src="/img/favicon.png" />Jacobc&#39; Blog</a></span>
+        
+	        <p class="tip"><i></i><span>如果这篇文章对你有用,请随意打赏</span></p>
+		
+ 
+	</div>
+	<div class="zs-modal-body">
+		<div class="zs-modal-btns">
+			<button class="btn btn-blink" data-num="2">2元</button>
+			<button class="btn btn-blink" data-num="5">5元</button>
+			<button class="btn btn-blink" data-num="10">10元</button>
+			<button class="btn btn-blink" data-num="50">50元</button>
+			<button class="btn btn-blink" data-num="100">100元</button>
+			<button class="btn btn-blink" data-num="1">任意金额</button>
+		</div>
+		<div class="zs-modal-pay">
+			<button class="btn btn-bred" id="pay-text">2元</button>
+			<p>使用<span id="pay-type">微信</span>扫描二维码完成支付</p>
+			<img src="/img/reward/wechat-2.png"  id="pay-image"/>
+		</div>
+	</div>
+	<div class="zs-modal-footer">
+		<label><input type="radio" name="zs-type" value="wechat" class="zs-type" checked="checked"><span ><span class="zs-wechat"><img src="/img/reward/wechat-btn.png"/></span></label>
+		<label><input type="radio" name="zs-type" value="alipay" class="zs-type" class="zs-alipay"><img src="/img/reward/alipay-btn.png"/></span></label>
+	</div>
+</div>
+<script type="text/javascript" src="/js/reward.js"></script>
+
+                
+
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/post/linux/centos7-glibc2.17-upgrade-to-2.29/" data-toggle="tooltip" data-placement="top" title="CentOS7 glibc 2.17 升级到 2.29">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/post/vscode-ssh-%E8%BF%9E%E6%8E%A5%E4%B8%8D%E4%B8%8A%E9%97%AE%E9%A2%98/" data-toggle="tooltip" data-placement="top" title="VSCode ssh-remote 连接不上问题">Next
+                            Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+                
+            </div>
+
+            
+            
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+            
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        <a href="/tags/android" title="android">
+                            android
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/biz" title="biz">
+                            biz
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/centos" title="centos">
+                            centos
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/centos7" title="centos7">
+                            centos7
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/charles" title="charles">
+                            charles
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/cobra" title="cobra">
+                            cobra
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/cockroach" title="cockroach">
+                            cockroach
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/docker" title="docker">
+                            docker
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/flutter" title="flutter">
+                            flutter
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/git" title="git">
+                            git
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/gitea" title="gitea">
+                            gitea
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/glibc" title="glibc">
+                            glibc
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/golang" title="golang">
+                            golang
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/jenkins" title="jenkins">
+                            jenkins
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/k8s" title="k8s">
+                            k8s
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/linux" title="linux">
+                            linux
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/mac" title="mac">
+                            mac
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/mindoc" title="mindoc">
+                            mindoc
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/mongo" title="mongo">
+                            mongo
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/mysql" title="mysql">
+                            mysql
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/oh-my-zsh" title="oh-my-zsh">
+                            oh-my-zsh
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/react" title="react">
+                            react
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/ssh" title="ssh">
+                            ssh
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/termux" title="termux">
+                            termux
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/%E5%90%8E%E7%AB%AF" title="后端">
+                            后端
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8" title="服务器">
+                            服务器
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/%E7%8E%AF%E5%A2%83" title="环境">
+                            环境
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/%E7%BA%BF%E7%A8%8B" title="线程">
+                            线程
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/%E8%BD%AF%E4%BB%B6" title="软件">
+                            软件
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/%E8%BF%9B%E7%A8%8B" title="进程">
+                            进程
+                        </a>
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+                <section>
+                    <hr>
+                    <h5>FRIENDS</h5>
+                    <ul class="list-inline">
+                        
+                        <li><a target="_blank" href="https://hugo-pages.vercel.app">cengchengjie的博客</a></li>
+                        
+                    </ul>
+                </section>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">                  
+                    
+                    <li>
+                        <a href="mailto:liu666888@111.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		           
+                    
+                    
+                    
+                    
+
+		            
+                    
+                    <li>
+                        <a target="_blank" href="/liu1773867204">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-weixin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		            
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/Jsharkc">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		            
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+            
+            
+            
+           
+                   <li>
+                       <a href='' rel="alternate" type="application/rss+xml" title="Jacobc&#39; Blog" >
+                           <span class="fa-stack fa-lg">
+                               <i class="fas fa-circle fa-stack-2x"></i>
+                               <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+                           </span>
+                       </a>
+                   </li>
+            
+             </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; Jacobc&#39; Blog 2025
+                    <br>
+                    <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=zhaohuabing&repo=hugo-theme-cleanwhite&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function loadAsync(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        loadAsync("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    loadAsync("https://cdn.jsdelivr.net/npm/fastclick@1.0.6/lib/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+    function generateCatalog(selector) {
+
+        
+        
+        
+        
+            _containerSelector = 'div.post-container'
+        
+
+        
+        var P = $(_containerSelector), a, n, t, l, i, c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+
+        
+        $(selector).html('')
+
+        
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#" + $(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="' + i + '" rel="nofollow">' + t + '</a>');
+            l = $('<li class="' + n + '_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;
+    }
+
+    generateCatalog(".catalog-body");
+
+    
+    $(".catalog-toggle").click((function (e) {
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    
+
+
+    loadAsync("\/js\/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
+
+
+</body>
+</html>

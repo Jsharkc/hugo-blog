@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>biz on Jacobc&#39; Blog</title>
+    <link>https://jacobc.vercel.app/tags/biz/</link>
+    <description>Recent content in biz on Jacobc&#39; Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 23 May 2024 14:12:32 +0000</lastBuildDate><atom:link href="https://jacobc.vercel.app/tags/biz/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>一个报警引发的思考</title>
+      <link>https://jacobc.vercel.app/post/biz/alert-think/</link>
+      <pubDate>Thu, 23 May 2024 14:12:32 +0000</pubDate>
+      
+      <guid>https://jacobc.vercel.app/post/biz/alert-think/</guid>
+      <description>刚进入一家公司，老员工裁了一批，留下的也只熟悉自己那部分代码，有一部分大家都不熟悉，CEO 找技术 VP 说了报警的事，觉得每天报警太多了，也没人处</description>
+    </item>
+    
+    <item>
+      <title>一些功能、工具记录</title>
+      <link>https://jacobc.vercel.app/post/biz/biz-tool/</link>
+      <pubDate>Thu, 23 May 2024 14:12:32 +0000</pubDate>
+      
+      <guid>https://jacobc.vercel.app/post/biz/biz-tool/</guid>
+      <description>关于工具 tableflip 优雅热升级工具 singleflight 防缓存击穿利器 关于功能 流程编排 rulego go-workflow 上线发布系统 Spug SQL 审核系统 hhyo/Archery 多 Agent crewai.com metaAI</description>
+    </item>
+    
+    <item>
+      <title>问题记录</title>
+      <link>https://jacobc.vercel.app/post/biz/business-probleam-record/</link>
+      <pubDate>Thu, 23 May 2024 14:12:32 +0000</pubDate>
+      
+      <guid>https://jacobc.vercel.app/post/biz/business-probleam-record/</guid>
+      <description>关于报警 刚进入一家公司，老员工裁了一批，留下的也只熟悉自己那部分代码，有一部分大家都不熟悉，CEO 找技术 VP 说了报警的事，觉得每天报警太多了，</description>
+    </item>
+    
+  </channel>
+</rss>

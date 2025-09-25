@@ -6,40 +6,94 @@
     <description>Recent content in Posts on Jacobc&#39; Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 07 Nov 2022 10:34:00 +0000</lastBuildDate><atom:link href="https://jacobc.vercel.app/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 23 May 2024 14:12:32 +0000</lastBuildDate><atom:link href="https://jacobc.vercel.app/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>一个报警引发的思考</title>
+      <link>https://jacobc.vercel.app/post/biz/alert-think/</link>
+      <pubDate>Thu, 23 May 2024 14:12:32 +0000</pubDate>
+      
+      <guid>https://jacobc.vercel.app/post/biz/alert-think/</guid>
+      <description>刚进入一家公司，老员工裁了一批，留下的也只熟悉自己那部分代码，有一部分大家都不熟悉，CEO 找技术 VP 说了报警的事，觉得每天报警太多了，也没人处</description>
+    </item>
+    
+    <item>
+      <title>一些功能、工具记录</title>
+      <link>https://jacobc.vercel.app/post/biz/biz-tool/</link>
+      <pubDate>Thu, 23 May 2024 14:12:32 +0000</pubDate>
+      
+      <guid>https://jacobc.vercel.app/post/biz/biz-tool/</guid>
+      <description>关于工具 tableflip 优雅热升级工具 singleflight 防缓存击穿利器 关于功能 流程编排 rulego go-workflow 上线发布系统 Spug SQL 审核系统 hhyo/Archery 多 Agent crewai.com metaAI</description>
+    </item>
+    
+    <item>
+      <title>问题记录</title>
+      <link>https://jacobc.vercel.app/post/biz/business-probleam-record/</link>
+      <pubDate>Thu, 23 May 2024 14:12:32 +0000</pubDate>
+      
+      <guid>https://jacobc.vercel.app/post/biz/business-probleam-record/</guid>
+      <description>关于报警 刚进入一家公司，老员工裁了一批，留下的也只熟悉自己那部分代码，有一部分大家都不熟悉，CEO 找技术 VP 说了报警的事，觉得每天报警太多了，</description>
+    </item>
+    
+    <item>
+      <title>VSCode ssh-remote 连接不上问题</title>
+      <link>https://jacobc.vercel.app/post/vscode-ssh-%E8%BF%9E%E6%8E%A5%E4%B8%8D%E4%B8%8A%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Wed, 28 Feb 2024 21:42:23 +0000</pubDate>
+      
+      <guid>https://jacobc.vercel.app/post/vscode-ssh-%E8%BF%9E%E6%8E%A5%E4%B8%8D%E4%B8%8A%E9%97%AE%E9%A2%98/</guid>
+      <description>背景 官方问题 传送门，发现是远程机器有一些需求，下面先列一下: kernel &amp;gt;= 4.18, glibc &amp;gt;=2.28, libstdc++ &amp;gt;= 3.4.25, Python 2.6 or 2.7, tar 然后是通过下面的命令，可以检查上面这些需求的版本 Run ldd &amp;ndash;version</description>
+    </item>
+    
+    <item>
+      <title>Docker-deploy-MinDoc</title>
+      <link>https://jacobc.vercel.app/post/docker/docker-deploy-mindoc/</link>
+      <pubDate>Wed, 08 Nov 2023 19:21:24 +0800</pubDate>
+      
+      <guid>https://jacobc.vercel.app/post/docker/docker-deploy-mindoc/</guid>
+      <description>MinDoc 地址 一、使用 docker-compose 部署 MinDoc 1. 使用 sqlite3 数据库 version: &amp;#39;3&amp;#39; services: mindoc: container_name: mindoc image: registry.cn-hangzhou.aliyuncs.com/mindoc-org/mindoc:v2.1 restart: always ports: - 8181:8181 environment: - MINDOC_RUN_MODE=prod - MINDOC_DB_ADAPTER=sqlite3 - MINDOC_DB_DATABASE=./database/mindoc.db - MINDOC_CACHE=true - MINDOC_CACHE_PROVIDER=file - MINDOC_ENABLE_EXPORT=true - MINDOC_BASE_URL= - MINDOC_CDN_IMG_URL= - MINDOC_CDN_CSS_URL= - MINDOC_CDN_JS_URL= volumes: - ./conf:/mindoc/conf - ./static:/mindoc/static - ./views:/mindoc/views - ./uploads:/mindoc/uploads - ./runtime:/mindoc/runtime - ./database:/mindoc/database docker-compose up -d 启动</description>
+    </item>
+    
+    <item>
+      <title>CentOS7 glibc 2.17 升级到 2.29</title>
+      <link>https://jacobc.vercel.app/post/linux/centos7-glibc2.17-upgrade-to-2.29/</link>
+      <pubDate>Wed, 25 Oct 2023 14:37:03 +0800</pubDate>
+      
+      <guid>https://jacobc.vercel.app/post/linux/centos7-glibc2.17-upgrade-to-2.29/</guid>
+      <description>原因： 遇到以下问题 ❯ node node: /lib64/libm.so.6: version `GLIBC_2.27&amp;#39; not found (required by node) node: /lib64/libc.so.6: version `GLIBC_2.25&amp;#39; not found (required by node) node: /lib64/libc.so.6: version `GLIBC_2.28&amp;#39; not found (required by node) node: /lib64/libstdc++.so.6: version `CXXABI_1.3.9&amp;#39; not found (required by node) node: /lib64/libstdc++.so.6: version `GLIBCXX_3.4.20&amp;#39; not found (required by node) node: /lib64/libstdc++.so.6: version `GLIBCXX_3.4.21&amp;#39; not found (required by node) 需要升级 glibc</description>
+    </item>
+    
     <item>
       <title>CentOS 以 Docker 方式部署 Gitea</title>
-      <link>https://jacobc.vercel.app/post/centos-install-gitea/</link>
+      <link>https://jacobc.vercel.app/post/linux/centos-install-gitea/</link>
       <pubDate>Mon, 07 Nov 2022 10:34:00 +0000</pubDate>
       
-      <guid>https://jacobc.vercel.app/post/centos-install-gitea/</guid>
+      <guid>https://jacobc.vercel.app/post/linux/centos-install-gitea/</guid>
       <description>CentOS 以 Docker 方式部署 Gitea 一、下载 Jenkins 镜像 Gitea 提供了标准的容器镜像（gitea/gitea），统一支持 SQLite、MySQL、PostgreSQL 和 SQL Server</description>
     </item>
     
     <item>
       <title>CentOS 以 Docker 方式部署 Jenkins</title>
-      <link>https://jacobc.vercel.app/post/centos-install-jenkins/</link>
+      <link>https://jacobc.vercel.app/post/linux/centos-install-jenkins/</link>
       <pubDate>Wed, 02 Nov 2022 16:33:00 +0000</pubDate>
       
-      <guid>https://jacobc.vercel.app/post/centos-install-jenkins/</guid>
+      <guid>https://jacobc.vercel.app/post/linux/centos-install-jenkins/</guid>
       <description>CentOS 以 Docker 方式部署 Jenkins 一、Docker 安装 Jenkins 1.1 下载 Jenkins 镜像 Jenkins 有两个产品线，一个是稳定版（Stable[LTS]），一个是新功能版（Regular[W</description>
     </item>
     
     <item>
       <title>限制内存 mongo docker-compsoe 部署</title>
-      <link>https://jacobc.vercel.app/post/mongo-docker-deploy/</link>
+      <link>https://jacobc.vercel.app/post/docker/mongo-docker-deploy/</link>
       <pubDate>Sat, 02 Apr 2022 17:29:23 +8000</pubDate>
       
-      <guid>https://jacobc.vercel.app/post/mongo-docker-deploy/</guid>
+      <guid>https://jacobc.vercel.app/post/docker/mongo-docker-deploy/</guid>
       <description>用 docker 起 mongo，有两种限制方式： 通过 Docker 限制内存 通过 MongoDB 自己的配置文件限制 一、通过 Docker 限制内存 内存限制相关参数： 参数 简介 -m, &amp;ndash;memory 内存限制，格式：数字</description>
     </item>
     
     <item>
       <title>Centos 安装 oh-my-zsh</title>
-      <link>https://jacobc.vercel.app/post/centos-install-oh-my-zsh/</link>
+      <link>https://jacobc.vercel.app/post/linux/centos-install-oh-my-zsh/</link>
       <pubDate>Thu, 17 Mar 2022 14:29:38 +0000</pubDate>
       
-      <guid>https://jacobc.vercel.app/post/centos-install-oh-my-zsh/</guid>
+      <guid>https://jacobc.vercel.app/post/linux/centos-install-oh-my-zsh/</guid>
       <description>查看、安装 zsh 查看是否安装了 zsh # 方法一： chsh -l # 方法二： cat /etc/shells # 可能结果： /bin/sh /bin/bash /sbin/nologin /usr/bin/sh /usr/bin/bash /usr/sbin/nologin /bin/zsh # 如果有 /bin/zsh 代表已经安装，反之则没有 安装 zsh yum install -y zsh 切换 shell 为 zsh</description>
     </item>
     
@@ -54,19 +108,19 @@
     
     <item>
       <title>kubeadm 安装 k8s</title>
-      <link>https://jacobc.vercel.app/post/k8s-install-cluster/</link>
-      <pubDate>Tue, 16 Nov 2021 11:42:23 +8000</pubDate>
+      <link>https://jacobc.vercel.app/post/k8s/k8s-install-cluster/</link>
+      <pubDate>Tue, 16 Nov 2021 11:42:23 +0800</pubDate>
       
-      <guid>https://jacobc.vercel.app/post/k8s-install-cluster/</guid>
+      <guid>https://jacobc.vercel.app/post/k8s/k8s-install-cluster/</guid>
       <description>1. 环境初始化 1.1 安装并配置 Docker 1.1.1 安装 Docker 安装 Docker 参考 Docker安装 1.1.2 配置 cgroup driver 编辑 /etc/docker/daemon.json 文件，没有则创建，添加如下内容： { &amp;#34;exec-opts&amp;#34;: [&amp;#34;native.cgroupdriver=systemd&amp;#34;] } 1.1.3 配置国内 registry { &amp;#34;exec-opts&amp;#34;: [&amp;#34;native.cgroupdriver=systemd&amp;#34;], &amp;#34;registry-mirrors&amp;#34;:[&amp;#34;https://hub-mirror.c.163.com&amp;#34;] } 1.1.4</description>
     </item>
     
     <item>
       <title>Centos7 安装 Docker</title>
-      <link>https://jacobc.vercel.app/post/docker-install-centos7/</link>
+      <link>https://jacobc.vercel.app/post/docker/docker-install-centos7/</link>
       <pubDate>Mon, 15 Nov 2021 17:42:23 +8000</pubDate>
       
-      <guid>https://jacobc.vercel.app/post/docker-install-centos7/</guid>
+      <guid>https://jacobc.vercel.app/post/docker/docker-install-centos7/</guid>
       <description>一条命令安装 官方脚本： curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun 国内 daocloud 安装命令： curl -sSL https://get.daocloud.io/docker | sh 手动安装指定版本 卸载旧版本 sudo yum remove docker \ docker-client \ docker-client-latest \ docker-common \ docker-latest \ docker-latest-logrotate \ docker-logrotate \ docker-engine \ container-selinux \ docker-selinux 安装</description>
     </item>
     
@@ -81,19 +135,19 @@
     
     <item>
       <title>Golang 按大小 or 时间切割日志</title>
-      <link>https://jacobc.vercel.app/post/golang-log-divide/</link>
+      <link>https://jacobc.vercel.app/post/go/golang-log-divide/</link>
       <pubDate>Sun, 26 Sep 2021 19:05:03 +0800</pubDate>
       
-      <guid>https://jacobc.vercel.app/post/golang-log-divide/</guid>
+      <guid>https://jacobc.vercel.app/post/go/golang-log-divide/</guid>
       <description>Log 用的 go.uber.org/zap 库。 按大小切割日志 按大小切割日志，用到 github.com/natefinch/lumberjack 库，代码如下： package log import ( &amp;#34;fmt&amp;#34; &amp;#34;os&amp;#34; &amp;#34;strings&amp;#34; &amp;#34;time&amp;#34; &amp;#34;github.com/natefinch/lumberjack&amp;#34; &amp;#34;go.uber.org/zap&amp;#34; &amp;#34;go.uber.org/zap/zapcore&amp;#34; ) var Sugar *zap.SugaredLogger = nil var Raw *zap.Logger = nil // LogInit 初始化日志库 // dev 开发模式，日志</description>
     </item>
     
     <item>
       <title>Linux防火墙-iptables</title>
-      <link>https://jacobc.vercel.app/post/linux-iptables/</link>
+      <link>https://jacobc.vercel.app/post/linux/linux-iptables/</link>
       <pubDate>Thu, 02 Sep 2021 19:42:23 +0000</pubDate>
       
-      <guid>https://jacobc.vercel.app/post/linux-iptables/</guid>
+      <guid>https://jacobc.vercel.app/post/linux/linux-iptables/</guid>
       <description>Linux防火墙&amp;ndash;iptables学习 iptables是Linux系统提供的一个强大的防火墙工具，可以实现包过滤、包重定向、NA</description>
     </item>
     
@@ -117,37 +171,37 @@
     
     <item>
       <title>Go 程序的性能优化及 pprof 的使用</title>
-      <link>https://jacobc.vercel.app/post/go-pprof/</link>
+      <link>https://jacobc.vercel.app/post/go/go-pprof/</link>
       <pubDate>Sat, 08 May 2021 11:17:35 +0000</pubDate>
       
-      <guid>https://jacobc.vercel.app/post/go-pprof/</guid>
+      <guid>https://jacobc.vercel.app/post/go/go-pprof/</guid>
       <description>Go 程序的性能优化及 pprof 的使用 转自snowInPluto 程序的性能优化无非就是对程序占用资源的优化。对于服务器而言，最重要的两项资源莫过于 CPU 和内</description>
     </item>
     
     <item>
       <title>文件描述符 fd</title>
-      <link>https://jacobc.vercel.app/post/linux-file-descriptor/</link>
+      <link>https://jacobc.vercel.app/post/linux/linux-file-descriptor/</link>
       <pubDate>Mon, 15 Mar 2021 18:13:00 +0000</pubDate>
       
-      <guid>https://jacobc.vercel.app/post/linux-file-descriptor/</guid>
+      <guid>https://jacobc.vercel.app/post/linux/linux-file-descriptor/</guid>
       <description>文件描述符（File descriptor）是计算机科学中的一个术语，是一个用于表述指向文件的引用的抽象化概念。 文件描述符在形式上是一个非负整</description>
     </item>
     
     <item>
       <title>MongoDB 的正确打开方式 Part1</title>
-      <link>https://jacobc.vercel.app/post/mongo-use-1/</link>
+      <link>https://jacobc.vercel.app/post/db/mongo-use-1/</link>
       <pubDate>Sat, 05 Dec 2020 16:52:24 +0000</pubDate>
       
-      <guid>https://jacobc.vercel.app/post/mongo-use-1/</guid>
+      <guid>https://jacobc.vercel.app/post/db/mongo-use-1/</guid>
       <description>MongoDB 的正确打开方式 Part1 在关系型数据库中，处理关系时，总是会有一张关系表，不论关系的规模，但在 MongoDB 数据库中，需要考虑关系的规模，我们用一对多关系举例</description>
     </item>
     
     <item>
       <title>Mysql update 结合另一个表更新数据</title>
-      <link>https://jacobc.vercel.app/post/mysql-update-%E7%BB%93%E5%90%88%E5%8F%A6%E4%B8%80%E4%B8%AA%E8%A1%A8%E6%9B%B4%E6%96%B0%E6%95%B0%E6%8D%AE/</link>
+      <link>https://jacobc.vercel.app/post/db/mysql-update-user-other-table/</link>
       <pubDate>Tue, 10 Nov 2020 14:50:32 +0000</pubDate>
       
-      <guid>https://jacobc.vercel.app/post/mysql-update-%E7%BB%93%E5%90%88%E5%8F%A6%E4%B8%80%E4%B8%AA%E8%A1%A8%E6%9B%B4%E6%96%B0%E6%95%B0%E6%8D%AE/</guid>
+      <guid>https://jacobc.vercel.app/post/db/mysql-update-user-other-table/</guid>
       <description>有时 update 更新语句会需要根据另一个表进行更新，举例如下： -- 方式一： update tableA a, tableB b set a.Name=b.Name, a.Age=b.Age where a.IDCard=b.IDCard; -- 方式二: update tableA a inner join tableB b on a.IDCard=b.IDCard set a.Name=b.Name, a.Age=b.Age;</description>
     </item>
     
@@ -180,46 +234,46 @@
     
     <item>
       <title>Cobra - 一个 Golang 命令行项目生成工具</title>
-      <link>https://jacobc.vercel.app/post/go-cobra/</link>
+      <link>https://jacobc.vercel.app/post/go/go-cobra/</link>
       <pubDate>Sun, 17 May 2020 15:07:14 +0000</pubDate>
       
-      <guid>https://jacobc.vercel.app/post/go-cobra/</guid>
+      <guid>https://jacobc.vercel.app/post/go/go-cobra/</guid>
       <description>Cobra - Golang 命令行库 简介： Cobra 是一个创建 CLI 命令行的 golang 库。 组成： Cobra 结构由三部分组成：命令( Command )、参数( Args )、标志( Flag )。 type Command struct { Use string // The one-line usage message. Short string // The</description>
     </item>
     
     <item>
       <title>Golang Interface 解析</title>
-      <link>https://jacobc.vercel.app/post/go-interface/</link>
+      <link>https://jacobc.vercel.app/post/go/go-interface/</link>
       <pubDate>Mon, 06 Apr 2020 20:27:43 +0000</pubDate>
       
-      <guid>https://jacobc.vercel.app/post/go-interface/</guid>
+      <guid>https://jacobc.vercel.app/post/go/go-interface/</guid>
       <description>Interface 解析 原文链接 先看一段代码： func Foo(x interface{}) { if x == nil { fmt.Println(&amp;#34;empty interface&amp;#34;) return } fmt.Println(&amp;#34;non-empty interface&amp;#34;) } func main() { var x *int = nil Foo(x) } 上面的例子的输出结果如下 $ go run test_interface.go non-empty interface 可能你会感觉奇怪，为什么</description>
     </item>
     
     <item>
       <title>Golang slice 切片原理</title>
-      <link>https://jacobc.vercel.app/post/go-slice/</link>
+      <link>https://jacobc.vercel.app/post/go/go-slice/</link>
       <pubDate>Tue, 10 Mar 2020 19:27:43 +0000</pubDate>
       
-      <guid>https://jacobc.vercel.app/post/go-slice/</guid>
+      <guid>https://jacobc.vercel.app/post/go/go-slice/</guid>
       <description>Golang slice 切片原理 ​ golang 中的 slice 是比较好用的一种结构，能根据需求变长，相对于 array 的死板，slice 更加灵活也更加常用，有道说：知其然，知其所以然。现在，</description>
     </item>
     
     <item>
       <title>Jobrunner 源码解析</title>
-      <link>https://jacobc.vercel.app/post/jobrunner/</link>
+      <link>https://jacobc.vercel.app/post/go/jobrunner/</link>
       <pubDate>Mon, 27 Jan 2020 11:07:35 +0000</pubDate>
       
-      <guid>https://jacobc.vercel.app/post/jobrunner/</guid>
+      <guid>https://jacobc.vercel.app/post/go/jobrunner/</guid>
       <description>s 安装 go get github.com/bamzi/jobrunner 使用 eg1 package main import &amp;#34;github.com/bamzi/jobrunner&amp;#34; func main() { jobrunner.Start() jobrunner.Schedule(&amp;#34;@every 5s&amp;#34;, ReminderEmails{}) select{} } type ReminderEmails struct {} func (e ReminderEmails) Run() { fmt.Printf(&amp;#34;Every 5 sec send reminder emails \n&amp;#34;) } ***解析：***在 main() 函数中，jobrunner 是导入的包, jobrunner.Start()</description>
     </item>
     
     <item>
       <title>Golang I/O 包的妙用</title>
-      <link>https://jacobc.vercel.app/post/go-io/</link>
+      <link>https://jacobc.vercel.app/post/go/go-io/</link>
       <pubDate>Sat, 14 Dec 2019 10:35:43 +0000</pubDate>
       
-      <guid>https://jacobc.vercel.app/post/go-io/</guid>
+      <guid>https://jacobc.vercel.app/post/go/go-io/</guid>
       <description>Golang I/O 包的妙用 golang标准库对io的抽象非常精巧，各个组件可以随意组合，可以作为接口设计的典范。这篇文章结合一个实际的例子来和大家分享一下</description>
     </item>
     
@@ -237,55 +291,46 @@
     
     <item>
       <title>Go注意点总结</title>
-      <link>https://jacobc.vercel.app/post/go-note/</link>
+      <link>https://jacobc.vercel.app/post/go/go-note/</link>
       <pubDate>Fri, 15 Nov 2019 21:34:10 +0000</pubDate>
       
-      <guid>https://jacobc.vercel.app/post/go-note/</guid>
+      <guid>https://jacobc.vercel.app/post/go/go-note/</guid>
       <description>Go &amp;gt;注意点&amp;lt; 总结 1. 布尔类型 ​ 布尔类型 不能 接受其他类型的赋值，不支持 自动或者强制的类型转换 var b bool b = 1 // 编译错误 b = bool(1) // 编译错误 2.</description>
     </item>
     
     <item>
       <title>Docker Note</title>
-      <link>https://jacobc.vercel.app/post/docker-note/</link>
+      <link>https://jacobc.vercel.app/post/docker/docker-note/</link>
       <pubDate>Sat, 12 Oct 2019 16:52:24 +0000</pubDate>
       
-      <guid>https://jacobc.vercel.app/post/docker-note/</guid>
+      <guid>https://jacobc.vercel.app/post/docker/docker-note/</guid>
       <description>Docker Note 镜像 虚悬镜像 ​ 没有仓库名，也没有标签，均为&amp;lt;none&amp;gt;的为虚悬镜像： &amp;lt;none&amp;gt; &amp;lt;none&amp;gt; 00285df0df87 5 days ago 342 MB ​ 由于新旧镜像同名，旧镜像名称被取消，从</description>
     </item>
     
     <item>
       <title>Golang 中不存在引用传参</title>
-      <link>https://jacobc.vercel.app/post/go-no-ref-param/</link>
+      <link>https://jacobc.vercel.app/post/go/go-no-ref-param/</link>
       <pubDate>Fri, 13 Sep 2019 13:27:43 +0000</pubDate>
       
-      <guid>https://jacobc.vercel.app/post/go-no-ref-param/</guid>
+      <guid>https://jacobc.vercel.app/post/go/go-no-ref-param/</guid>
       <description>Golang 中不存在引用传参 ​原文链接 翻译：Jsharkc 什么是引用变量 ? 在 C++ 语言中，你可以为已存在的变量声明一个别名，这就是引用变量： #include &amp;lt;stdio.h&amp;gt; int main() { int a</description>
     </item>
     
     <item>
-      <title>Git命令清单</title>
-      <link>https://jacobc.vercel.app/post/git-command/</link>
-      <pubDate>Wed, 28 Aug 2019 22:49:10 +0000</pubDate>
-      
-      <guid>https://jacobc.vercel.app/post/git-command/</guid>
-      <description>Git专有名词解释： Workspace：工作区 Index / Stage：暂存区 Repository：仓库区（或本地仓库） Remote：远程仓库 一、新建</description>
-    </item>
-    
-    <item>
       <title>初探 Cockroachdb</title>
-      <link>https://jacobc.vercel.app/post/cockroachdb/</link>
+      <link>https://jacobc.vercel.app/post/db/cockroachdb/</link>
       <pubDate>Sat, 17 Aug 2019 14:50:37 +0000</pubDate>
       
-      <guid>https://jacobc.vercel.app/post/cockroachdb/</guid>
+      <guid>https://jacobc.vercel.app/post/db/cockroachdb/</guid>
       <description>初探 Cockroachdb 1.创建网桥 由于在单个主机上运行多个 Docker 容器，因此每个容器有一个 CockroachDB 节点，需要创建Docker所指的桥接网络。桥接网络将使容器能够作为单个</description>
     </item>
     
     <item>
       <title>十条有用的 GO 小技巧</title>
-      <link>https://jacobc.vercel.app/post/go-tips-ten-useful/</link>
+      <link>https://jacobc.vercel.app/post/go/go-tips-ten-useful/</link>
       <pubDate>Mon, 29 Jul 2019 21:42:23 +0000</pubDate>
       
-      <guid>https://jacobc.vercel.app/post/go-tips-ten-useful/</guid>
+      <guid>https://jacobc.vercel.app/post/go/go-tips-ten-useful/</guid>
       <description>十条有用的 Go 技巧 转自 mikespook.com 这里是我过去几年中编写的大量 Go 代码的经验总结而来的自己的最佳实践。我相信它们具有弹性的。这里的弹性是指： 某个应用需要适</description>
     </item>
     
@@ -305,6 +350,15 @@
       
       <guid>https://jacobc.vercel.app/post/react-less-and-antd/</guid>
       <description>create-react-app 脚手架添加 less 支持和 antd 样式按需加载 1. 创建项目 npm install -g create-react-app /* 安装create-react-app，建议使用cnpm */ create-react-app react-test /* 使用命令创建应用，mya</description>
+    </item>
+    
+    <item>
+      <title>Git命令清单</title>
+      <link>https://jacobc.vercel.app/post/git-command/</link>
+      <pubDate>Sun, 28 Aug 2016 22:49:10 +0000</pubDate>
+      
+      <guid>https://jacobc.vercel.app/post/git-command/</guid>
+      <description>Git专有名词解释： Workspace：工作区 Index / Stage：暂存区 Repository：仓库区（或本地仓库） Remote：远程仓库 一、新建</description>
     </item>
     
   </channel>

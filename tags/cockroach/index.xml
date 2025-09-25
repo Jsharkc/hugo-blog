@@ -9,10 +9,10 @@
     <lastBuildDate>Sat, 17 Aug 2019 14:50:37 +0000</lastBuildDate><atom:link href="https://jacobc.vercel.app/tags/cockroach/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>初探 Cockroachdb</title>
-      <link>https://jacobc.vercel.app/post/cockroachdb/</link>
+      <link>https://jacobc.vercel.app/post/db/cockroachdb/</link>
       <pubDate>Sat, 17 Aug 2019 14:50:37 +0000</pubDate>
       
-      <guid>https://jacobc.vercel.app/post/cockroachdb/</guid>
+      <guid>https://jacobc.vercel.app/post/db/cockroachdb/</guid>
       <description>初探 Cockroachdb 1.创建网桥 由于在单个主机上运行多个 Docker 容器，因此每个容器有一个 CockroachDB 节点，需要创建Docker所指的桥接网络。桥接网络将使容器能够作为单个</description>
     </item>
     

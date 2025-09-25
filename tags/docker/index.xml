@@ -9,19 +9,19 @@
     <lastBuildDate>Mon, 15 Nov 2021 17:42:23 +8000</lastBuildDate><atom:link href="https://jacobc.vercel.app/tags/docker/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Centos7 安装 Docker</title>
-      <link>https://jacobc.vercel.app/post/docker-install-centos7/</link>
+      <link>https://jacobc.vercel.app/post/docker/docker-install-centos7/</link>
       <pubDate>Mon, 15 Nov 2021 17:42:23 +8000</pubDate>
       
-      <guid>https://jacobc.vercel.app/post/docker-install-centos7/</guid>
+      <guid>https://jacobc.vercel.app/post/docker/docker-install-centos7/</guid>
       <description>一条命令安装 官方脚本： curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun 国内 daocloud 安装命令： curl -sSL https://get.daocloud.io/docker | sh 手动安装指定版本 卸载旧版本 sudo yum remove docker \ docker-client \ docker-client-latest \ docker-common \ docker-latest \ docker-latest-logrotate \ docker-logrotate \ docker-engine \ container-selinux \ docker-selinux 安装</description>
     </item>
     
     <item>
       <title>Docker Note</title>
-      <link>https://jacobc.vercel.app/post/docker-note/</link>
+      <link>https://jacobc.vercel.app/post/docker/docker-note/</link>
       <pubDate>Sat, 12 Oct 2019 16:52:24 +0000</pubDate>
       
-      <guid>https://jacobc.vercel.app/post/docker-note/</guid>
+      <guid>https://jacobc.vercel.app/post/docker/docker-note/</guid>
       <description>Docker Note 镜像 虚悬镜像 ​ 没有仓库名，也没有标签，均为&amp;lt;none&amp;gt;的为虚悬镜像： &amp;lt;none&amp;gt; &amp;lt;none&amp;gt; 00285df0df87 5 days ago 342 MB ​ 由于新旧镜像同名，旧镜像名称被取消，从</description>
     </item>
     

@@ -6,7 +6,61 @@
     <description>Recent content in Tags on Jacobc&#39; Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 07 Nov 2022 10:34:00 +0000</lastBuildDate><atom:link href="https://jacobc.vercel.app/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 23 May 2024 14:12:32 +0000</lastBuildDate><atom:link href="https://jacobc.vercel.app/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>biz</title>
+      <link>https://jacobc.vercel.app/tags/biz/</link>
+      <pubDate>Thu, 23 May 2024 14:12:32 +0000</pubDate>
+      
+      <guid>https://jacobc.vercel.app/tags/biz/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>CentOS7</title>
+      <link>https://jacobc.vercel.app/tags/centos7/</link>
+      <pubDate>Wed, 28 Feb 2024 21:42:23 +0000</pubDate>
+      
+      <guid>https://jacobc.vercel.app/tags/centos7/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>MinDoc</title>
+      <link>https://jacobc.vercel.app/tags/mindoc/</link>
+      <pubDate>Wed, 08 Nov 2023 19:21:24 +0800</pubDate>
+      
+      <guid>https://jacobc.vercel.app/tags/mindoc/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Centos</title>
+      <link>https://jacobc.vercel.app/tags/centos/</link>
+      <pubDate>Wed, 25 Oct 2023 14:37:03 +0800</pubDate>
+      
+      <guid>https://jacobc.vercel.app/tags/centos/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>glibc</title>
+      <link>https://jacobc.vercel.app/tags/glibc/</link>
+      <pubDate>Wed, 25 Oct 2023 14:37:03 +0800</pubDate>
+      
+      <guid>https://jacobc.vercel.app/tags/glibc/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>环境</title>
+      <link>https://jacobc.vercel.app/tags/%E7%8E%AF%E5%A2%83/</link>
+      <pubDate>Wed, 25 Oct 2023 14:37:03 +0800</pubDate>
+      
+      <guid>https://jacobc.vercel.app/tags/%E7%8E%AF%E5%A2%83/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Gitea</title>
       <link>https://jacobc.vercel.app/tags/gitea/</link>
@@ -31,15 +85,6 @@
       <pubDate>Sat, 02 Apr 2022 17:29:23 +8000</pubDate>
       
       <guid>https://jacobc.vercel.app/tags/mongo/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Centos</title>
-      <link>https://jacobc.vercel.app/tags/centos/</link>
-      <pubDate>Thu, 17 Mar 2022 14:29:38 +0000</pubDate>
-      
-      <guid>https://jacobc.vercel.app/tags/centos/</guid>
       <description></description>
     </item>
     
@@ -82,7 +127,7 @@
     <item>
       <title>k8s</title>
       <link>https://jacobc.vercel.app/tags/k8s/</link>
-      <pubDate>Tue, 16 Nov 2021 11:42:23 +8000</pubDate>
+      <pubDate>Tue, 16 Nov 2021 11:42:23 +0800</pubDate>
       
       <guid>https://jacobc.vercel.app/tags/k8s/</guid>
       <description></description>
@@ -206,15 +251,6 @@
     </item>
     
     <item>
-      <title>git</title>
-      <link>https://jacobc.vercel.app/tags/git/</link>
-      <pubDate>Wed, 28 Aug 2019 22:49:10 +0000</pubDate>
-      
-      <guid>https://jacobc.vercel.app/tags/git/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>cockroach</title>
       <link>https://jacobc.vercel.app/tags/cockroach/</link>
       <pubDate>Sat, 17 Aug 2019 14:50:37 +0000</pubDate>
@@ -229,6 +265,15 @@
       <pubDate>Sun, 03 Feb 2019 17:42:23 +0800</pubDate>
       
       <guid>https://jacobc.vercel.app/tags/react/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>git</title>
+      <link>https://jacobc.vercel.app/tags/git/</link>
+      <pubDate>Sun, 28 Aug 2016 22:49:10 +0000</pubDate>
+      
+      <guid>https://jacobc.vercel.app/tags/git/</guid>
       <description></description>
     </item>
     

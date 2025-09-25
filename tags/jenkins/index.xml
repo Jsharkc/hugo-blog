@@ -9,10 +9,10 @@
     <lastBuildDate>Wed, 02 Nov 2022 16:33:00 +0000</lastBuildDate><atom:link href="https://jacobc.vercel.app/tags/jenkins/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>CentOS 以 Docker 方式部署 Jenkins</title>
-      <link>https://jacobc.vercel.app/post/centos-install-jenkins/</link>
+      <link>https://jacobc.vercel.app/post/linux/centos-install-jenkins/</link>
       <pubDate>Wed, 02 Nov 2022 16:33:00 +0000</pubDate>
       
-      <guid>https://jacobc.vercel.app/post/centos-install-jenkins/</guid>
+      <guid>https://jacobc.vercel.app/post/linux/centos-install-jenkins/</guid>
       <description>CentOS 以 Docker 方式部署 Jenkins 一、Docker 安装 Jenkins 1.1 下载 Jenkins 镜像 Jenkins 有两个产品线，一个是稳定版（Stable[LTS]），一个是新功能版（Regular[W</description>
     </item>
     

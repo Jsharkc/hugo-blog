@@ -6,22 +6,31 @@
     <description>Recent content in Centos on Jacobc&#39; Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 17 Mar 2022 14:29:38 +0000</lastBuildDate><atom:link href="https://jacobc.vercel.app/tags/centos/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 25 Oct 2023 14:37:03 +0800</lastBuildDate><atom:link href="https://jacobc.vercel.app/tags/centos/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CentOS7 glibc 2.17 升级到 2.29</title>
+      <link>https://jacobc.vercel.app/post/linux/centos7-glibc2.17-upgrade-to-2.29/</link>
+      <pubDate>Wed, 25 Oct 2023 14:37:03 +0800</pubDate>
+      
+      <guid>https://jacobc.vercel.app/post/linux/centos7-glibc2.17-upgrade-to-2.29/</guid>
+      <description>原因： 遇到以下问题 ❯ node node: /lib64/libm.so.6: version `GLIBC_2.27&amp;#39; not found (required by node) node: /lib64/libc.so.6: version `GLIBC_2.25&amp;#39; not found (required by node) node: /lib64/libc.so.6: version `GLIBC_2.28&amp;#39; not found (required by node) node: /lib64/libstdc++.so.6: version `CXXABI_1.3.9&amp;#39; not found (required by node) node: /lib64/libstdc++.so.6: version `GLIBCXX_3.4.20&amp;#39; not found (required by node) node: /lib64/libstdc++.so.6: version `GLIBCXX_3.4.21&amp;#39; not found (required by node) 需要升级 glibc</description>
+    </item>
+    
     <item>
       <title>Centos 安装 oh-my-zsh</title>
-      <link>https://jacobc.vercel.app/post/centos-install-oh-my-zsh/</link>
+      <link>https://jacobc.vercel.app/post/linux/centos-install-oh-my-zsh/</link>
       <pubDate>Thu, 17 Mar 2022 14:29:38 +0000</pubDate>
       
-      <guid>https://jacobc.vercel.app/post/centos-install-oh-my-zsh/</guid>
+      <guid>https://jacobc.vercel.app/post/linux/centos-install-oh-my-zsh/</guid>
       <description>查看、安装 zsh 查看是否安装了 zsh # 方法一： chsh -l # 方法二： cat /etc/shells # 可能结果： /bin/sh /bin/bash /sbin/nologin /usr/bin/sh /usr/bin/bash /usr/sbin/nologin /bin/zsh # 如果有 /bin/zsh 代表已经安装，反之则没有 安装 zsh yum install -y zsh 切换 shell 为 zsh</description>
     </item>
     
     <item>
       <title>Centos7 安装 Docker</title>
-      <link>https://jacobc.vercel.app/post/docker-install-centos7/</link>
+      <link>https://jacobc.vercel.app/post/docker/docker-install-centos7/</link>
       <pubDate>Mon, 15 Nov 2021 17:42:23 +8000</pubDate>
       
-      <guid>https://jacobc.vercel.app/post/docker-install-centos7/</guid>
+      <guid>https://jacobc.vercel.app/post/docker/docker-install-centos7/</guid>
       <description>一条命令安装 官方脚本： curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun 国内 daocloud 安装命令： curl -sSL https://get.daocloud.io/docker | sh 手动安装指定版本 卸载旧版本 sudo yum remove docker \ docker-client \ docker-client-latest \ docker-common \ docker-latest \ docker-latest-logrotate \ docker-logrotate \ docker-engine \ container-selinux \ docker-selinux 安装</description>
     </item>
     

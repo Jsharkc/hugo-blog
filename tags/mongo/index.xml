@@ -9,19 +9,19 @@
     <lastBuildDate>Sat, 02 Apr 2022 17:29:23 +8000</lastBuildDate><atom:link href="https://jacobc.vercel.app/tags/mongo/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>限制内存 mongo docker-compsoe 部署</title>
-      <link>https://jacobc.vercel.app/post/mongo-docker-deploy/</link>
+      <link>https://jacobc.vercel.app/post/docker/mongo-docker-deploy/</link>
       <pubDate>Sat, 02 Apr 2022 17:29:23 +8000</pubDate>
       
-      <guid>https://jacobc.vercel.app/post/mongo-docker-deploy/</guid>
+      <guid>https://jacobc.vercel.app/post/docker/mongo-docker-deploy/</guid>
       <description>用 docker 起 mongo，有两种限制方式： 通过 Docker 限制内存 通过 MongoDB 自己的配置文件限制 一、通过 Docker 限制内存 内存限制相关参数： 参数 简介 -m, &amp;ndash;memory 内存限制，格式：数字</description>
     </item>
     
     <item>
       <title>MongoDB 的正确打开方式 Part1</title>
-      <link>https://jacobc.vercel.app/post/mongo-use-1/</link>
+      <link>https://jacobc.vercel.app/post/db/mongo-use-1/</link>
       <pubDate>Sat, 05 Dec 2020 16:52:24 +0000</pubDate>
       
-      <guid>https://jacobc.vercel.app/post/mongo-use-1/</guid>
+      <guid>https://jacobc.vercel.app/post/db/mongo-use-1/</guid>
       <description>MongoDB 的正确打开方式 Part1 在关系型数据库中，处理关系时，总是会有一张关系表，不论关系的规模，但在 MongoDB 数据库中，需要考虑关系的规模，我们用一对多关系举例</description>
     </item>
     

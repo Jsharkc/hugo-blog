@@ -9,10 +9,10 @@
     <lastBuildDate>Mon, 07 Nov 2022 10:34:00 +0000</lastBuildDate><atom:link href="https://jacobc.vercel.app/tags/gitea/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>CentOS 以 Docker 方式部署 Gitea</title>
-      <link>https://jacobc.vercel.app/post/centos-install-gitea/</link>
+      <link>https://jacobc.vercel.app/post/linux/centos-install-gitea/</link>
       <pubDate>Mon, 07 Nov 2022 10:34:00 +0000</pubDate>
       
-      <guid>https://jacobc.vercel.app/post/centos-install-gitea/</guid>
+      <guid>https://jacobc.vercel.app/post/linux/centos-install-gitea/</guid>
       <description>CentOS 以 Docker 方式部署 Gitea 一、下载 Jenkins 镜像 Gitea 提供了标准的容器镜像（gitea/gitea），统一支持 SQLite、MySQL、PostgreSQL 和 SQL Server</description>
     </item>
     
