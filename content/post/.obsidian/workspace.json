@@ -1,0 +1,181 @@
+{
+  "main": {
+    "id": "b24a891cbd99f1b3",
+    "type": "split",
+    "children": [
+      {
+        "id": "ccc0f2aaf77d7152",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "8adb2100c70466c4",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "新标签页"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "a4134546683641f7",
+    "type": "split",
+    "children": [
+      {
+        "id": "9e0bf71531bc2d2a",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f52be6107ef5b89e",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "文件列表"
+            }
+          },
+          {
+            "id": "b8fc4365729cf5d4",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "搜索"
+            }
+          },
+          {
+            "id": "2e2be16f5b406e52",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "书签"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "fc1418baf4408967",
+    "type": "split",
+    "children": [
+      {
+        "id": "f917761991e3157f",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "2097c08489df02b7",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "biz/business-probleam-record.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "business-probleam-record 的反向链接列表"
+            }
+          },
+          {
+            "id": "ac2fd73d46d5e572",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "biz/business-probleam-record.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "business-probleam-record 的出链列表"
+            }
+          },
+          {
+            "id": "93a4dfc3f2fbe13f",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "标签"
+            }
+          },
+          {
+            "id": "49f3c6f5710366bb",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "biz/business-probleam-record.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "business-probleam-record 的大纲"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "bases:创建新数据库": false,
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false
+    }
+  },
+  "active": "8adb2100c70466c4",
+  "lastOpenFiles": [
+    "Android-Phone-as-linux-server.md",
+    "post/docker/docker-install-centos7 1.md",
+    "k8s/k8s-install-cluster.md",
+    "post/docker/docker-install-centos7.md",
+    "post/docker",
+    "post",
+    "biz/business-probleam-record.md",
+    "biz/mysql-Prepared-statement-contains-too-many-placeholders.md",
+    "biz/biz-tool.md",
+    "biz/alert-think.md"
+  ]
+}
