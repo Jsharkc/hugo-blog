@@ -8,4 +8,4 @@ tags:
 
 官方地址 [传送门](https://docs.crewai.com/en/installation)
 下面是通过命令安装时的命令
-![安装过程](blogimg/crewai/crewai-1.png)
+![安装过程](/blogimg/crewai/crewai-1.png)
