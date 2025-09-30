@@ -4,17 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "ccc0f2aaf77d7152",
+        "id": "8f22a53ad6994527",
         "type": "tabs",
         "children": [
           {
-            "id": "8adb2100c70466c4",
+            "id": "cd519214119090b2",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "ai_agent/crew-ai/Crew-AI-simple-practice.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "新标签页"
+              "title": "Crew-AI-simple-practice"
             }
           }
         ]
@@ -165,8 +169,14 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "8adb2100c70466c4",
+  "active": "f52be6107ef5b89e",
   "lastOpenFiles": [
+    "ai_agent/crew-ai/Crew-AI 实践.md",
+    "ai_agent/crew-ai/Crew-AI-simple-practice.md",
+    "mac-install-charles.md",
+    "ai_agent/crew-ai/craw-ai-1.png",
+    "ai_agent/crew-ai",
+    "ai_agent",
     "Android-Phone-as-linux-server.md",
     "post/docker/docker-install-centos7 1.md",
     "k8s/k8s-install-cluster.md",
