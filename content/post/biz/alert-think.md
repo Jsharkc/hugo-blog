@@ -1,19 +1,18 @@
 ---
-title: "一个报警引发的思考"
+title: "MySQL 报错：Prepared statement contains too many placeholders 解决"
 description: ""
 author: "jsharkc"
 date: 2024-05-23T14:12:32+00:00
 tags: ["biz"]
 ---
 
-刚进入一家公司，老员工裁了一批，留下的也只熟悉自己那部分代码，有一部分大家都不熟悉，CEO 找技术 VP 说了报警的事，觉得每天报警太多了，也没人处理，VP 就开始 push 下面人解决报警问题。
-之后通过报警遇到一个问题，接口报错，具体报错信息是
+通过报警遇到一个接口报错，具体报错信息是
 
 ```
 failed: users get one failed: Error 1390 (HY000): Prepared statement contains too many placeholders
 ```
 
-根据报警日志，找到对应代码位置：
+根据报警日志，找到对应代码位置（DAO 层代码，业务无关）：
 ```golang
 func (userDAO) GetAllByUserIds(ctx context.Context, uids []int) ([]model.User, error) {
 	dbSession := dbConn.WithContext(ctx)
