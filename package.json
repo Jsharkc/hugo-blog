@@ -1,0 +1,24 @@
+{
+  "name": "hugo-blog",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/Jsharkc/hugo-blog#readme",
+  "bugs": {
+    "url": "https://github.com/Jsharkc/hugo-blog/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jsharkc/hugo-blog.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "algolia": "atomic-algolia"
+  },
+  "dependencies": {
+    "atomic-algolia": "^0.3.19"
+  }
+}

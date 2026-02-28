@@ -46,7 +46,7 @@ $ cd themes
 $ git clone https://github.com/zhaohuabing/hugo-theme-cleanwhite.git
 $ cp -r hugo-theme-cleanwhite/exampleSite/** ../
 $ cd ..
-$ hugo serve
+$ hugo server
 ```
 
 If your site is already a git project, you may want to choose to add the cleanwhite theme as a submodule to avoid messing up your existing git repository.
@@ -58,16 +58,16 @@ $ git submodule add https://github.com/zhaohuabing/hugo-theme-cleanwhite.git the
 Run  Hugo Build-in Server Locally
 
 ```
-$ hugo serve -t  hugo-theme-cleanwhite
+$ hugo server -t  hugo-theme-cleanwhite
 ```
 Now enter [`localhost:1313`](http://localhost:1313) in the address bar of your browser.
 
-If you start from scratch, there is a working Hugo site configured with the CleanWhite theme in the [exampleSite](https://github.com/zhaohuabing/hugo-theme-cleanwhite/tree/master/exampleSite) directory.  You can use it as a starting point for your site.
+If you start from scratch, there is a working Hugo site configured with the CleanWhite theme in the [exampleSite](/exampleSite/) directory.  You can use it as a starting point for your site.
 
-For more information read the official [setup guide](https://gohugo.io/overview/installing/) of Hugo
+For more information read the official [quick start guide](https://gohugo.io/getting-started/quick-start/) of Hugo.
 
 ## Configuration
-First, let's take a look at the [config.toml](https://github.com/zhaohuabing/hugo-theme-cleanwhite/blob/master/exampleSite/config.toml). It will be useful to learn how to customize your site. Feel free to play around with the settings.
+First, let's take a look at the [hugo.toml](/exampleSite/hugo.toml). It will be useful to learn how to customize your site. Feel free to play around with the settings.
 
 ### Comment Systems
 
@@ -96,7 +96,9 @@ Install [the Giscus app](https://github.com/marketplace/giscus) on your GitHub r
 To enable Disqus, create an account in Disqus and write down your shortname.
 
 ```toml
-disqusShortname = "your-disqus-short-name"
+[services]
+  [services.disqus]
+    shortname = "your-disqus-short-name"
 ```
 
 #### Disqus behind a proxy
@@ -165,19 +167,29 @@ Add the following variables to your hugo site config so the search page can get 
 algolia_search = true
 algolia_appId = {{ YOUR_APP_ID }}
 algolia_indexName = {{ YOUR_INDEX_NAME }}
-algolia_apiKey = {{ YOUR_ADMIN_KEY }}
+algolia_apiKey = {{ YOUR_SEARCH_ONLY_KEY }}
 ```
 Open search page in your browser: http://localhost:1313/search
 
-### Analytics
+### Google Analytics
 
-You can optionally enable Google or Baidu Analytics. Type your tracking code in the
+You can optionally enable Google Analytics. Type your tracking code in the
 
 ```toml
-googleAnalytics = "UA-XXXXX-X"
+[services]
+  [services.googleAnalytics]
+    id = "G-XXXXX"
+```
+Leave the `id` key empty to disable it.
+
+### Baidu Analytics
+
+You can optionally enable Baidu Analytics. Type your tracking code in the
+
+```toml
 ba_track_id  = "XXXXXXXXXXXXXXXX"
 ```
-Leave the `googleAnalytics`  or 'ba_track_id ' key empty to disable it.
+Leave the 'ba_track_id ' key empty to disable it.
 
 ### Wechat Pay & Alipay Rewards
 
@@ -243,6 +255,94 @@ Vimeo
 {{< vimeo 146022717 >}}
 ```
 
+### Plantuml
+
+Plantuml support can be enabled at site or page level by adding the following line in the config.yaml or page header.
+
+```
+plantuml: true
+```
+
+Then you can just put plantuml source code in markdown files and the picture will be generated automatically.
+
+An example:
+
+<pre>
+```plantuml
+@startuml
+Alice -> Bob: Authentication Request
+Bob --> Alice: Authentication Response
+
+Alice -> Bob: Another authentication Request
+Alice <-- Bob: Another authentication Response
+@enduml
+```
+</pre>
+
+![screenshot](https://raw.githubusercontent.com/zhaohuabing/hugo-theme-cleanwhite/master/images/plantuml.png)
+
+### Dark Mode
+
+CleanWhite theme comes with built-in dark mode support that automatically switches between light and dark themes based on your time of day (sunrise/sunset).
+
+#### Features
+
+- **Automatic theme switching**: Switches to dark mode after sunset and light mode after sunrise
+- **Manual override**: Users can manually toggle between light/dark mode using the moon/sun icon in the navbar
+- **Persistent preference**: Manual theme selection is saved and persists across sessions
+- **System preference detection**: Falls back to OS-level dark mode preference if auto-theme is disabled
+
+#### Configuration
+
+Dark mode is **enabled by default** with automatic sunrise/sunset switching. You can configure it in your `config.yaml`:
+
+```yaml
+params:
+  # Enable/disable automatic theme switching based on sunrise/sunset (default: true)
+  auto_theme: true
+
+  # Enable/disable dark mode toggle button in navbar (default: true)
+  # Set to false to completely disable dark mode
+  dark_mode_toggle: true
+```
+
+#### Theme Behavior
+
+**Auto-Theme Mode (default):**
+- **Day time** (approximately 6:30 AM - 6:30 PM): Light mode
+- **Night time**: Dark mode
+- Sunrise/sunset times adjust seasonally (±1 hour)
+- Theme updates automatically every minute
+- Manual override stops auto-switching and respects your choice
+
+**System Preference Mode** (when `auto_theme: false`):
+- Follows your OS dark mode preference
+- Manual toggle still available
+
+**Color Scheme**
+
+The dark mode uses a carefully designed color palette inspired by jimmysong.io:
+- Background: `#040b1b` (deep blue-black)
+- Text: `#c9d1d9` (soft gray-white)
+- Links: `#7fb4ff` (calm blue)
+- Accents: Subtle blue tones for a comfortable reading experience
+
+#### Customization
+
+If you want to customize the dark mode colors, you can override the CSS variables in your custom CSS file:
+
+```css
+[data-theme="dark"] {
+    --color-bg: #040b1b;
+    --color-text-main: #c9d1d9;
+    --color-primary: #7fb4ff;
+    /* Add more customizations... */
+}
+```
+
+The theme uses CSS custom properties (variables) for all colors, making it easy to customize the appearance while maintaining consistency across all components.
+
+
 ## Thanks
 Thanks for the great jobs of [huxblog Jekyll Theme](https://github.com/Huxpro/huxpro.github.io) and [Clean Blog Jekyll Theme](https://github.com/BlackrockDigital/startbootstrap-clean-blog-jekyll) which are the the two upstream projects CleanWhite Hugo theme is based on.
 
@@ -251,5 +351,5 @@ If you find any problems, please feel free to [raise an issue](https://github.co
 
 If it's helpful for you, I would appreciate it if you could star this repository, thanks!
 
-## Who is using cleanwhite？(谁在使用 cleanwhite？) 
+## Who is using cleanwhite？(谁在使用 cleanwhite？)
 Sincerely thank everyone who constantly keeps on using and supporting cleanwhite. Feel free to leave a comment on [this issue](https://github.com/zhaohuabing/hugo-theme-cleanwhite/issues/115) to include information about your blog.

@@ -2,7 +2,7 @@
 layout:     post
 title:      "Clean White Theme for Hugo"
 subtitle:   "How to set up this theme"
-date:       2020-01-09
+date:       2019-01-09
 author:     "赵化冰"
 image:      "https://img.zhaohuabing.com/post-bg-2015.jpg"
 ---
@@ -49,7 +49,7 @@ If your site is already a git project, you may want to choose to add the cleanwh
 $ mkdir themes
 $ git submodule add https://github.com/zhaohuabing/hugo-theme-cleanwhite.git themes/hugo-theme-cleanwhite
 ```
-Run  Hugo Build-in Server Locally
+Run  Hugo Built-in Server Locally
 
 ```
 $ hugo serve -t  hugo-theme-cleanwhite
@@ -61,15 +61,17 @@ If you start from scratch, there is a working Hugo site configured with the Clea
 For more information read the official [setup guide](https://gohugo.io/overview/installing/) of Hugo 
 
 ## Configuration
-First, let's take a look at the [config.toml](https://github.com/zhaohuabing/hugo-cleanwhite-theme/tree/master/exampleSite/config.toml). It will be useful to learn how to customize your site. Feel free to play around with the settings.
+First, let's take a look at the [hugo.toml](https://github.com/zhaohuabing/hugo-cleanwhite-theme/tree/master/exampleSite/hugo.toml). It will be useful to learn how to customize your site. Feel free to play around with the settings.
 
 ### Comments
 The optional comments system is powered by [Disqus](https://disqus.com). If you want to enable comments, create an account in Disqus and write down your shortname.
 
 ```toml
-disqusShortname = "your-disqus-short-name"
+[services]
+  [services.disqus]
+    shortname = "your-disqus-short-name"
 ```
-You can disable the comments system by leaving the `disqusShortname` empty.
+You can disable the comments system by leaving the `shortname` empty.
 
 ### Disqus in China
 Disqus is inaccessible in China. To get it to work, we can set up a proxy with [disqus-php-api](https://github.com/zhaohuabing/disqus-php-api) in a host which sets between the client browser and the Disqus server. The idea is that if Disqus can be reached in the guest network, the blog page will show the original Disqus comments UI, otherwise, it will downgrade and use the proxy to access the Disqus, the UI will be a little different, but the visitors can still write their comments on the page.
@@ -125,7 +127,7 @@ Add the following variables to your hugo site config so the search page can get 
 algolia_search = true
 algolia_appId = {{ YOUR_APP_ID }}
 algolia_indexName = {{ YOUR_INDEX_NAME }}
-algolia_apiKey = {{ YOUR_ADMIN_KEY }}
+algolia_apiKey = {{ YOUR_SEARCH_ONLY_KEY }}
 ```
 Open search page in your browser: http://localhost:1313/search
 
@@ -134,10 +136,20 @@ Open search page in your browser: http://localhost:1313/search
 You can optionally enable Google or Baidu Analytics. Type your tracking code in the 
 
 ```toml
-googleAnalytics = "UA-XXXXX-X"
+[services]
+  [services.googleAnalytics]
+    id = "G-XXXXX"
+```
+Leave the `id` key empty to disable it.
+
+### Baidu Analytics
+
+You can optionally enable Baidu Analytics. Type your tracking code in the
+
+```toml
 ba_track_id  = "XXXXXXXXXXXXXXXX"
 ```
-Leave the `googleAnalytics`  or 'ba_track_id ' key empty to disable it.
+Leave the 'ba_track_id ' key empty to disable it.
 
 ### Wechat Pay & Alipay Rewards
 
@@ -149,6 +161,24 @@ reward = true
 ```
 * Replace the QR codes of Wechat Pay & Alipay by overriding the photos in folder /static/img/reward/, otherwise the money will be sent to my accounts!
 
+### Authoring mathematical and chemical equations with \(\KaTeX\)
+
+If you want to make use if KaTeX on your site, enable and configure the goldmark `passthrough` extension
+inside your `hugo.toml`/`hugo.yaml`/`hugo.json`. You may want to edit the definition of the delimiters to
+meet your own needs. For details, see the official [Hugo docs](https://gohugo.io/content-management/mathematics/#step-1).
+
+```toml
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.extensions]
+      [markup.goldmark.extensions.passthrough]
+        enable = true
+        [markup.goldmark.extensions.passthrough.delimiters]
+          block = [['\[', '\]'], ['$$', '$$']]
+          inline = [['\(', '\)']]
+```
+
+Afterwards, you can author mathematical and chemical equations on your site. Please read this [blog post] for more details on this subject.
 
 ## Thank
 Thanks for the great jobs of [huxblog Jekyll Theme](https://github.com/Huxpro/huxpro.github.io) and [Clean Blog Jekyll Theme](https://github.com/BlackrockDigital/startbootstrap-clean-blog-jekyll) which are the the two upstream projects CleanWhite Hugo theme is based on.

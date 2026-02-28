@@ -9,7 +9,7 @@ excerpt: "除来自用户的访问请求以外，微服务应用中的各个微�
 author:     "赵化冰"
 date:     2018-05-23T15:00:00
 image: "/img/2018-05-23-service_2_service_auth/background.jpg"
-published: true 
+publishDate: 2018-05-23T15:00:00
 tags:
     - Microservice
     - Security
@@ -50,8 +50,8 @@ Istio服务网格项目的Auth组件实现了SPIFFE标准，可以为网格中�
 
 Istio Auth采用了Kubernetes的service account来作为服务标识，其SPIFFE ID的格式为spiffe://&lt;domain&gt;/ns/&lt;namespace&gt;/sa/&lt;serviceaccount&gt;，其中各组成部分如下：
 * domain 域名
-* namspace kubernetes service account所在的Namespace
-* serviceaccout kubernetes中定义的service account名
+* namespace kubernetes service account所在的Namespace
+* serviceaccount kubernetes中定义的service account名
 
 Istio Auth提供了一个用于颁发证书的CA。在服务部署时，CA监听Kubernetes API Server, 为集群中的每一个Service Account创建一对密钥和证书。当Pod创建时，Kubernetes根据该Pod关联的Service Account将密钥和证书以Kubernetes Secrets资源的方式加载为Pod的Volume，以供Envoy使用。
 

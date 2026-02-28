@@ -24,15 +24,15 @@ home = ["HTML", "RSS", "Algolia"]
   omit_categories = false
 
   # leancloud storage for page view counter
-  page_view_conter = false 
+  page_view_counter = false 
   leancloud_app_id = ""
   leancloud_app_key = ""
 
   # algolia site search
   algolia_search = true
-  algolia_appId = ""
-  algolia_indexName = ""
-  algolia_apiKey = ""
+  algolia_appId = "7W19F7B733"
+  algolia_indexName = "myblog"
+  algolia_apiKey = "a62b83c177ab08cafcca3d19e0607a6e"
 
   # Sidebar settings
   sidebar_about_description = "Code 世界大冒险"
@@ -40,7 +40,7 @@ home = ["HTML", "RSS", "Algolia"]
   sidebar_avatar = "img/wangye.jpeg"      # use absolute URL, seeing it's used in both `/` and `/about/`
 
   featured_tags = true 
-  featured_condition_size = 0
+  featured_condition_size = 1
 
   # Baidu Analytics
   ba_track_id = ""
@@ -61,6 +61,9 @@ home = ["HTML", "RSS", "Algolia"]
   friends = true
   bookmarks = true
   about_me = true
+
+  # Last posts
+  last_posts = true
 
   # Include any custom CSS and/or JS files, url or relative to /static folder
   #custom_css = ["css/lightbox.css", "https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css", "css/main.css"]
@@ -95,13 +98,13 @@ home = ["HTML", "RSS", "Algolia"]
   title = "ServiceMesher"
   href =  "http://www.servicemesher.com"
   
-  [[params.addtional_menus]]
+  [[params.additional_menus]]
   title =  "ARCHIVE"
   href =  "/top/archives/"
-  [[params.addtional_menus]]
+  [[params.additional_menus]]
   title =  "BOOKS"
   href =  "/top/books/"
-  [[params.addtional_menus]]
+  [[params.additional_menus]]
   title =  "ABOUT"
   href =  "/top/about/"
 
@@ -121,3 +124,18 @@ params = ["categories", "tags"]
     startLevel = 1
   [markup.highlight]
     style = "dracula"
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+    [markup.goldmark.extensions]
+      [markup.goldmark.extensions.passthrough]
+        enable = true
+        [markup.goldmark.extensions.passthrough.delimiters]
+          block = [['\[', '\]'], ['$$', '$$']]
+          inline = [['\(', '\)']]
+
+[mediaTypes]
+  [mediaTypes.'font/woff']
+    suffixes = ['woff']
+  [mediaTypes.'font/woff2']
+    suffixes = ['woff2']
